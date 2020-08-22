@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CardContainer from '../components/CardsContainer'
 
 class Home extends Component {
   render() {

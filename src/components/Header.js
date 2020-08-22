@@ -6,8 +6,8 @@ class Header extends Component {
     return (
       <div className="headerContainer">
       <nav>
-        <Link to='/'>Home</Link>
-        <Link to='/playlist'>Playlist</Link>
+        <Link to='/'>Home</Link>{'  |  '}
+        <Link to='/playlist'>Playlist</Link>{'  |  '}
         <Link to='/profile'>Profile</Link>
       </nav>
         <h1>This is a header</h1>
