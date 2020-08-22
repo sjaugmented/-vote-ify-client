@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import routes from './config/routes'
-import HeadContainer from './components/HeadContainer'
+import HeadContainer from './components/Header/HeadContainer'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
