@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import routes from './config/routes'
 import HeadContainer from './components/HeadContainer'
+import Player from './components/Player'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -14,7 +15,8 @@ function App() {
     <div className="App">
     <Layout>
       <Header><HeadContainer/></Header>
-      {routes}
+      <Content>{routes}</Content>
+      <Footer><Player/></Footer>
     </Layout>
     
     </div>
