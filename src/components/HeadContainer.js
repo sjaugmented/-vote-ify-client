@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import SongList from './SongList'
 
 class HeadContainer extends Component {
   render() {
