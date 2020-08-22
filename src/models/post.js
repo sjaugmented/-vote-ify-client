@@ -1,22 +1,21 @@
-// const url = 
+//const url =
 
-
-export default class UserModel {
-    static create = async (data) => {
+export default class PostModel {
+    static create = async (post) => {
         try {
             
         } catch (error) {
             console.log(error)
         }
     }
-    static login = async (credentials) => {
+    static update = async (post) => {
         try {
             
         } catch (error) {
             console.log(error)
         }
     }
-    static logout = async () => {
+    static delete = async (post) => {
         try {
             
         } catch (error) {
