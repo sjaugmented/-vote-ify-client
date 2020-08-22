@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar'
 import SongList from '../components/SongList'
-import HeadContainer from '../components/HeadContainer'
+import HeadContainer from '../components/Header/HeadContainer'
 import styled from 'styled-components'
 
-import '../components/sidebar.css'
+import '../components/Header/header.css'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -20,7 +20,7 @@ function Playlist() {
 
     return (
       <Layout>
-        <Content><SongList /><button onClick={toggle}>toggle</button></Content>
+        <Content> <SongList /><button onClick={toggle}>toggle</button> </Content>
         <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
       </Layout>
     );
