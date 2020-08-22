@@ -1,14 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import routes from './config/routes'
-import Header from './components/Header'
+import HeadContainer from './components/HeadContainer'
+
+import { Layout } from 'antd';
+import 'antd/dist/antd.css';
+
+const { Header, Footer, Sider, Content } = Layout;
 
 
 function App() {
   return (
     <div className="App">
-      <Header />
+    <Layout>
+      <Header><HeadContainer/></Header>
       {routes}
+    </Layout>
+    
     </div>
   );
 }
