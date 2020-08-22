@@ -5,6 +5,7 @@ import HeadContainer from './components/Header/HeadContainer'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
+import './components/Header/header.css'
 
 const { Header, Footer, Sider, Content } = Layout;
 

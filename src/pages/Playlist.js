@@ -4,7 +4,7 @@ import SongList from '../components/SongList'
 import HeadContainer from '../components/Header/HeadContainer'
 import styled from 'styled-components'
 
-import '../components/sidebar.css'
+import '../components/Header/header.css'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';

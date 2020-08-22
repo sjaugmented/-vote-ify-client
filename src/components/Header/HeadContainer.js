@@ -12,14 +12,14 @@ class HeadContainer extends Component {
     return (
       <div className="headContainer">
         <Row>
-          <Col span={8}>
+          <Col xs={0} sm={0} md={0} lg={6} xl={6} className='titleCol'>
             <Title />
           </Col>
-          <Col span={16}>
-            <Row>
+          <Col xs={24} sm={24} md={24} lg={18} xl={18}>
+            <Row className='navbarRow'>
               <Navbar/>
             </Row>
-            <Row>
+            <Row className='headerArtRow'>
               <HeaderArt />
             </Row>
           </Col>
