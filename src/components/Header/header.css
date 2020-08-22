@@ -4,19 +4,67 @@
   padding: 0;
 }
 
+
+
+/* NAVBAR */
+
+.navbarRow {
+
+  height: 35px;
+}
+
+.dropdownCol, .authCol {
+  height: 35px
+}
+
+.authDiv {
+  display: flex;
+  height: 35px;
+  align-items: center;
+}
+
+.authDiv a {
+  margin: 0px 10px 0px 10px;
+}
+
+.dropdownDiv {
+  display: flex;
+  height: 35px;
+  align-items: center;
+  margin-right: 50px;
+}
+
+/* //////////////////////////////////// */
+
+
+/* BRAND */
+
+.titleCol {
+  border: 1px solid black;
+}
+
+/* /////////////////////////////////////// */
+
+
+
+
+/* HEADER ART */
+
 .headerArtRow {
   border: 1px solid black;
   height: 130px;
 }
 
-.navbarRow {
-  border: 1px solid black;
-  height: 35px
-}
+/* /////////////////////////////////////// */
 
-.titleCol {
-  border: 1px solid black;
-}
+
+
+
+
+
+
+
+
 
 .hide {
   display: none;
