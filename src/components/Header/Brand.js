@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const Brand = () => {
   return (
     <div>
-      <h1>Brand component</h1>
+      <Link to='/'><h1>Brand component</h1></Link>
     </div>
   );
 }
