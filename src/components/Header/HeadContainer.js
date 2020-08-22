@@ -29,10 +29,4 @@ class HeadContainer extends Component {
   }
 }
 
-{/* <nav>
-        <Link to='/'>Home</Link>{'  |  '}
-        <Link to='/playlist'>Playlist</Link>{'  |  '}
-        <Link to='/profile'>Profile</Link>
-      </nav> */}
-
 export default HeadContainer;
