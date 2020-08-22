@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from './Card'
 
-class CardsContainer extends Component {
-  render() {
+const CardsContainer = () => {
+
     return (
       <div>
         <Card />
       </div>
     );
-  }
+  
 }
 
 export default CardsContainer;
