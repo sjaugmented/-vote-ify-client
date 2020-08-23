@@ -2,6 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 
 const Auth = (props) => {
+
+  const spotifyLogin = () => {
+
+  }
+
   return (
     <div className='authDiv'>
       {props.currentUser ? 
@@ -10,9 +15,7 @@ const Auth = (props) => {
           <Link to={'/logout'}>Logout</Link>
         </>
         :
-        <div className='spotify-connect'>
-          <Link to={'/auth/login'}>Connect with Spotify</Link>
-        </div>
+        <button className='spotify-connect' onClick={spotifyLogin}>Login with Spotify</button>
       }
     </div>
   );

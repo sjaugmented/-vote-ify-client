@@ -11,6 +11,6 @@ export default (
     <Route exact path='/playlist' component={ Playlist } />
       {/* will be /playlist/:id */}
     <Route exact path='/profile' component={ Profile } />
-      {/* will be /profile/:id */}
+    {/* will be /profile/:id */}
   </Switch>
 )
