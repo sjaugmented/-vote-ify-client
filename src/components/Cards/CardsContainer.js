@@ -26,43 +26,30 @@ class CardsContainer extends Component{
     })
     return (
       <div>
-        {list}
-        {/* <Row>
+        <Row>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card 
-               key={1}
-            />
+            {list[0]}
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card 
-              
-            />
+            {list[1]}
           </Col>
         </Row>
         <Row>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card 
-              
-            />
+            {list[2]}
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card 
-                
-            />
+            {list[3]}
           </Col>
         </Row>
         <Row>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card 
-                
-            />
+          <Col xs={24} sm={24} md={12} lg={12} xl={12}> 
+            {list[4]}
           </Col>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card 
-         
-            />
+          <Col xs={24} sm={24} md={12} lg={12} xl={12}> 
+            {list[5]}
           </Col>
-        </Row> */}
+        </Row>
       </div>
     );
   }
