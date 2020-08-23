@@ -5,7 +5,7 @@ export default class PlaylistModel {
     //   return fetch(`${url}/playlists`)
     //     .then(res => res.json())
         try {
-          const response = await fetch(`${url}/playlists`)
+          const response = await fetch(`${url}`)
           const playlists = await response.json()
             console.log('playlists', playlists) // TODO: remove
             return playlists
@@ -15,7 +15,7 @@ export default class PlaylistModel {
     }
     static show = async (playlistId) => {
         try {
-            const response = await fetch(`${url}/playlists/${playlistId}`)
+            const response = await fetch(`${url}/playlist/${playlistId}`)
             const playlist = await response.json()
             return playlist
             console.log('playlist', playlist); // TODO: remove
