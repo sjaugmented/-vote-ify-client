@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import Auth from './Auth'
 import PlaylistDropdown from './PlaylistDropdown'
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div>
       <Row>
@@ -13,7 +13,9 @@ const Navbar = () => {
           <PlaylistDropdown />
         </Col>
         <Col className='authCol'>
-          <Auth />
+          <Auth 
+            currentUser={props.currentUser}
+          />
         </Col>
       </Row>
     </div>

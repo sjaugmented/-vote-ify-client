@@ -1,11 +1,19 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
-const Auth = () => {
+const Auth = (props) => {
   return (
     <div className='authDiv'>
-      <a>Evan</a>
-      <a>Logout</a>
-      <a>Connect with spotify</a>
+      {props.currentUser ? 
+        <>
+          <Link to={'/profile'}>{props.currentUser}</Link>
+          <Link to={'/logout'}>Logout</Link>
+        </>
+        :
+        <div className='spotify-connect'>
+          <Link to={'/auth/login'}>Connect with Spotify</Link>
+        </div>
+      }
     </div>
   );
 }
