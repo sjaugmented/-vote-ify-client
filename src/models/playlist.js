@@ -7,7 +7,7 @@ export default class PlaylistModel {
         try {
           const response = await fetch(`${url}/playlists`)
           const playlists = await response.json()
-          console.log('playlists', playlists)
+          console.log('playlists', playlists) // TODO: remove
         } catch (error) {
             console.log(error)
         }
@@ -16,7 +16,7 @@ export default class PlaylistModel {
         try {
             const response = await fetch(`${url}/playlists/${playlistId}`)
             const playlist = await response.json()
-            console.log('playlist', playlist);
+            console.log('playlist', playlist); // TODO: remove
         } catch (error) {
             console.log(error)
         }

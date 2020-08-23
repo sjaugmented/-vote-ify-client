@@ -11,7 +11,7 @@ export default class PostModel {
                 },
                 body: JSON.stringify(post)
             })
-            console.log(newPost)
+            console.log(newPost) // TODO: remove
         } catch (error) {
             console.log(error)
         }
