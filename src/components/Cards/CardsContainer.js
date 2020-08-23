@@ -8,63 +8,61 @@ import PlaylistModel from '../../models/playlist';
 
 
 class CardsContainer extends Component{ 
-
+  state ={
+    playlists: []
+  }
   componentDidMount(){
     this.fetchData()
   }
 
   fetchData = () => {
     PlaylistModel.all()
-      .then(data => {
-        console.log(data.playlists)
-      })
+      .then(data => this.setState({ playlists: data.playlists}))
   }
 
   render(){
+    let list = this.state.playlists.map((playlist, index)=>{
+      return <Card src={playlist.coverart} key={index} title={playlist.title}/>
+    })
     return (
       <div>
-        <Row>
+        {list}
+        {/* <Row>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card 
-              src={process.env.PUBLIC_URL + '/assets/images/electronic.jpg'}
-              playlist='Electronic'  
+               key={1}
             />
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card 
-              src={process.env.PUBLIC_URL + '/assets/images/alternative.jpg'}
-              playlist='Alternative'  
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card 
-              src={process.env.PUBLIC_URL + '/assets/images/rock.jpg'}
-              playlist='Rock'  
-            />
-          </Col>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card 
-              src={process.env.PUBLIC_URL + '/assets/images/hiphop.jpg'}
-              playlist='Hip Hop'  
+              
             />
           </Col>
         </Row>
         <Row>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card 
-              src={process.env.PUBLIC_URL + '/assets/images/indie.jpg'}
-              playlist='Indie'  
+              
             />
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card 
-              src={process.env.PUBLIC_URL + '/assets/images/classical.jpg'}
-              playlist='Classical'  
+                
             />
           </Col>
         </Row>
+        <Row>
+          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+            <Card 
+                
+            />
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+            <Card 
+         
+            />
+          </Col>
+        </Row> */}
       </div>
     );
   }
