@@ -27,26 +27,26 @@ class CardsContainer extends Component{
     return (
       <div>
         <Row>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[0]}
           </Col>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[1]}
           </Col>
         </Row>
         <Row>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[2]}
           </Col>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[3]}
           </Col>
         </Row>
         <Row>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}> 
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
             {list[4]}
           </Col>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}> 
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
             {list[5]}
           </Col>
         </Row>
