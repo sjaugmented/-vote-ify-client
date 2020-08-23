@@ -13,14 +13,14 @@ export default class PlaylistModel {
         }
     }
     static show = async (id) => {
-      return fetch(`${url}/playlist/${id}`)
-        .then(res => res.json())
-        // try {
-        //     const response = await fetch(`${url}/playlist/${id}`)
-        //     const playlist = await response.json()
-        //     return playlist
-        // } catch (error) {
-        //     console.log(error)
-        // }
+      // return fetch(`${url}/playlist/${id}`)
+      //   .then(res => res.json())
+        try {
+            const response = await fetch(`${url}/playlist/${id}`)
+            const playlist = await response.json()
+            return playlist
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
