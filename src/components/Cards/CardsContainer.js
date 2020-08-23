@@ -9,31 +9,33 @@ import PlaylistModel from '../../models/playlist';
 
 
 class CardsContainer extends Component{ 
-  state ={
-    playlists: []
-  }
-  componentDidMount(){
-    this.fetchData()
-  }
+  // state ={
+  //   playlists: []
+  // }
+  // componentDidMount(){
+  //   this.fetchData()
+  // }
 
-  fetchData = () => {
-    PlaylistModel.all()
-      .then(data => this.setState({ playlists: data.playlists}))
-  }
+  // fetchData = () => {
+  //   PlaylistModel.all()
+  //     .then(data => this.setState({ playlists: data.playlists}))
+  // }
 
-  render(){
-    let list = this.state.playlists.map((playlist, index)=>{
-      return <Link to={`/playlists/${playlist._id}`}>
+  render(props){
+    let list = this.props.playlists.map((playlist, index)=>{
+      
+      console.log(playlist)
+
+      return <Link to={`/playlist/${playlist._id}`} key={index} >
         <Card 
-          src={playlist.coverart} 
-          key={index} 
-          title={playlist.title}
+         { ...playlist }
           />
       </Link>
         
     })
     return (
       <div>
+     
         <Row>
           <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[0]}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Sidebar from '../components/Playlist/Sidebar'
 import SongList from '../components/Playlist/SongList'
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
+import PlaylistModel from '../models/playlist'
 
 
 import '../components/Header/header.css'
@@ -25,6 +26,18 @@ class Playlist extends Component {
     //     <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
     //   </Layout>
     // );
+
+    state = {
+      playlist: ''
+    }
+  
+    componentDidMount(){
+      PlaylistModel.show(this.props.match.params.id)
+        .then(data => {
+          console.log(data)
+        })
+    }
+
     render(){
       return (
         <PlaylistContainer />
