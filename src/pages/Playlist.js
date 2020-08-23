@@ -35,7 +35,7 @@ class Playlist extends Component {
       PlaylistModel.show(this.props.match.params.id)
         .then(data => {
           this.setState({playlist: data.playlist})
-          console.log(this.state.playlist)
+          // console.log(this.state.playlist)
         })
     }
 
