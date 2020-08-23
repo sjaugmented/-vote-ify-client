@@ -1,29 +1,35 @@
-import React, { useState } from 'react';
-import Sidebar from '../components/Sidebar'
-import SongList from '../components/SongList'
-import HeadContainer from '../components/Header/HeadContainer'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import Sidebar from '../components/Playlist/Sidebar'
+import SongList from '../components/Playlist/SongList'
+import PlaylistContainer from '../components/Playlist/PlaylistContainer';
+
 
 import '../components/Header/header.css'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 
+
 const { Header, Footer, Sider, Content } = Layout;
 
-function Playlist() {
-  const [isHidden, setIsHidden] = useState(true)
+class Playlist extends Component {
+//   const [isHidden, setIsHidden] = useState(true)
 
-  const toggle =() => {
-    setIsHidden(!isHidden)
-  }
+//   const toggle =() => {
+//     setIsHidden(!isHidden)
+//   }
 
-    return (
-      <Layout>
-        <Content> <SongList /><button onClick={toggle}>toggle</button> </Content>
-        <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
-      </Layout>
-    );
+    // return (
+    //   <Layout>
+    //     <Content> <SongList /><button onClick={toggle}>toggle</button> </Content>
+    //     <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
+    //   </Layout>
+    // );
+    render(){
+      return (
+        <PlaylistContainer />
+      )
+    }
 }
 
 export default Playlist;
