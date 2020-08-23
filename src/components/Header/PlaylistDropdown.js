@@ -8,17 +8,32 @@ const menu = (
   <Menu>
     <Menu.Item>
       <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-        EDM
+        Electronic
       </a>
     </Menu.Item>
     <Menu.Item>
       <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-        Rap
+        Alternative
       </a>
     </Menu.Item>
     <Menu.Item>
       <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
         Rock
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+        Hip Hop
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+        Indie
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+        Reggae
       </a>
     </Menu.Item>
     
