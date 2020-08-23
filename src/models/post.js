@@ -1,4 +1,4 @@
-//const url =
+const url = 'http://localhost:3001/api/v1'
 
 export default class PostModel {
     static create = async (post) => {
