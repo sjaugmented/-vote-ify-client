@@ -34,13 +34,14 @@ class Playlist extends Component {
     componentDidMount(){
       PlaylistModel.show(this.props.match.params.id)
         .then(data => {
-          console.log(data)
+          this.setState({playlist: data.playlist})
+          console.log(this.state.playlist)
         })
     }
 
     render(){
       return (
-        <PlaylistContainer />
+        <PlaylistContainer playlist={this.state.playlist}/>
       )
     }
 }

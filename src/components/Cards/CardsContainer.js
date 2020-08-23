@@ -24,7 +24,7 @@ class CardsContainer extends Component{
   render(props){
     let list = this.props.playlists.map((playlist, index)=>{
       
-      console.log(playlist)
+      // console.log(playlist)
 
       return <Link to={`/playlist/${playlist._id}`} key={index} >
         <Card 

@@ -17,10 +17,10 @@ class PlaylistContainer extends Component {
   // }
 
  
-  render() {
+  render(props) {
     return (
       <div>
-        <h1>Playlist</h1>
+        <h1>{this.props.playlist.title}</h1>
       </div>
     )
   }
