@@ -1,11 +1,22 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
-const Auth = () => {
+const Auth = (props) => {
+
+  const spotifyLogin = () => {
+
+  }
+
   return (
     <div className='authDiv'>
-      <a>Evan</a>
-      <a>Logout</a>
-      <a>Connect with spotify</a>
+      {props.currentUser ? 
+        <>
+          <Link to={'/profile'}>{props.currentUser}</Link>
+          <Link to={'/logout'}>Logout</Link>
+        </>
+        :
+        <button className='spotify-connect' onClick={spotifyLogin}>Login with Spotify</button>
+      }
     </div>
   );
 }
