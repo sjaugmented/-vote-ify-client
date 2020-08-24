@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
-
+import PlaylistModel from '../../models/playlist'
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
@@ -40,7 +40,21 @@ const menu = (
   </Menu>
 );
 
-const PlaylistDropdown = () => {
+
+
+const PlaylistDropdown = (props) => {
+
+  // const [playlist, setPlaylist] = useState()
+
+  // const getPlaylist = async () => {
+  //   const result = await PlaylistModel.show(props.match.params.id)
+  //   setPlaylist({playlist: result.playlist})
+  // }
+
+  // useEffect(() => {
+  //   getPlaylist()
+  // }, []);
+
   return (
     <div className='dropdownDiv'>
       <Dropdown overlay={menu}>
