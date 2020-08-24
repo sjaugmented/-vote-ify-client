@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Playlist/Sidebar'
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
 import PlaylistModel from '../models/playlist'
@@ -12,7 +12,7 @@ import 'antd/dist/antd.css';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-class Playlist extends Component {
+const Playlist = () => {
 //   const [isHidden, setIsHidden] = useState(true)
 
 //   const toggle =() => {
@@ -25,28 +25,17 @@ class Playlist extends Component {
     //     <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
     //   </Layout>
     // );
+    const [playlist, setPlaylist] = useState()
 
-    state = {
-      playlist: ''
-    }
   
-    componentDidMount(){
-      PlaylistModel.show(this.props.match.params.id)
-        .then(data => {
-          this.setState({playlist: data.playlist})
-          // console.log(this.state.playlist)
-        })
-    }
-
-    render(){
-      return (
+    return (
       <Layout>
         <Content><PlaylistContainer playlist={this.state.playlist}/></Content>
         <Sider><Sidebar /></Sider>
       </Layout>
     );
       
-    }
+    
 }
 
 export default Playlist;

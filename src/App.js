@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import Routes from './config/routes'
+import PlaylistModel from './models/playlist'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
 import Player from './components/Player'
@@ -48,6 +49,20 @@ function App(props) {
         props.history.push('/login')
       })
   }
+  // Getting all playlists from db
+  const [playlists, setPlaylists] = useState([])
+
+  
+
+  const getPlaylists = async () => {
+    const result = await PlaylistModel.all()
+    console.log(result.playlists)
+    setPlaylists({playlists: result.playlists})
+  }
+
+  useEffect(() => {
+    getPlaylists()
+  }, []);
 
   return (
     <div className="App">
@@ -56,10 +71,11 @@ function App(props) {
           <HeadContainer 
             currentUser={currentUser}
             logout={logout}
+            playlists={playlists}
           />
         </Header>
         <Content>
-          <Routes />
+          <Routes playlists={playlists}/>
         </Content>
         <Footer>
           <Player
