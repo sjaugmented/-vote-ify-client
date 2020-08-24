@@ -4,15 +4,15 @@ import PlaylistModel from '../../models/playlist'
 import Sidebar from './Sidebar'
 
 
-class PlaylistContainer extends Component {
+const PlaylistContainer = (props) => {
   
-  render(props) {
+ 
     return (
       <div>
-        <h1>{this.props.playlist.title}</h1>
+        
       </div>
     )
-  }
+  
 }
 
 export default PlaylistContainer
