@@ -12,7 +12,7 @@ const Routes = (props) => {
     <Route exact path='/playlist/:id' render={(props) => <Playlist {...props} playlists={props.playlists}/>} />
       {/* will be /playlist/:id */}
     <Route exact path='/profile' render={(props) => <Profile {...props} playlists={props.playlists}/>} />
-    {/* will be /profile/:id */}
+      {/* will be /profile/:id */}
   </Switch>
   )
 }

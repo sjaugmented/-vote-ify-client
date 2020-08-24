@@ -1,45 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from '../components/Playlist/Sidebar'
-import PlaylistContainer from '../components/Playlist/PlaylistContainer';
+//import model
 import PlaylistModel from '../models/playlist'
 
+//import components
+import PlaylistContainer from '../components/Playlist/PlaylistContainer';
+import Sidebar from '../components/Playlist/Sidebar'
+import SongList from '../components/Playlist/SongList';
 
-import '../components/Header/header.css'
-
+//import styles
+import '../components/Playlist/playlist.css'
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
-
-
-const { Header, Footer, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 const Playlist = (props) => {
-  // const [isHidden, setIsHidden] = useState(true)
+  //Toggle sidebar functionality
+  const [isHidden, setIsHidden] = useState(false)
+  const toggle =() => {
+    setIsHidden(!isHidden)
+  }
 
-  // const toggle =() => {
-  //   setIsHidden(!isHidden)
-  // }
-
-  // return (
-  //   <Layout>
-  //     <Content> <SongList /><button onClick={toggle}>toggle</button> </Content>
-  //     <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
-  //   </Layout>
-  // );
+  //call fetch request to show the single playlist
   const [playlist, setPlaylist] = useState()
-
   const getPlaylist = async () => {
     const result = await PlaylistModel.show(props.match.params.id)
     setPlaylist({playlist: result.playlist})
   }
-  
   useEffect(() => {
     getPlaylist()
   }, []);
 
   return (
     <Layout>
-      <Content><PlaylistContainer playlist={playlist}/></Content>
-      <Sider><Sidebar /></Sider>
+      {/* Header is here */}
+      <Content>
+        <PlaylistContainer toggle={toggle} playlist={playlist}/>
+        <SongList playlist={playlist}/>
+      </Content>
+      <Sider className={isHidden ? 'hide' : 'show'}>
+        <Sidebar />
+      </Sider>
+      {/* Footer is here */}
     </Layout>
   );
       
