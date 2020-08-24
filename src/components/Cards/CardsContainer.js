@@ -7,7 +7,6 @@ import 'antd/dist/antd.css';
 import Card from './Card'
 
 
-
 const CardsContainer = (props) => { 
  
   const playlists = props.playlists.playlists
