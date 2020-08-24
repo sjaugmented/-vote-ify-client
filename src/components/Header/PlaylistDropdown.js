@@ -7,32 +7,32 @@ import { DownOutlined } from '@ant-design/icons';
 const menu = (
   <Menu>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com">
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d73178">
         Electronic
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com">
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d73179">
         Alternative
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com">
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317a">
         Rock
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com">
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317b">
         Hip Hop
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com">
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317c">
         Indie
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317d">
         Reggae
       </a>
     </Menu.Item>

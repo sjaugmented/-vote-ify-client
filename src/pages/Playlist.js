@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Playlist/Sidebar'
-import SongList from '../components/Playlist/SongList'
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
 import PlaylistModel from '../models/playlist'
 
@@ -13,37 +12,38 @@ import 'antd/dist/antd.css';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-class Playlist extends Component {
-//   const [isHidden, setIsHidden] = useState(true)
+const Playlist = (props) => {
+  // const [isHidden, setIsHidden] = useState(true)
 
-//   const toggle =() => {
-//     setIsHidden(!isHidden)
-//   }
+  // const toggle =() => {
+  //   setIsHidden(!isHidden)
+  // }
 
-    // return (
-    //   <Layout>
-    //     <Content> <SongList /><button onClick={toggle}>toggle</button> </Content>
-    //     <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
-    //   </Layout>
-    // );
+  // return (
+  //   <Layout>
+  //     <Content> <SongList /><button onClick={toggle}>toggle</button> </Content>
+  //     <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
+  //   </Layout>
+  // );
+  const [playlist, setPlaylist] = useState()
 
-    state = {
-      playlist: ''
-    }
+  const getPlaylist = async () => {
+    const result = await PlaylistModel.show(props.match.params.id)
+    setPlaylist({playlist: result.playlist})
+  }
   
-    componentDidMount(){
-      PlaylistModel.show(this.props.match.params.id)
-        .then(data => {
-          this.setState({playlist: data.playlist})
-          console.log(this.state.playlist)
-        })
-    }
+  useEffect(() => {
+    getPlaylist()
+  }, []);
 
-    render(){
-      return (
-        <PlaylistContainer playlist={this.state.playlist}/>
-      )
-    }
+  return (
+    <Layout>
+      <Content><PlaylistContainer playlist={playlist}/></Content>
+      <Sider><Sidebar /></Sider>
+    </Layout>
+  );
+      
+    
 }
 
 export default Playlist;
