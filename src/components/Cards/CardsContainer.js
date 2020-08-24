@@ -5,7 +5,7 @@ import { Row, Col } from 'antd';
 import 'antd/dist/antd.css';
 
 import Card from './Card'
-import PlaylistModel from '../../models/playlist';
+//import PlaylistModel from '../../models/playlist';
 
 
 class CardsContainer extends Component{ 
