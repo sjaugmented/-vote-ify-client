@@ -1,29 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import PlaylistModel from '../../models/playlist'
 import Sidebar from './Sidebar'
 
 
-class PlaylistContainer extends Component {
-  // state = {
-  //   playlist: ''
-  // }
-
-  // componentDidMount(){
-  //   PlaylistModel.show(this.props.match.params.id)
-  //     .then(data => {
-  //       console.log(data)
-  //     })
-  // }
-
- 
-  render(props) {
-    return (
-      <div>
-        <h1>{this.props.playlist.title}</h1>
-      </div>
-    )
-  }
+const PlaylistContainer = (props) => {
+const playlist = props.playlist
+// console.log(playlist)
+// let title
+// if(playlist){
+//   title = playlist.title
+//   console.log(title)
+//   return title
+// }
+  return (
+    <div>
+      {/* {playlist.title} */}
+      <h1>playlist name</h1>
+    </div>
+  )
+  
 }
 
 export default PlaylistContainer
