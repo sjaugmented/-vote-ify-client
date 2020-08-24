@@ -13,6 +13,7 @@ import './components/Header/header.css'
 const { Header, Footer, Sider, Content } = Layout;
 
 function App(props) {
+
   // current Playlist
   const [playlist, setPlaylist] = useState([
       {
@@ -52,7 +53,14 @@ function App(props) {
   // Getting all playlists from db
   const [playlists, setPlaylists] = useState([])
 
-  
+  const fetchLogin = async () => {
+    const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
+      credentials: 'include'
+    })
+    const data = await result.json()
+    console.log(data)
+    return data
+  }
 
   const getPlaylists = async () => {
     const result = await PlaylistModel.all()
@@ -60,6 +68,7 @@ function App(props) {
   }
 
   useEffect(() => {
+    fetchLogin()
     getPlaylists()
   }, []);
 
@@ -74,7 +83,9 @@ function App(props) {
           />
         </Header>
         <Content>
-          <Routes playlists={playlists}/>
+          <Routes
+            playlists={playlists}
+          />
         </Content>
         <Footer>
           <Player

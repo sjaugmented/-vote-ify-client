@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 
 const Auth = (props) => {
 
+  
+
   return (
     <div className='authDiv'>
       {props.currentUser ? 

@@ -1,4 +1,4 @@
-//const url = 'http://localhost:3001/api/v1'
+const url = 'http://localhost:3001/api/v1'
 
 
 export default class UserModel {
@@ -20,7 +20,8 @@ export default class UserModel {
     }
     static logout = async () => {
         try {
-            
+            const res = await fetch(`${url}/auth/logout`) 
+            return await res.json()
         } catch (error) {
             console.log(error)
         }
