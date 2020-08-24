@@ -1,5 +1,5 @@
 const url = 'http://localhost:3001/api/v1'
-const spotifyUrl = 'https://accounts.spotify.com/authorize?'
+
 
 export default class UserModel {
     // static login = async (data) => {
@@ -20,7 +20,8 @@ export default class UserModel {
     }
     static logout = async () => {
         try {
-            
+            const res = await fetch(`${url}/auth/logout`) 
+            return await res.json()
         } catch (error) {
             console.log(error)
         }
