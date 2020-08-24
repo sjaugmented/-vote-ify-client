@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const Auth = (props) => {
 
   const spotifyLogin = () => {
-
+    
   }
 
   return (

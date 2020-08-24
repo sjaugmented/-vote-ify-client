@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
-import routes from './config/routes'
+import Routes from './config/routes'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
 import Player from './components/Player'
@@ -59,7 +59,7 @@ function App(props) {
           />
         </Header>
         <Content>
-          {routes}
+          <Routes />
         </Content>
         <Footer>
           <Player

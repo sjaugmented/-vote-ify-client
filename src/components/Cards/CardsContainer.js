@@ -8,35 +8,23 @@ import Card from './Card'
 import PlaylistModel from '../../models/playlist';
 
 
-class CardsContainer extends Component{ 
-  // state ={
-  //   playlists: []
-  // }
-  // componentDidMount(){
-  //   this.fetchData()
-  // }
-
-  // fetchData = () => {
-  //   PlaylistModel.all()
-  //     .then(data => this.setState({ playlists: data.playlists}))
-  // }
-
-  render(props){
-    let list = this.props.playlists.map((playlist, index)=>{
-      
-      // console.log(playlist)
-
-      return <Link to={`/playlist/${playlist._id}`} key={index} >
-        <Card 
-         { ...playlist }
-          />
-      </Link>
-        
-    })
+const CardsContainer = (props) => { 
+  const playlists = props.playlists
+  console.log(playlists)
+  // let list = playlists.map((playlist, index)=>{
+  //   console.log(playlist)
+  // })
+  // let list = playlists.map((playlist, index)=>{
+  //   return <Link to={`/playlist/${playlist._id}`} key={index} >
+  //     <Card 
+  //       { ...playlist }
+  //       />
+  //   </Link> 
+  // })
     return (
       <div>
      
-        <Row>
+        {/* <Row>
           <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[0]}
           </Col>
@@ -59,10 +47,10 @@ class CardsContainer extends Component{
           <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
             {list[5]}
           </Col>
-        </Row>
+        </Row> */}
       </div>
     );
   }
-}
+
 
 export default CardsContainer;

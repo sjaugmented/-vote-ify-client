@@ -4,26 +4,27 @@ import '../components/Cards/cards.css'
 import PlaylistModel from '../models/playlist'
 
 
-class Home extends Component {
-  state = {
-    playlists: []
-  }
+const Home = (props) => {
+  // state = {
+  //   playlists: []
+  // }
 
-  componentDidMount(){
-    this.fetchData()
-  }
+  // componentDidMount(){
+  //   this.fetchData()
+  // }
 
-  fetchData = () => {
-    PlaylistModel.all()
-      .then(data => this.setState({playlists: data.playlists}))
-  }
-  render() {
+  // fetchData = () => {
+  //   PlaylistModel.all()
+  //     .then(data => this.setState({playlists: data.playlists}))
+  // }
+  // render() {
+    
     return (
       <div>
-        <CardContainer playlists={this.state.playlists}/>
+        <CardContainer playlists={props.playlists}/>
       </div>
     );
-  }
+  
 }
 
 export default Home;

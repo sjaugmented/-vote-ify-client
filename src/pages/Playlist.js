@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Playlist/Sidebar'
-import SongList from '../components/Playlist/SongList'
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
 import PlaylistModel from '../models/playlist'
 
@@ -41,8 +40,12 @@ class Playlist extends Component {
 
     render(){
       return (
-        <PlaylistContainer playlist={this.state.playlist}/>
-      )
+      <Layout>
+        <Content><PlaylistContainer playlist={this.state.playlist}/></Content>
+        <Sider><Sidebar /></Sider>
+      </Layout>
+    );
+      
     }
 }
 
