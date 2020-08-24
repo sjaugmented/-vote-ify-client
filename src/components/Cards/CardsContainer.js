@@ -9,22 +9,25 @@ import PlaylistModel from '../../models/playlist';
 
 
 const CardsContainer = (props) => { 
-  const playlists = props.playlists
-  console.log(playlists)
-  // let list = playlists.map((playlist, index)=>{
-  //   console.log(playlist)
-  // })
-  // let list = playlists.map((playlist, index)=>{
-  //   return <Link to={`/playlist/${playlist._id}`} key={index} >
-  //     <Card 
-  //       { ...playlist }
-  //       />
-  //   </Link> 
-  // })
+  let playlists = props.playlists.playlists
+  let list = []
+
+  if (playlists) {
+    list = playlists.map((playlist, index)=>{
+      return (
+      <Link to={`/playlist/${playlist._id}`} key={index} >
+        <Card 
+          { ...playlist }
+          />
+      </Link>   
+      ) 
+    })
+  }
+
+  console.log(list)
     return (
       <div>
-     
-        {/* <Row>
+        <Row>
           <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[0]}
           </Col>
@@ -47,9 +50,9 @@ const CardsContainer = (props) => {
           <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
             {list[5]}
           </Col>
-        </Row> */}
+        </Row>
       </div>
-    );
+    )
   }
 
 
