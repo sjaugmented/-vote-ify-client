@@ -1,22 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 
-import PlaylistModel from '../../models/playlist'
-import Sidebar from './Sidebar'
+import { Layout } from 'antd';
+import 'antd/dist/antd.css';
 
 
-const PlaylistContainer = (props) => {
-const playlist = props.playlist
-// console.log(playlist)
-// let title
-// if(playlist){
-//   title = playlist.title
-//   console.log(title)
-//   return title
-// }
+const { Header, Footer, Sider, Content } = Layout;
+const PlaylistContainer = ({playlist}, props) => {
   return (
-    <div>
-      {/* {playlist.title} */}
-      <h1>playlist name</h1>
+    <div className='playContainerDiv'>
+      <header className='playlistHeader'>
+        {playlist && playlist.playlist.coverart ? <img src={playlist.playlist.coverart} /> : 'loading...'}
+        <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
+        <button onClick={props.toggle}>Toggle</button>
+      </header>
+        
+
     </div>
   )
   

@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom'
 import Routes from './config/routes'
 import PlaylistModel from './models/playlist'
+import useFetch from './hooks/useFetch'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
-import Player from './components/Player'
+import Player from './components/Footer/Player'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -49,19 +49,8 @@ function App(props) {
         props.history.push('/login')
       })
   }
-  // Getting all playlists from db
-  const [playlists, setPlaylists] = useState([])
-
-  
-
-  const getPlaylists = async () => {
-    const result = await PlaylistModel.all()
-    setPlaylists({playlists: result.playlists})
-  }
-
-  useEffect(() => {
-    getPlaylists()
-  }, []);
+  // Getting all playlists from db with custom hook
+  const playlists = useFetch([])
 
   return (
     <div className="App">
