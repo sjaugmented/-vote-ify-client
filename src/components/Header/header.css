@@ -9,7 +9,7 @@
 /* NAVBAR */
 
 .navbarRow {
-
+  background-color: rgb(15, 15, 15);
   height: 35px;
 }
 
@@ -39,8 +39,17 @@
 
 /* BRAND */
 
-.titleCol {
-  border: 1px solid black;
+.brandCol{
+  background-color: rgb(15, 15, 15);
+}
+.brandDiv{
+  display: flex;
+  justify-content: center;
+  height: 165px;
+}
+.brandDiv .brandLink, .brandDiv h1{
+  color: rgb(61, 144, 247);
+  align-self: center;
 }
 
 /* /////////////////////////////////////// */
@@ -51,9 +60,13 @@
 /* HEADER ART */
 
 .headerArtRow {
-  border: 1px solid black;
   height: 130px;
 }
 
+.headerArt {
+  height: 130px;
+  width: 100%;
+}
 /* /////////////////////////////////////// */
+
 
