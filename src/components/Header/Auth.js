@@ -7,9 +7,9 @@ const Auth = (props) => {
 
   return (
     <div className='authDiv'>
-      {props.currentUser ? 
+      {props.username ? 
         <>
-          <Link to={'/profile'}>{props.currentUser}</Link>
+          <Link to={'/profile'}>Hey {props.username}!</Link>
           <Link to={'/logout'}>Logout</Link>
         </>
         :

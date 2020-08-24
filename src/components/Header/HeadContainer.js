@@ -17,7 +17,7 @@ const HeadContainer = (props) => {
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Row justify="end" className='navbarRow'>
               <Navbar
-                currentUser={props.currentUser}
+                username={props.username}
               />
             </Row>
             <Row className='headerArtRow'>

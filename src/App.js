@@ -15,7 +15,7 @@ const { Header, Footer, Sider, Content } = Layout;
 function App(props) {
 
   // current Playlist
-  const [playlist, setPlaylist] = useState([
+  const [trackList, setTrackList] = useState([
       {
         user: 'Seth',
         title: 'Piano Man',
@@ -32,12 +32,30 @@ function App(props) {
   ])
 
   // user state
-  const [currentUser, setCurrentUser] = useState(localStorage.getItem('uid'))
+  const [currentUser, setCurrentUser] = useState({})
 
-  const storeUser = userId => {
-    setCurrentUser({ currentUser: userId })
-    localStorage.setItem('uid', userId)
+  const fetchLogin = async () => {
+    try {
+      const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
+        credentials: 'include'
+      })
+      const data = await result.json()
+      console.log('data:', data)
+      if (data.spotifyId && data.name && data.token) {
+        setCurrentUser({
+          spotifyId: data.spotifyId,
+          name: data.name,
+          token: data.token
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  useEffect(() => {
+    fetchLogin()
+  }, []);
 
   const logout = (event) => {
     event.preventDefault()
@@ -50,6 +68,7 @@ function App(props) {
         props.history.push('/login')
       })
   }
+
   // Getting all playlists from db with custom hook
   const playlists = useFetch([])
 
@@ -58,7 +77,7 @@ function App(props) {
       <Layout>
         <Header>
           <HeadContainer 
-            currentUser={currentUser}
+            username={currentUser.name}
             logout={logout}
             playlists={playlists}
           />
@@ -70,7 +89,7 @@ function App(props) {
         </Content>
         <Footer>
           <Player
-            playlist={playlist}
+            playlist={trackList}
           />
         </Footer>
       </Layout>
