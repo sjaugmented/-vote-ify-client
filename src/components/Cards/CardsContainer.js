@@ -8,7 +8,7 @@ import Card from './Card'
 import PlaylistModel from '../../models/playlist';
 
 
-class CardsContainer extends Component{ 
+class CardsContainer extends Component {
   // state ={
   //   playlists: []
   // }
@@ -21,21 +21,21 @@ class CardsContainer extends Component{
   //     .then(data => this.setState({ playlists: data.playlists}))
   // }
 
-  render(props){
-    let list = this.props.playlists.map((playlist, index)=>{
-      
+  render(props) {
+    let list = this.props.playlists.map((playlist, index) => {
+
       // console.log(playlist)
 
       return <Link to={`/playlist/${playlist._id}`} key={index} >
-        <Card 
-         { ...playlist }
-          />
+        <Card
+          {...playlist}
+        />
       </Link>
-        
+
     })
     return (
       <div>
-     
+
         <Row>
           <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[0]}
@@ -53,10 +53,10 @@ class CardsContainer extends Component{
           </Col>
         </Row>
         <Row>
-          <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[4]}
           </Col>
-          <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             {list[5]}
           </Col>
         </Row>

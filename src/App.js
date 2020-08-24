@@ -24,7 +24,7 @@ function App(props) {
         artist: 'Bruce Springsteen'
       }, {
         user: 'Larry',
-        title: 'Wreckingball',
+        title: 'Party in the USA',
         artist: 'Miley Cyrus'
       }
   ])
