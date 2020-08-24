@@ -12,7 +12,7 @@ import 'antd/dist/antd.css';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-const Playlist = () => {
+const Playlist = (props) => {
   // const [isHidden, setIsHidden] = useState(true)
 
   // const toggle =() => {
@@ -28,14 +28,17 @@ const Playlist = () => {
   const [playlist, setPlaylist] = useState()
 
   const getPlaylist = async () => {
-    const result = await PlaylistModel.show()
-    console.log(result)
+    const result = await PlaylistModel.show(props.match.params.id)
+    setPlaylist({playlist: result.playlist})
   }
-  getPlaylist()
+  
+  useEffect(() => {
+    getPlaylist()
+  }, []);
 
   return (
     <Layout>
-      <Content><PlaylistContainer playlist={this.state.playlist}/></Content>
+      <Content><PlaylistContainer playlist={playlist}/></Content>
       <Sider><Sidebar /></Sider>
     </Layout>
   );
