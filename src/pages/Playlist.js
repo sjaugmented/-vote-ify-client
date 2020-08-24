@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Playlist/Sidebar'
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
 import PlaylistModel from '../models/playlist'
-
+import SpotifyModel from '../models/spotify'
 
 
 import '../components/Header/header.css'
@@ -27,7 +27,16 @@ const Playlist = (props) => {
   //   </Layout>
   // );
   const [playlist, setPlaylist] = useState()
+  const [tracklist, setTracklist] = useState()
 
+
+  const getTracks = async () => {
+    const result = await SpotifyModel.all()
+    console.log(result)
+  }
+
+  getTracks()
+  
   const getPlaylist = async () => {
     const result = await PlaylistModel.show(props.match.params.id)
     setPlaylist({playlist: result.playlist})
