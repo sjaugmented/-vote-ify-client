@@ -56,7 +56,6 @@ function App(props) {
 
   const getPlaylists = async () => {
     const result = await PlaylistModel.all()
-    console.log(result.playlists)
     setPlaylists({playlists: result.playlists})
   }
 

@@ -6,8 +6,6 @@ import Playlist from '../pages/Playlist';
 import Profile from '../pages/Profile';
 
 const Routes = (props) => {
-
-  console.log(props.playlists)
   return (
   <Switch>
     <Route exact path='/' render={(propsRouter) => <Home {...propsRouter} playlists={props.playlists}/>} /> 
@@ -17,7 +15,6 @@ const Routes = (props) => {
     {/* will be /profile/:id */}
   </Switch>
   )
-  
 }
 
 export default Routes
