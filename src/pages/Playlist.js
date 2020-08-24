@@ -4,6 +4,7 @@ import PlaylistContainer from '../components/Playlist/PlaylistContainer';
 import PlaylistModel from '../models/playlist'
 
 
+
 import '../components/Header/header.css'
 
 import { Layout } from 'antd';
@@ -30,6 +31,7 @@ const Playlist = (props) => {
   const getPlaylist = async () => {
     const result = await PlaylistModel.show(props.match.params.id)
     setPlaylist({playlist: result.playlist})
+    console.log(result)
   }
   
   useEffect(() => {
