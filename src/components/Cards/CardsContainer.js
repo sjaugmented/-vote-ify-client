@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 
 import { Row, Col } from 'antd';
 import 'antd/dist/antd.css';
 
 import Card from './Card'
-//import PlaylistModel from '../../models/playlist';
 
 
 const CardsContainer = (props) => { 
