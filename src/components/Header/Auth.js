@@ -11,7 +11,7 @@ const Auth = (props) => {
           <Link to={'/logout'}>Logout</Link>
         </>
         :
-        <a href="http://localhost:3000/api/v1/auth/login"></a>
+        <a href="http://localhost:3001/api/v1/auth/login">Connect with Spotify</a>
       }
     </div>
   );
