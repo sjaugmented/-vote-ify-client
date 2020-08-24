@@ -2,14 +2,16 @@
 
 
 export default class UserModel {
-    static create = async (data) => {
-        try {
-            
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    static login = async (credentials) => {
+    // static login = async (data) => {
+    //     try {
+    //         const response = await fetch(`${spotifyUrl}`)
+    //         const spotAuth = await response
+    //         return response
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    static create = async (credentials) => {
         try {
             
         } catch (error) {
