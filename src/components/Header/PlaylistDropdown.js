@@ -36,7 +36,6 @@ const menu = (
         Reggae
       </a>
     </Menu.Item>
-    
   </Menu>
 );
 
