@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+
 
 import { Row, Col } from 'antd';
 import 'antd/dist/antd.css';
@@ -24,7 +24,7 @@ const CardsContainer = (props) => {
   }
   return (
     <div>
-      <Row>
+      <Row className='cardsRow'>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           {list[0]}
         </Col>
@@ -32,7 +32,7 @@ const CardsContainer = (props) => {
           {list[1]}
         </Col>
       </Row>
-      <Row>
+      <Row className='cardsRow'>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           {list[2]}
         </Col>
@@ -40,7 +40,7 @@ const CardsContainer = (props) => {
           {list[3]}
         </Col>
       </Row>
-      <Row>
+      <Row className='cardsRow'>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
           {list[4]}
         </Col>
