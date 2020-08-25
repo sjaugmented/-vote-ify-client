@@ -28,7 +28,7 @@ const Playlist = (props) => {
   }
   useEffect(() => {
     getPlaylist()
-  }, []);
+  });
 
   return (
     <Layout>
