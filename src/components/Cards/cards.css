@@ -1,3 +1,15 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  background: rgb(15, 15, 15);
+}
+
 .ant-layout-content {
   background-color: rgb(15, 15, 15);
 }
@@ -61,5 +73,26 @@
   margin: 30px 0 30px 0;
 }
 
+.c {
+  position: absolute;
+  max-width: 500px;
+  max-height: 500px;
+  width: 50ch;
+  height: 50ch;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
 
+.front,
+.back {
+  background-size: cover;
+}
+
+.front {
+  background-image: url(https://i.ytimg.com/vi/ypQZV03l80g/maxresdefault.jpg);
+}
+
+.back {
+  background-image: url(https://i.imgur.com/FY2Cfwe.png);
+}
  
