@@ -17,8 +17,8 @@ export default function Player(props) {
 
     return (
         <div className='player'>
-            <p>{props.playlist[index.index].title} | {props.playlist[index.index].artist}</p>
-            <p>Contributed by {props.playlist[index.index].user}</p>
+            <p>{props.playlist[index.index].title} | {props.playlist[index.index].artist} | Contributed by {props.playlist[index.index].user}</p>
+            <button>Play/Pause</button>
             <button onClick={nextSong}>Next</button>
         </div>
     )
