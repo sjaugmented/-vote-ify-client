@@ -8,12 +8,12 @@ import DelayLink from 'react-delay-link'
 const Card = (props) => {
   return (
     <div className='cardDiv'>
-      <h3 className='playlistTitle'>{props.title}</h3>
-      <Link to={`/playlist/${props._id}`} >
+
+      <Link className='playlistLink' to={`/playlist/${props._id}`} >
         <img className='cardImg' src={props.coverart} alt=' '/>
-      <div className='overlay'>
-        <h3 className='playlistTitle'>{props.title}</h3>
-      </div>
+        <div className='overlay'>
+          <h3 className='playlistTitle'>{props.title}</h3>
+        </div>
       </Link>
     </div>
   );
