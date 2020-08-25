@@ -1,4 +1,11 @@
-/* Toggle sidebar functionality */
+/* Toggle sidebar functionality and sidebar style*/
+#sider {
+  background-color: rgb(15, 15, 15);
+  width: 300px;
+  max-width: 300px;
+  min-width: 300px;
+}
+
 .hide {
   display: none;
 }
@@ -7,10 +14,29 @@
   display: inline;
 }
 
+.toggleBtn{
+  background: none;
+  border: none;
+}
+
+
+.sidebarDiv {
+  display: flex;
+  flex-direction: column;
+}
+.sidebarDiv h1, .sidebarDiv p {
+  color: rgb(61, 144, 247);
+}
+
+.sidebarDiv h1 {
+  font-size: 31px;
+  margin: 26px 0 26px 0;
+
+}
+
 /* ///////////////////////////// */
 
 .playContainerDiv {
-  border: 1px solid yellow;
   display: flex;
 }
 
@@ -30,7 +56,7 @@ img {
 header h1 {
   font-size: 50px;
   margin: 0;
-  color: white;
+  color: rgb(61, 144, 247);
 }
 
 /* ///////////////////////////// */
@@ -38,12 +64,13 @@ header h1 {
 
 /* Song List */
 
-.songList {
-  border: 2px blue solid;
-  color: rgb(100, 100, 100)
+.songList p {
+  color: rgb(61, 144, 247);
 }
 
 /* ////////////////////////// */
+
+
 
 
 /* Footer */

@@ -23,33 +23,33 @@ const Playlist = (props) => {
 
   //call fetch request to show the single playlist
   const [playlist, setPlaylist] = useState()
+  
   const getPlaylist = async () => {
     const result = await PlaylistModel.show(props.match.params.id)
     setPlaylist({playlist: result.playlist})
   }
+
+  const [token, setToken] = useState()
+  
   useEffect(() => {
     getPlaylist()
-    return () => {
-      getPlaylist()
-    }
+    //spotifyPlaylist()
   }, []);
 
-    let token;
-
-    if (props.token){
-      token = props.token
-    }
-
-    
+  const spotifyPlaylist = async () => {
+    const showPlaylist = await SpotifyModel.playlist(props.token)
+    console.log("PLAYLIST.JS > showPlaylist>>>", showPlaylist)
+  }
 
   return (
     <Layout>
       {/* Header is here */}
       <Content>
         <PlaylistContainer toggle={toggle} playlist={playlist}/>
-        <SongList playlist={playlist}/>
+        <SongList playlist={playlist} />
+        <button onClick={spotifyPlaylist}>Test Endpoint</button>
       </Content>
-      <Sider className={isHidden ? 'hide' : 'show'}>
+      <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />
       </Sider>
       {/* Footer is here */}
