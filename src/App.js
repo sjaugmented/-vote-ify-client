@@ -84,6 +84,7 @@ function App(props) {
         </Header>
         <Content>
           <Routes
+            token={currentUser.token}
             playlists={playlists}
           />
         </Content>

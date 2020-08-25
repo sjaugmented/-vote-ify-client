@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import model
 import PlaylistModel from '../models/playlist'
+import SpotifyModel from '../models/spotify'
 
 //import components
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
@@ -30,6 +31,14 @@ const Playlist = (props) => {
     getPlaylist()
   }, []);
 
+    let token;
+
+    if (props.token){
+      token = props.token
+    }
+
+    
+
   return (
     <Layout>
       {/* Header is here */}
@@ -48,3 +57,5 @@ const Playlist = (props) => {
 }
 
 export default Playlist;
+
+
