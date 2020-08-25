@@ -1,10 +1,35 @@
-/* Toggle sidebar functionality */
+/* Toggle sidebar functionality and sidebar style*/
+#sider {
+  background-color: rgb(15, 15, 15);
+  min-width: 300px;
+}
+
 .hide {
   display: none;
 }
 
 .show {
   display: inline;
+}
+
+.toggleBtn{
+  background: none;
+  border: none;
+}
+
+
+.sidebarDiv {
+  display: flex;
+  flex-direction: column;
+}
+.sidebarDiv h1, .sidebarDiv p {
+  color: rgb(61, 144, 247);
+}
+
+.sidebarDiv h1 {
+  font-size: 31px;
+  margin: 26px 0 26px 0;
+
 }
 
 /* ///////////////////////////// */
@@ -37,11 +62,13 @@ header h1 {
 
 /* Song List */
 
-.songList {
-  border: 2px blue solid;
+.songList p {
+  color: rgb(61, 144, 247);
 }
 
 /* ////////////////////////// */
+
+
 
 
 /* Footer */

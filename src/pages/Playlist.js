@@ -37,7 +37,7 @@ const Playlist = (props) => {
         <PlaylistContainer toggle={toggle} playlist={playlist}/>
         <SongList playlist={playlist}/>
       </Content>
-      <Sider className={isHidden ? 'hide' : 'show'}>
+      <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />
       </Sider>
       {/* Footer is here */}
