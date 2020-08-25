@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const Brand = () => {
   return (
     <div className='brandDiv'>
-      <Link className='brandLink' to='/'><h1>Spotify</h1></Link>
+      <Link className='brandLink' to='/'><h1>Spotify.Us</h1></Link>
     </div>
   );
 }

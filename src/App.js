@@ -9,6 +9,7 @@ import Player from './components/Footer/Player'
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import './components/Header/header.css'
+import './components/Footer/footer.css'
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -55,6 +56,9 @@ function App(props) {
 
   useEffect(() => {
     fetchLogin()
+    return () => {
+      fetchLogin()
+    }
   }, []);
 
   const logout = (event) => {

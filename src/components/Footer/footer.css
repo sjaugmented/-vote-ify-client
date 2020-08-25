@@ -1,0 +1,13 @@
+.player {
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 25px;
+    background: rgb(0,0,0);
+    color: white;
+    width: 100%;
+}
+
+.player button {
+    background: rgb(19, 122, 19)
+}

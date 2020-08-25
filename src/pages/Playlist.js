@@ -29,6 +29,9 @@ const Playlist = (props) => {
   }
   useEffect(() => {
     getPlaylist()
+    return () => {
+      getPlaylist()
+    }
   }, []);
 
     let token;
