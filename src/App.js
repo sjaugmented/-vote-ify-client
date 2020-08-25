@@ -10,6 +10,7 @@ import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import './components/Header/header.css'
 import './components/Footer/footer.css'
+import './app.css'
 
 const { Header, Footer, Sider, Content } = Layout;
 
