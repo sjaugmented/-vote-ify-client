@@ -72,10 +72,14 @@ header h1 {
 
 /* Song List */
 
+.songList {
+  padding: 2px;
+  background-color: rgb(15, 15, 15);
+}
+
 .songList p {
   color: rgb(61, 144, 247);
   margin-left: 2vw;
-  background-color: rgb(15, 15, 15);
 }
 
 /* ////////////////////////////// */
