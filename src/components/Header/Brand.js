@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom'
 
 const Brand = () => {
   return (
-    <div>
-      <Link to='/'><h1>Brand component</h1></Link>
+    <div className='brandDiv'>
+      <Link className='brandLink' to='/'><h1>Spotify</h1></Link>
     </div>
   );
 }

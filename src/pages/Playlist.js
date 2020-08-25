@@ -1,56 +1,65 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from '../components/Playlist/Sidebar'
-import PlaylistContainer from '../components/Playlist/PlaylistContainer';
+//import model
 import PlaylistModel from '../models/playlist'
 import SpotifyModel from '../models/spotify'
 
+//import components
+import PlaylistContainer from '../components/Playlist/PlaylistContainer';
+import Sidebar from '../components/Playlist/Sidebar'
+import SongList from '../components/Playlist/SongList';
 
-import '../components/Header/header.css'
-
+//import styles
+import '../components/Playlist/playlist.css'
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
-
-
-const { Header, Footer, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 const Playlist = (props) => {
-  // const [isHidden, setIsHidden] = useState(true)
-
-  // const toggle =() => {
-  //   setIsHidden(!isHidden)
-  // }
-
-  // return (
-  //   <Layout>
-  //     <Content> <SongList /><button onClick={toggle}>toggle</button> </Content>
-  //     <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
-  //   </Layout>
-  // );
-  const [playlist, setPlaylist] = useState()
-  const [tracklist, setTracklist] = useState()
-
-
-  const getTracks = async () => {
-    const result = await SpotifyModel.all()
-    console.log(result)
+  //Toggle sidebar functionality
+  const [isHidden, setIsHidden] = useState(false)
+  const toggle =() => {
+    setIsHidden(!isHidden)
   }
 
-  getTracks()
-  
+  //call fetch request to show the single playlist
+  const [playlist, setPlaylist] = useState()
   const getPlaylist = async () => {
     const result = await PlaylistModel.show(props.match.params.id)
     setPlaylist({playlist: result.playlist})
-    console.log(result)
   }
+
+  const [token, setToken] = useState({
+    token: ''
+  })
   
   useEffect(() => {
     getPlaylist()
-  }, []);
+    setToken({
+      token: props.token
+    })
+    spotifyPlaylist()
+  },[token]);
+
+  
+
+    const spotifyPlaylist = async () => {
+        const showPlaylist = await SpotifyModel.playlist(token)
+        console.log("Here",showPlaylist)
+
+
+    }
 
   return (
     <Layout>
-      <Content><PlaylistContainer playlist={playlist}/></Content>
-      <Sider><Sidebar /></Sider>
+      {/* Header is here */}
+      <Content>
+        <PlaylistContainer toggle={toggle} playlist={playlist}/>
+        <SongList playlist={playlist}/>
+      </Content>
+      <Sider className={isHidden ? 'hide' : 'show'}>
+        <Sidebar />
+      </Sider>
+      {/* Footer is here */}
     </Layout>
   );
       
@@ -58,3 +67,5 @@ const Playlist = (props) => {
 }
 
 export default Playlist;
+
+

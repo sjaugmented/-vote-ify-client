@@ -1,31 +1,42 @@
-import axios from 'axios'
+const axios = require('axios')
 
-const tracks = "https://api.spotify.com/v1/tracks"
+const searchURL = `https://api.spotify.com/v1/search`
+const playlistURL = 'https://api.spotify.com/v1/playlists/37i9dQZF1DX0XUsuxWHRQd/tracks' //test fetch
 
-export default class SpotifyModel{
-
-    static all = async () => {
+class Spotify {
+    static search = async (token) => {
         try {
-            const response = await fetch(tracks)
-            const playlists = await response.json()
-            return playlists
-        } catch (error) {
+            const newSearch = await axios.get(`${searchURL}`, {
+                method: 'GET',
+                headers: {
+                    'Conetent-Type': 'application/json',
+                    'Authorization': 'Bearer' + token
+                }
+            })
+        } 
+        catch (error) {
             console.log(error)
         }
     }
 
-    static create = async (post) => {
+    static playlist = async (token) => {
         try {
-            const newPost = await axios.get(`${url}/posts`, {
+            const getPlaylist = await axios.get(playlistURL, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(post)
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer' + token
+                }, 
+                // body: JSON.stringify()
             })
-            console.log(newPost) // TODO: remove
-        } catch (error) {
+        }
+        catch (error) {
             console.log(error)
         }
     }
 }
+
+
+export default Spotify;
+

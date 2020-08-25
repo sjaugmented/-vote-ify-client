@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom'
 import Routes from './config/routes'
 import PlaylistModel from './models/playlist'
+import useFetch from './hooks/useFetch'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
-import Player from './components/Player'
+import Player from './components/Footer/Player'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -13,8 +13,9 @@ import './components/Header/header.css'
 const { Header, Footer, Sider, Content } = Layout;
 
 function App(props) {
+
   // current Playlist
-  const [playlist, setPlaylist] = useState([
+  const [trackList, setTrackList] = useState([
       {
         user: 'Seth',
         title: 'Piano Man',
@@ -31,12 +32,30 @@ function App(props) {
   ])
 
   // user state
-  const [currentUser, setCurrentUser] = useState(localStorage.getItem('uid'))
+  const [currentUser, setCurrentUser] = useState({})
 
-  const storeUser = userId => {
-    setCurrentUser({ currentUser: userId })
-    localStorage.setItem('uid', userId)
+  const fetchLogin = async () => {
+    try {
+      const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
+        credentials: 'include'
+      })
+      const data = await result.json()
+      console.log('data:', data)
+      if (data.spotifyId && data.name && data.token) {
+        setCurrentUser({
+          spotifyId: data.spotifyId,
+          name: data.name,
+          token: data.token
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  useEffect(() => {
+    fetchLogin()
+  }, []);
 
   const logout = (event) => {
     event.preventDefault()
@@ -49,36 +68,29 @@ function App(props) {
         props.history.push('/login')
       })
   }
-  // Getting all playlists from db
-  const [playlists, setPlaylists] = useState([])
 
-  
-
-  const getPlaylists = async () => {
-    const result = await PlaylistModel.all()
-    setPlaylists({playlists: result.playlists})
-  }
-
-  useEffect(() => {
-    getPlaylists()
-  }, []);
+  // Getting all playlists from db with custom hook
+  const playlists = useFetch([])
 
   return (
     <div className="App">
       <Layout>
         <Header>
           <HeadContainer 
-            currentUser={currentUser}
+            username={currentUser.name}
             logout={logout}
             playlists={playlists}
           />
         </Header>
         <Content>
-          <Routes playlists={playlists}/>
+          <Routes
+            token={currentUser.token}
+            playlists={playlists}
+          />
         </Content>
         <Footer>
           <Player
-            playlist={playlist}
+            playlist={trackList}
           />
         </Footer>
       </Layout>
