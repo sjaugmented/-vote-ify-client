@@ -1,5 +1,4 @@
 .ant-layout-header {
-  background-color: white;
   height: 165px;
   padding: 0;
 }
@@ -11,6 +10,7 @@
 .navbarRow {
   background-color: rgb(15, 15, 15);
   height: 35px;
+  padding: 10px 5vw 0 0;
 }
 
 .dropdownCol, .authCol {
@@ -65,7 +65,7 @@
 
 .headerArt {
   height: 130px;
-  width: 100%;
+  width: 75vw;
 }
 /* /////////////////////////////////////// */
 
