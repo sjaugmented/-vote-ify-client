@@ -1,2 +1,65 @@
+/* html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  user-select: none;
+  background: rgb(15, 15, 15);
+} */
 
+.ant-layout-content {
+  background-color: rgb(15, 15, 15);
+}
+
+.cardImg {
+  width: 400px;
+  height: 400px;
+  display: inline;
+  padding: 5px;
+  background: hsl(0, 0%, 20%);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.cardDiv:hover .overlay {
+  opacity: 1;
+}
+
+.playlistTitle {
+  color: white;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.cardImg:hover .playlistTitle {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cardDiv {
+  position: relative;
+  text-align: center;
+  margin: 30px 0 30px 0;
+}
  
+.playlistLink {
+  height: 400px;
+}
