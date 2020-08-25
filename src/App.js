@@ -27,7 +27,7 @@ function App(props) {
         artist: 'Bruce Springsteen'
       }, {
         user: 'Larry',
-        title: 'Wreckingball',
+        title: 'Party in the USA',
         artist: 'Miley Cyrus'
       }
   ])
@@ -85,6 +85,7 @@ function App(props) {
         </Header>
         <Content>
           <Routes
+            token={currentUser.token}
             playlists={playlists}
           />
         </Content>

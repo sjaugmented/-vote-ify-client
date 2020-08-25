@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import model
 import PlaylistModel from '../models/playlist'
+import SpotifyModel from '../models/spotify'
 
 //import components
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
@@ -26,9 +27,27 @@ const Playlist = (props) => {
     const result = await PlaylistModel.show(props.match.params.id)
     setPlaylist({playlist: result.playlist})
   }
+
+  const [token, setToken] = useState({
+    token: ''
+  })
+  
   useEffect(() => {
     getPlaylist()
-  }, []);
+    setToken({
+      token: props.token
+    })
+    spotifyPlaylist()
+  },[token]);
+
+  
+
+    const spotifyPlaylist = async () => {
+        const showPlaylist = await SpotifyModel.playlist(token)
+        console.log("Here",showPlaylist)
+
+
+    }
 
   return (
     <Layout>
@@ -48,3 +67,5 @@ const Playlist = (props) => {
 }
 
 export default Playlist;
+
+
