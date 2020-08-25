@@ -23,6 +23,7 @@ const Playlist = (props) => {
 
   //call fetch request to show the single playlist
   const [playlist, setPlaylist] = useState()
+  
   const getPlaylist = async () => {
     const result = await PlaylistModel.show(props.match.params.id)
     setPlaylist({playlist: result.playlist})
@@ -32,21 +33,21 @@ const Playlist = (props) => {
     token: ''
   })
   
-  console.log('props.token>>>', props.token)
   useEffect(() => {
     getPlaylist()
-    setToken({
-      token: props.token
-    })
-    //spotifyPlaylist()
+    spotifyPlaylist()
+    return () => {
+      getPlaylist()
+      spotifyPlaylist()
+    }
   }, [getPlaylist, props.token]);
 
   
 
     const spotifyPlaylist = async () => {
-        const showPlaylist = await SpotifyModel.playlist(token)
-        console.log("Here",showPlaylist)
-
+      console.log('running spotify endpoint - COMMENTED OUT')
+      // const showPlaylist = await SpotifyModel.playlist(token)
+      // console.log("Here",showPlaylist)
 
     }
 
