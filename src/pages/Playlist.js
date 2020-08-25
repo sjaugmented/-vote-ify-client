@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import model
 import PlaylistModel from '../models/playlist'
+import SpotifyModel from '../models/spotify'
 
 //import components
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
@@ -22,23 +23,31 @@ const Playlist = (props) => {
 
   //call fetch request to show the single playlist
   const [playlist, setPlaylist] = useState()
+  
   const getPlaylist = async () => {
     const result = await PlaylistModel.show(props.match.params.id)
     setPlaylist({playlist: result.playlist})
   }
+
+  const [token, setToken] = useState()
+  
   useEffect(() => {
     getPlaylist()
-    return () => {
-      getPlaylist()
-    }
+    //spotifyPlaylist()
   }, []);
+
+  const spotifyPlaylist = async () => {
+    const showPlaylist = await SpotifyModel.playlist(props.token)
+    console.log("PLAYLIST.JS > showPlaylist>>>", showPlaylist)
+  }
 
   return (
     <Layout>
       {/* Header is here */}
       <Content>
         <PlaylistContainer toggle={toggle} playlist={playlist}/>
-        <SongList playlist={playlist}/>
+        <SongList playlist={playlist} />
+        <button onClick={spotifyPlaylist}>Test Endpoint</button>
       </Content>
       <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />
@@ -51,3 +60,5 @@ const Playlist = (props) => {
 }
 
 export default Playlist;
+
+

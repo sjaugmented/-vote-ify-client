@@ -27,7 +27,7 @@ function App(props) {
         artist: 'Bruce Springsteen'
       }, {
         user: 'Larry',
-        title: 'Wreckingball',
+        title: 'Party in the USA',
         artist: 'Miley Cyrus'
       }
   ])
@@ -42,11 +42,11 @@ function App(props) {
       })
       const data = await result.json()
       console.log('data:', data)
-      if (data.spotifyId && data.name && data.token) {
+      if (data.spotifyId && data.name && data.accessToken) {
         setCurrentUser({
           spotifyId: data.spotifyId,
           name: data.name,
-          token: data.token
+          token: data.accessToken
         })
       }
     } catch (error) {
@@ -88,6 +88,7 @@ function App(props) {
         </Header>
         <Content>
           <Routes
+            token={currentUser.token}
             playlists={playlists}
           />
         </Content>
