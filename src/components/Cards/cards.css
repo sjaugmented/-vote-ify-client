@@ -1,45 +1,27 @@
+.ant-layout-content {
+  background-color: rgb(15, 15, 15);
+}
+
 .cardImg {
   width: 400px;
   height: 400px;
+
+ /* #1 */
+ border: 5px solid hsl(0, 0%, 40%);
+ /* #2 */
+ padding: 5px;
+ background: hsl(0, 0%, 20%);
+ /* #3 */
+ outline: 5px solid hsl(0, 0%, 60%);
+ /* #4 AND INFINITY!!! (CSS3 only) */
+ box-shadow:
+     0 0 0 10px hsl(0, 0%, 80%),
+     0 0 0 15px hsl(0, 0%, 90%);
   
 }
-/* .cardImg
-{
-  position: relative;
-}
-.cardImg:before, .cardImg:after
-{
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 25px;
-  left: 10px;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
-  background: #777;
-  -webkit-box-shadow: 0 35px 20px #777;
-  -moz-box-shadow: 0 35px 20px #777;
-  box-shadow: 0 35px 20px #777;
-  -webkit-transform: rotate(-8deg);
-  -moz-transform: rotate(-8deg);
-  -o-transform: rotate(-8deg);
-  -ms-transform: rotate(-8deg);
-  transform: rotate(-8deg);
-}
-.cardImg:after
-{
-  -webkit-transform: rotate(8deg);
-  -moz-transform: rotate(8deg);
-  -o-transform: rotate(8deg);
-  -ms-transform: rotate(8deg);
-  transform: rotate(8deg);
-  right: 10px;
-  left: auto;
-} */
 
 .cardDiv {
   text-align: center;
-  /* height: 400px;
-  width: 400px; */
 }
+
+ 

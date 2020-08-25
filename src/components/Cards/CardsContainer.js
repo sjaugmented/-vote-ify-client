@@ -14,11 +14,12 @@ const CardsContainer = (props) => {
   let list = []
   if(playlists){
     list = playlists.map((playlist, index)=>{
-      return  <Link to={`/playlist/${playlist._id}`} key={index} >
+      return  (
         <Card 
+          key={index}
           { ...playlist }
           />
-      </Link> 
+      )
     })
   }
   return (
