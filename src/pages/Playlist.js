@@ -28,6 +28,9 @@ const Playlist = (props) => {
   }
   useEffect(() => {
     getPlaylist()
+    return () => {
+      getPlaylist()
+    }
   }, []);
 
   return (
