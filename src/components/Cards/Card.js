@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { useSpring, animated } from 'react-spring'
 import DelayLink from 'react-delay-link'
 //import './flipStyle.css'
@@ -15,7 +15,7 @@ const Card = (props) => {
 
   return (
     <div className='cardDiv' onClick={() => set(state => !state)}>
-      <DelayLink delay={1000} to={`/playlist/${props._id}`} >
+      <DelayLink delay={500} to={`/playlist/${props._id}`} >
         <div className='overlay'>
           <h3 className='playlistTitle'>{props.title}</h3>
         </div>
@@ -25,7 +25,7 @@ const Card = (props) => {
         }} />
         <animated.div className='c cardImg back' style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`)}} />
         
-          {/* <img className='cardImg' src={props.coverart} alt=' '/> */}
+        {/* <img className='cardImg' src={props.coverart} alt=' '/> */}
       </DelayLink>
     </div>
   );
