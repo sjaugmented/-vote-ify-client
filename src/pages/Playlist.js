@@ -32,13 +32,14 @@ const Playlist = (props) => {
     token: ''
   })
   
+  console.log('props.token>>>', props.token)
   useEffect(() => {
     getPlaylist()
     setToken({
       token: props.token
     })
-    spotifyPlaylist()
-  },[token]);
+    //spotifyPlaylist()
+  }, [getPlaylist, props.token]);
 
   
 
