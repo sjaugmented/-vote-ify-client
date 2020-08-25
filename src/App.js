@@ -41,7 +41,6 @@ function App(props) {
         credentials: 'include'
       })
       const data = await result.json()
-      console.log('data:', data)
       if (data.spotifyId && data.name && data.accessToken) {
         setCurrentUser({
           spotifyId: data.spotifyId,
