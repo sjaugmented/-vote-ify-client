@@ -38,6 +38,7 @@
 
 .playContainerDiv {
   display: flex;
+  margin-left: 2vw;
 }
 
 /* Playlist header */
@@ -66,6 +67,7 @@ header h1 {
 
 .songList p {
   color: rgb(61, 144, 247);
+  margin-left: 2vw;
 }
 
 /* ////////////////////////// */
