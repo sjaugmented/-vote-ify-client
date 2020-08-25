@@ -49,7 +49,7 @@ const Playlist = (props) => {
         <SongList playlist={playlist} />
         <button onClick={spotifyPlaylist}>Test Endpoint</button>
       </Content>
-      <Sider className={isHidden ? 'hide' : 'show'}>
+      <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />
       </Sider>
       {/* Footer is here */}

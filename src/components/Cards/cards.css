@@ -44,3 +44,7 @@
   text-align: center;
   margin: 30px 0 30px 0;
 }
+ 
+.playlistLink {
+  height: 400px;
+}
