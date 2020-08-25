@@ -42,11 +42,11 @@ function App(props) {
       })
       const data = await result.json()
       console.log('data:', data)
-      if (data.spotifyId && data.name && data.token) {
+      if (data.spotifyId && data.name && data.accessToken) {
         setCurrentUser({
           spotifyId: data.spotifyId,
           name: data.name,
-          token: data.token
+          token: data.accessToken
         })
       }
     } catch (error) {
@@ -56,9 +56,6 @@ function App(props) {
 
   useEffect(() => {
     fetchLogin()
-    return () => {
-      fetchLogin()
-    }
   }, []);
 
   const logout = (event) => {

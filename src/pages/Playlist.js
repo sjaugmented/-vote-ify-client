@@ -29,34 +29,25 @@ const Playlist = (props) => {
     setPlaylist({playlist: result.playlist})
   }
 
-  const [token, setToken] = useState({
-    token: ''
-  })
+  const [token, setToken] = useState()
   
   useEffect(() => {
     getPlaylist()
-    spotifyPlaylist()
-    return () => {
-      getPlaylist()
-      spotifyPlaylist()
-    }
-  }, [getPlaylist, props.token]);
+    //spotifyPlaylist()
+  }, []);
 
-  
-
-    const spotifyPlaylist = async () => {
-      console.log('running spotify endpoint - COMMENTED OUT')
-      // const showPlaylist = await SpotifyModel.playlist(token)
-      // console.log("Here",showPlaylist)
-
-    }
+  const spotifyPlaylist = async () => {
+    const showPlaylist = await SpotifyModel.playlist(props.token)
+    console.log("PLAYLIST.JS > showPlaylist>>>", showPlaylist)
+  }
 
   return (
     <Layout>
       {/* Header is here */}
       <Content>
         <PlaylistContainer toggle={toggle} playlist={playlist}/>
-        <SongList playlist={playlist}/>
+        <SongList playlist={playlist} />
+        <button onClick={spotifyPlaylist}>Test Endpoint</button>
       </Content>
       <Sider className={isHidden ? 'hide' : 'show'}>
         <Sidebar />

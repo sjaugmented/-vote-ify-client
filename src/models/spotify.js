@@ -9,7 +9,7 @@ class Spotify {
             const newSearch = await axios.get(`${searchURL}`, {
                 method: 'GET',
                 headers: {
-                    'Conetent-Type': 'application/json',
+                    'Content-Type': 'application/json',
                     'Authorization': 'Bearer' + token
                 }
             })
@@ -20,19 +20,23 @@ class Spotify {
     }
 
     static playlist = async (token) => {
+        console.log('SPOTIFY.JS - running playlist');
         try {
-            const getPlaylist = await axios.get(playlistURL, {
+            console.log('SPOTIFY.JS - inside TRY block');
+
+            const playlist = await axios.get(playlistURL, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer' + token
-                }, 
-                // body: JSON.stringify()
+                }
             })
+
+            return playlist
         }
         catch (error) {
-            console.log(error)
+            console.log('SPOTIFY.JS error:', error)
         }
     }
 }
