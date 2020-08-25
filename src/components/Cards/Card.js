@@ -14,7 +14,7 @@ const Card = (props) => {
   })
 
   return (
-    <div onClick={() => set(state => !state)}>
+    <div className='cardDiv' onClick={() => set(state => !state)}>
       <DelayLink delay={1000} to={`/playlist/${props._id}`} >
         <div className='overlay'>
           <h3 className='playlistTitle'>{props.title}</h3>
