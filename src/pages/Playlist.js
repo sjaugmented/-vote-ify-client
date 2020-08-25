@@ -33,13 +33,7 @@ const Playlist = (props) => {
   
   useEffect(() => {
     getPlaylist()
-<<<<<<< HEAD
-    return () => {
-      getPlaylist()
-    }
-=======
     //spotifyPlaylist()
->>>>>>> lelwut
   }, []);
 
   const spotifyPlaylist = async () => {
