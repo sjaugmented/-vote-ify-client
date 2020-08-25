@@ -11,10 +11,10 @@ const Card = (props) => {
       <h3 className='playlistTitle'>{props.title}</h3>
       <Link to={`/playlist/${props._id}`} >
         <img className='cardImg' src={props.coverart} alt=' '/>
-      </Link>
       <div className='overlay'>
         <h3 className='playlistTitle'>{props.title}</h3>
       </div>
+      </Link>
     </div>
   );
 }

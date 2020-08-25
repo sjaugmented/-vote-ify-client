@@ -56,6 +56,9 @@ function App(props) {
 
   useEffect(() => {
     fetchLogin()
+    return () => {
+      fetchLogin()
+    }
   }, []);
 
   const logout = (event) => {
