@@ -31,7 +31,7 @@ const Playlist = (props) => {
     return () => {
       getPlaylist()
     }
-  });
+  }, []);
 
   return (
     <Layout>
