@@ -10,6 +10,7 @@
   min-width: 300px;
   margin-top: 165px;
   border: rgb(61, 144, 247) 1px solid;
+  z-index: 2;
 }
 
 .hide {
@@ -23,6 +24,7 @@
 .toggleBtn{
   background: none;
   border: none;
+  right: 50vw;
 }
 
 
@@ -52,8 +54,14 @@
 .playlistHeader {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
+  padding: 5vw 0 0 5vw;
+}
+
+.playlistHeader h1 {
+  margin-left: 20px;
+  margin-right: 200px;
 }
 
 .input {

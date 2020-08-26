@@ -15,7 +15,7 @@ const { Sider, Content } = Layout;
 
 const PlaylistContainer = ({playlist, token, updatePlayer}) => {
   //Hook - Toggle sidebar functionality
-  const [isHidden, setIsHidden] = useState(false)
+  const [isHidden, setIsHidden] = useState(true)
   const toggle =() => {
     setIsHidden(!isHidden)
   }
