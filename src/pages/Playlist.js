@@ -27,10 +27,12 @@ const Playlist = (props) => {
   }, []);
 
   return (
-    <PlaylistContainer token={props.token} playlist={playlist}/>
+    <PlaylistContainer
+      token={props.token}
+      playlist={playlist}
+      updatePlayer={props.updatePlayer}
+    />
   );
-
-
 }
 
 export default Playlist;
