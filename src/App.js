@@ -36,16 +36,18 @@ function App(props) {
   const [currentUser, setCurrentUser] = useState({})
 
   const fetchLogin = async () => {
+    console.log('fetching user...');
     try {
       const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
         credentials: 'include'
       })
       const data = await result.json()
-      if (data.spotifyId && data.name && data.accessToken) {
+      console.log('user:', data)
+      if (data.spotifyId && data.name && data.access) {
         setCurrentUser({
           spotifyId: data.spotifyId,
           name: data.name,
-          token: data.accessToken
+          token: data.access
         })
       }
     } catch (error) {
@@ -55,9 +57,9 @@ function App(props) {
 
   useEffect(() => {
     fetchLogin()
-    return () => {
-      fetchLogin()
-    }
+    // return () => {
+    //   fetchLogin()
+    // }
   }, []);
 
   const logout = (event) => {
