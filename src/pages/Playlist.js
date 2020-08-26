@@ -22,13 +22,13 @@ const Playlist = (props) => {
   }
 
   //spotify api get request - test
-  const [spotPlaylist, setSpotPlaylist] = useState()
-  const spotifyPlaylist = async () => {
-    // console.log(props.token)
-    const showPlaylist = await SpotifyModel.playlist(props.token)
-    // console.log(showPlaylist)
-    setSpotPlaylist({spotPlaylist: showPlaylist})
-  }
+  // const [spotPlaylist, setSpotPlaylist] = useState()
+  // const spotifyPlaylist = async () => {
+  //   // console.log(props.token)
+  //   const showPlaylist = await SpotifyModel.playlist(props.token)
+  //   // console.log(showPlaylist)
+  //   setSpotPlaylist({spotPlaylist: showPlaylist})
+  // }
 
   useEffect(() => {
     getPlaylist()

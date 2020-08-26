@@ -56,6 +56,9 @@
   align-items: center;
 }
 
+.input {
+  color: rgb(61, 144, 247);
+}
 img {
   width: 100px;
   height: 100px;

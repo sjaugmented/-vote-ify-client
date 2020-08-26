@@ -4,6 +4,7 @@ import Spotify from '../../models/spotify'
 //import components
 import Sidebar from './Sidebar'
 import SongList from './SongList';
+import InputForm from './inputForm'
 
 //import styles
 import { Layout } from 'antd';
@@ -21,17 +22,25 @@ const PlaylistContainer = ({playlist, token}) => {
 
   //Hook - Form/input functionality
   const [search, setSearch] = useState('')
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState('')
+  const [chosen, setChosen] = useState([])
 
+  const handleChange = (e) => {
+    setSearch(e.target.value)
+  }
 
   useEffect(() => {
     async function getData(){
       const info = ({search, token})
       const list = await Spotify.search(info)
-      setResults({...list})
-      const stuff = ({...results.data})
-      const fuck = ({...stuff.tracks})
-      console.log(fuck.items)
+      // console.log(list)
+      const stuff = ({...list})
+      
+      const fuck = ({...stuff.data})
+      const shit = ({...fuck.tracks})
+      const itemArr = ({...shit.items})
+      // console.log(itemArr)
+      setResults([{itemArr}])
     }
     getData()
   }, [search]);
@@ -39,31 +48,23 @@ const PlaylistContainer = ({playlist, token}) => {
 
   const searchSong = async (e) => {
     e.preventDefault()
-    
+    setChosen([results])
   }
 
-  
+
   return (
     <Layout>
       <Content>
         <header className='playlistHeader'>
           {playlist && playlist.playlist.coverart ? <img src={playlist.playlist.coverart} /> : 'loading...'}
           <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
-          <p>The song is... {search}</p>
-          <form onSubmit={searchSong}>
-            <input
-              placeholder='Seach'
-              type='text'
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-            />
-            <button>Submit</button>
-          </form>
+          <InputForm searchSong={searchSong} search={search} handleChange={handleChange} chosen={chosen} results={results}/>
+         
           <button className='toggleBtn' onClick={toggle}>{isHidden ? <LeftCircleTwoTone /> : <RightCircleTwoTone />}</button>
         </header>
 
         <section>
-         
+          
           <SongList playlist={playlist} />
         </section>
       </Content>
