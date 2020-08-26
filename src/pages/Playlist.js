@@ -12,10 +12,6 @@ import '../components/Playlist/playlist.css'
 import 'antd/dist/antd.css';
 
 const Playlist = (props) => {
-<<<<<<< HEAD
-
-=======
->>>>>>> 00f0f041667597d203cca686d6ab0e0dd2e6f9f5
   //call fetch request to show the single playlist
   const [playlist, setPlaylist] = useState()
 
