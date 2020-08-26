@@ -15,12 +15,7 @@ import 'antd/dist/antd.css';
 const { Sider, Content } = Layout;
 
 const Playlist = (props) => {
-  //Toggle sidebar functionality
-  const [isHidden, setIsHidden] = useState(false)
-  const toggle =() => {
-    setIsHidden(!isHidden)
-  }
-
+ 
   //call fetch request to show the single playlist
   const [playlist, setPlaylist] = useState()
   
@@ -29,31 +24,22 @@ const Playlist = (props) => {
     setPlaylist({playlist: result.playlist})
   }
 
-  const [token, setToken] = useState()
-  
-  useEffect(() => {
-    getPlaylist()
-    //spotifyPlaylist()
-  }, []);
-
+  //spotify api get request - test
+  const [spotPlaylist, setSpotPlaylist] = useState()
   const spotifyPlaylist = async () => {
+    console.log(props.token)
     const showPlaylist = await SpotifyModel.playlist(props.token)
-    console.log("PLAYLIST.JS > showPlaylist>>>", showPlaylist)
+    console.log(showPlaylist)
+    setSpotPlaylist({spotPlaylist: showPlaylist})
   }
 
+  useEffect(() => {
+    getPlaylist()
+    spotifyPlaylist()
+  }, []);
+
   return (
-    <Layout>
-      {/* Header is here */}
-      <Content>
-        <PlaylistContainer toggle={toggle} playlist={playlist}/>
-        <SongList playlist={playlist} />
-        <button onClick={spotifyPlaylist}>Test Endpoint</button>
-      </Content>
-      <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
-        <Sidebar />
-      </Sider>
-      {/* Footer is here */}
-    </Layout>
+    <PlaylistContainer playlist={playlist}/>
   );
       
     
