@@ -29,23 +29,25 @@ const Playlist = (props) => {
     setPlaylist({playlist: result.playlist})
   }
 
-  const [token, setToken] = useState()
+  const [spotPlaylist, setSpotPlaylist] = useState()
   
   useEffect(() => {
     getPlaylist()
-    //spotifyPlaylist()
+    spotifyPlaylist()
   }, []);
 
   const spotifyPlaylist = async () => {
+    console.log(props.token)
     const showPlaylist = await SpotifyModel.playlist(props.token)
-    console.log("PLAYLIST.JS > showPlaylist>>>", showPlaylist)
+    console.log(showPlaylist)
+    setSpotPlaylist({spotPlaylist: showPlaylist})
   }
 
   return (
     <Layout>
       {/* Header is here */}
       <Content>
-        <PlaylistContainer toggle={toggle} playlist={playlist}/>
+        <PlaylistContainer toggle={toggle} playlist={playlist} spotPlaylist={spotPlaylist}/>
         <SongList playlist={playlist} />
         <button onClick={spotifyPlaylist}>Test Endpoint</button>
       </Content>

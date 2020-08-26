@@ -7,7 +7,7 @@ function useFetch(initialVal){
 
   const fetch = async () => {
     const response = await PlaylistModel.all()
-    console.log(response)
+    // console.log(response)
     setState(response)
   }
 

@@ -20,6 +20,7 @@ class Spotify {
     }
 
     static playlist = async (token) => {
+      console.log(token)
         console.log('SPOTIFY.JS - running playlist');
         try {
             console.log('SPOTIFY.JS - inside TRY block');
@@ -29,7 +30,7 @@ class Spotify {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer' + token
+                    'Authorization': 'Bearer ' + token
                 }
             })
 
