@@ -23,6 +23,15 @@ const view = 'coverart'
 const theme = 'black'
 
 function App(props) {
+  const [currentSong, setCurrentSong] = useState({
+    currentSong: ''
+  })
+
+  const updatePlayer = (songId) => {
+    setCurrentSong({
+      currentSong: songId
+    })
+  }
 
   // user state
   const [currentUser, setCurrentUser] = useState({})
