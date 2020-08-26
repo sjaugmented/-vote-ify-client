@@ -1,6 +1,6 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
-import PlaylistModel from '../../models/playlist'
+// import PlaylistModel from '../../models/playlist'
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
@@ -17,22 +17,22 @@ const menu = (
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317a">
+      <a target="_blank" rel="noopener noreferrer" alt=' ' href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317a">
         Rock
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317b">
+      <a target="_blank" rel="noopener noreferrer" alt=' ' href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317b">
         Hip Hop
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317c">
+      <a target="_blank" rel="noopener noreferrer" alt=' ' href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317c">
         Indie
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317d">
+      <a target="_blank" rel="noopener noreferrer" alt=' ' href="http://localhost:3000/playlist/5f41ceada73d7c73c5d7317d">
         Reggae
       </a>
     </Menu.Item>
