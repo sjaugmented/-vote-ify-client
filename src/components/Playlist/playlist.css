@@ -80,11 +80,24 @@ header p {
 
 .songList {
   padding-left: 10vw;
+  margin-top: 10px;
+
 }
 
 .songList p {
   color: rgb(61, 144, 247);
   margin-left: 2vw;
+}
+
+.track {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.track img {
+  max-width: 25px;
+  max-height: 25px;
 }
 
 /* ////////////////////////////// */
