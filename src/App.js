@@ -24,23 +24,6 @@ const theme = 'black'
 
 function App(props) {
 
-  // current Playlist
-  const [trackList, setTrackList] = useState([
-      {
-        user: 'Seth',
-        title: 'Piano Man',
-        artist: 'Billy Joel'
-      }, {
-        user: 'Evan',
-        title: 'Secret Garden',
-        artist: 'Bruce Springsteen'
-      }, {
-        user: 'Larry',
-        title: 'Party in the USA',
-        artist: 'Miley Cyrus'
-      }
-  ])
-
   // user state
   const [currentUser, setCurrentUser] = useState({})
 
