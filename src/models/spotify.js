@@ -4,20 +4,25 @@ const searchURL = `https://api.spotify.com/v1/search`
 const playlistURL = 'https://api.spotify.com/v1/playlists/37i9dQZF1DX0XUsuxWHRQd/tracks' //test fetch
 
 class Spotify {
-    static search = async (token) => {
-        try {
-            const newSearch = await axios.get(`${searchURL}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer' + token
-                }
-            })
-        } 
-        catch (error) {
-            console.log(error)
-        }
+    static search = async (data) => {
+      try {
+        const newSearch = await axios.get(`${searchURL}?query=${data.search}&type=track,artist&limit=25&popularity=100&include_external=audio`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + data.token
+            }
+        })
+        return newSearch
+    } 
+      catch (error) {
+        console.log(error)
+      }
     }
+  
+  
+     
 
     static playlist = async (token) => {
       console.log(token)

@@ -5,17 +5,14 @@ import SpotifyModel from '../models/spotify'
 
 //import components
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
-import Sidebar from '../components/Playlist/Sidebar'
-import SongList from '../components/Playlist/SongList';
+
 
 //import styles
 import '../components/Playlist/playlist.css'
-import { Layout } from 'antd';
 import 'antd/dist/antd.css';
-const { Sider, Content } = Layout;
+
 
 const Playlist = (props) => {
- 
   //call fetch request to show the single playlist
   const [playlist, setPlaylist] = useState()
   
@@ -27,19 +24,19 @@ const Playlist = (props) => {
   //spotify api get request - test
   const [spotPlaylist, setSpotPlaylist] = useState()
   const spotifyPlaylist = async () => {
-    console.log(props.token)
+    // console.log(props.token)
     const showPlaylist = await SpotifyModel.playlist(props.token)
-    console.log(showPlaylist)
+    // console.log(showPlaylist)
     setSpotPlaylist({spotPlaylist: showPlaylist})
   }
 
   useEffect(() => {
     getPlaylist()
-    spotifyPlaylist()
+    // spotifyPlaylist()
   }, []);
 
   return (
-    <PlaylistContainer playlist={playlist}/>
+    <PlaylistContainer token={props.token} playlist={playlist}/>
   );
       
     
