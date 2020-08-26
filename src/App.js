@@ -5,6 +5,7 @@ import useFetch from './hooks/useFetch'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
 import Player from './components/Footer/Player'
+import SpotifyPlayer from 'react-spotify-player'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -13,6 +14,13 @@ import './components/Footer/footer.css'
 import './app.css'
 
 const { Header, Footer, Sider, Content } = Layout;
+
+const size = {
+  width: '100%',
+  height: 100
+}
+const view = 'coverart'
+const theme = 'black'
 
 function App(props) {
 
@@ -93,9 +101,14 @@ function App(props) {
           />
         </Content>
         <Footer>
-          <Player
-            playlist={trackList}
-          />
+          <div className="player">
+          <SpotifyPlayer 
+            uri="spotify:track:2SAqBLGA283SUiwJ3xOUVI"
+            size={size}
+            view={view}
+            theme={theme}
+            />
+          </div>  
         </Footer>
       </Layout>
     </div>
