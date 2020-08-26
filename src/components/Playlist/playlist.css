@@ -56,17 +56,23 @@
   align-items: center;
 }
 
+.input {
+  color: rgb(61, 144, 247);
+}
 img {
   width: 100px;
   height: 100px;
 }
 
-header h1 {
+header h1{
   font-size: 50px;
   margin: 0;
   color: rgb(61, 144, 247);
 }
 
+header p {
+  color: rgb(61, 144, 247);
+}
 /* ///////////////////////////// */
 
 
