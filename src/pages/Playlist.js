@@ -33,13 +33,20 @@ const Playlist = (props) => {
     setSpotPlaylist({spotPlaylist: showPlaylist})
   }
 
+  const populate = () => {
+    
+  }
+
   useEffect(() => {
     getPlaylist()
     spotifyPlaylist()
   }, []);
 
   return (
-    <PlaylistContainer playlist={playlist}/>
+    <>
+      <PlaylistContainer playlist={playlist} />
+      <button onClick={populate}>Populate</button>
+    </>
   );
       
     
