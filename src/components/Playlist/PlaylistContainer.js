@@ -5,6 +5,7 @@ import Spotify from '../../models/spotify'
 import Sidebar from './Sidebar'
 import SongList from './SongList';
 import InputForm from './inputForm'
+import AnimatedAlbum from './AnimatedAlbum'
 
 //import styles
 import { Layout } from 'antd';
@@ -56,7 +57,12 @@ const PlaylistContainer = ({playlist, token, updatePlayer}) => {
     <Layout>
       <Content>
         <header className='playlistHeader'>
-          {playlist && playlist.playlist.coverart ? <img src={playlist.playlist.coverart} /> : 'loading...'}
+          {playlist && playlist.playlist.coverart ?
+            <AnimatedAlbum 
+              playlist={playlist.playlist}
+            />
+            : 'loading...'}
+            {/* <img src={playlist.playlist.coverart} /> */}
           <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
           <InputForm searchSong={searchSong} search={search} handleChange={handleChange} chosen={chosen} results={results}/>
          
