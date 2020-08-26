@@ -10,6 +10,7 @@ import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import './components/Header/header.css'
 import './components/Footer/footer.css'
+import './app.css'
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -41,7 +42,6 @@ function App(props) {
         credentials: 'include'
       })
       const data = await result.json()
-      // console.log('data:', data)
       if (data.spotifyId && data.name && data.accessToken) {
         setCurrentUser({
           spotifyId: data.spotifyId,

@@ -1,6 +1,9 @@
 .ant-layout-header {
   height: 165px;
+  width: 100vw;
   padding: 0;
+  position: fixed;
+  z-index: 2;
 }
 
 
