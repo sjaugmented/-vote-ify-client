@@ -6,7 +6,7 @@ import SpotifyModel from '../models/spotify'
 //import components
 import PlaylistContainer from '../components/Playlist/PlaylistContainer';
 import Sidebar from '../components/Playlist/Sidebar'
-import SongList from '../components/Playlist/SongList';
+
 
 //import styles
 import '../components/Playlist/playlist.css'
@@ -45,8 +45,7 @@ const Playlist = (props) => {
     <Layout>
       {/* Header is here */}
       <Content>
-        <PlaylistContainer toggle={toggle} playlist={playlist}/>
-        <SongList playlist={playlist} />
+        <PlaylistContainer toggle={toggle} playlist={playlist}/>    
         <button onClick={spotifyPlaylist}>Test Endpoint</button>
       </Content>
       <Sider id='sider' className={isHidden ? 'hide' : 'show'}>

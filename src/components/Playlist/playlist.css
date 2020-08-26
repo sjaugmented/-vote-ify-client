@@ -66,6 +66,7 @@ header h1 {
 
 .songList p {
   color: rgb(61, 144, 247);
+  position: absolute;
 }
 
 /* ////////////////////////// */
