@@ -4,7 +4,7 @@ import Spotify from '../../models/spotify'
 //import components
 import Sidebar from './Sidebar'
 import SongList from './SongList';
-import InputForm from './InputForm'
+import InputForm from './inputForm'
 
 //import styles
 import { Layout } from 'antd';
