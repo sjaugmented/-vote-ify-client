@@ -20,10 +20,9 @@ const InputForm = (props) => {
         <button>Submit</button>
       </form>
       
-        {props.chosen.map((item, index)=>(
-          console.log(item[0])
-        ))}
-      
+      {props.chosen.map((item, index)=>(
+        console.log(item[0])
+      ))}
     </div>
   );
 }

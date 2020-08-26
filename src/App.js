@@ -4,6 +4,7 @@ import useFetch from './hooks/useFetch'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
 import Player from './components/Footer/Player'
+import SpotifyPlayer from 'react-spotify-player'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -13,39 +14,40 @@ import './app.css'
 
 const { Header, Footer, Sider, Content } = Layout;
 
-function App(props) {
+const size = {
+  width: '100%',
+  height: 100
+}
+const view = 'coverart'
+const theme = 'black'
 
-  // current Playlist
-  const [trackList, setTrackList] = useState([
-      {
-        user: 'Seth',
-        title: 'Piano Man',
-        artist: 'Billy Joel'
-      }, {
-        user: 'Evan',
-        title: 'Secret Garden',
-        artist: 'Bruce Springsteen'
-      }, {
-        user: 'Larry',
-        title: 'Party in the USA',
-        artist: 'Miley Cyrus'
-      }
-  ])
+function App(props) {
+  const [currentSong, setCurrentSong] = useState({
+    currentSong: ''
+  })
+
+  const updatePlayer = (songId) => {
+    setCurrentSong({
+      currentSong: songId
+    })
+  }
 
   // user state
   const [currentUser, setCurrentUser] = useState({})
 
   const fetchLogin = async () => {
+    console.log('fetching user...');
     try {
       const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
         credentials: 'include'
       })
       const data = await result.json()
-      if (data.spotifyId && data.name && data.accessToken) {
+      console.log('user:', data)
+      if (data.spotifyId && data.name && data.access) {
         setCurrentUser({
           spotifyId: data.spotifyId,
           name: data.name,
-          token: data.accessToken
+          token: data.access
         })
       }
     } catch (error) {
@@ -55,9 +57,9 @@ function App(props) {
 
   useEffect(() => {
     fetchLogin()
-    return () => {
-      fetchLogin()
-    }
+    // return () => {
+    //   fetchLogin()
+    // }
   }, []);
 
   const logout = (event) => {
@@ -92,9 +94,14 @@ function App(props) {
           />
         </Content>
         <Footer>
-          <Player
-            playlist={trackList}
-          />
+          <div className="player">
+          <SpotifyPlayer 
+            uri="spotify:track:2SAqBLGA283SUiwJ3xOUVI"
+            size={size}
+            view={view}
+            theme={theme}
+            />
+          </div>  
         </Footer>
       </Layout>
     </div>
