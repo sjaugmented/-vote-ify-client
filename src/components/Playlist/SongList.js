@@ -9,13 +9,13 @@ const SongList = ({ playlist }) => {
     posts = playlist.playlist.posts
   }
   
-  if (posts) {
-    songs = posts.map((post, index) => {
-      return <p>{post.song}</p>
-    })
-  } else {
+  // if (posts) {
+  //   songs = posts.map((post, index) => {
+  //     return <p>{post.song}</p>
+  //   })
+  // } else {
     
-  }
+  // }
   
   
   return (

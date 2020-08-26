@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
-import { useSpring, animated } from 'react-spring'
-import DelayLink from 'react-delay-link'
+// import { useSpring, animated } from 'react-spring'
+// import DelayLink from 'react-delay-link'
 //import './flipStyle.css'
 
 

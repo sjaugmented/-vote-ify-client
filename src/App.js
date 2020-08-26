@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import Routes from './config/routes'
-import PlaylistModel from './models/playlist'
 import useFetch from './hooks/useFetch'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
