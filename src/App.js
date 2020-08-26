@@ -50,7 +50,8 @@ function App(props) {
         setCurrentUser({
           spotifyId: data.spotifyId,
           name: data.name,
-          token: data.access
+          accessToken: data.access,
+          refreshToken: data.refresh
         })
       }
     } catch (error) {
