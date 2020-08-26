@@ -1,9 +1,15 @@
 /* Toggle sidebar functionality and sidebar style*/
+.ant-layout-has-sider {
+  margin-top: -165px;
+}
+
 #sider {
   background-color: rgb(15, 15, 15);
   width: 300px;
   max-width: 300px;
   min-width: 300px;
+  margin-top: 165px;
+  border: rgb(61, 144, 247) 1px solid;
 }
 
 .hide {
@@ -23,6 +29,7 @@
 .sidebarDiv {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 .sidebarDiv h1, .sidebarDiv p {
   color: rgb(61, 144, 247);
@@ -38,6 +45,7 @@
 
 .playContainerDiv {
   display: flex;
+  margin-left: 2vw;
 }
 
 /* Playlist header */
@@ -64,20 +72,13 @@ header h1 {
 
 /* Song List */
 
+.songList {
+  padding-left: 10vw;
+}
+
 .songList p {
   color: rgb(61, 144, 247);
-  position: absolute;
+  margin-left: 2vw;
 }
 
-/* ////////////////////////// */
-
-
-
-
-/* Footer */
-
-.ant-layout-footer {
-  border: red 1px solid;
-  padding: 0;
-}
 /* ////////////////////////////// */

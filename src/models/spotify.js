@@ -13,20 +13,22 @@ class Spotify {
                     'Authorization': 'Bearer' + token
                 }
             })
-        } 
+        }
         catch (error) {
             console.log(error)
         }
     }
 
     static playlist = async (token) => {
+        console.log(token)
+        console.log('SPOTIFY.JS - running playlist');
         try {
             const playlist = await axios.get(playlistURL, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer' + token
+                    'Authorization': 'Bearer ' + token
                 }
             })
 
