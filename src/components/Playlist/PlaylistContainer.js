@@ -24,7 +24,7 @@ const PlaylistContainer = ({playlist}) => {
         <header className='playlistHeader'>
           {playlist && playlist.playlist.coverart ? <img src={playlist.playlist.coverart} /> : 'loading...'}
           <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
-          <button onClick={toggle}>{isHidden ? <LeftCircleTwoTone /> : <RightCircleTwoTone />}</button>
+          <button className='toggleBtn' onClick={toggle}>{isHidden ? <LeftCircleTwoTone /> : <RightCircleTwoTone />}</button>
         </header>
 
         <section>
