@@ -1,0 +1,11 @@
+body {
+    background-color: black;
+
+}
+
+
+.ant-layout-content {
+    background-color: black;
+    padding-top: 165px;
+    padding-bottom: 85px;
+}

@@ -10,7 +10,6 @@ import Card from './Card'
 const CardsContainer = (props) => { 
  
   const playlists = props.playlists.playlists
-  console.log(playlists)
   let list = []
   if(playlists){
     list = playlists.map((playlist, index)=>{
