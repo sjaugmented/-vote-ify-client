@@ -12,6 +12,7 @@ export default class PostModel {
                 body: JSON.stringify(post)
             })
             console.log(newPost) // TODO: remove
+            return await newPost.json()
         } catch (error) {
             console.log(error)
         }
