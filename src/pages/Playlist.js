@@ -29,8 +29,6 @@ const Playlist = (props) => {
   return (
     <PlaylistContainer token={props.token} playlist={playlist}/>
   );
-      
-    
 }
 
 export default Playlist;
