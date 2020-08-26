@@ -1,11 +1,11 @@
 body {
-    background-color: black;
+    background-color: rgb(15, 15, 15);
 
 }
 
 
 .ant-layout-content {
-    background-color: black;
+    background-color: rgb(15, 15, 15);
     padding-top: 165px;
     padding-bottom: 85px;
 }
