@@ -21,18 +21,17 @@ const PlaylistContainer = ({playlist, token}) => {
 
   //Hook - Form/input functionality
   const [search, setSearch] = useState('')
-  const [results, setResults] = useState({})
+  const [results, setResults] = useState([])
 
-  const handleChange = (e) => {
-    setSearch(e.target.value)
-  }
 
   useEffect(() => {
     async function getData(){
-      const data = ({search: search, token: token})
-      const list = await Spotify.search(data)
-      setResults(list)
-      console.log({results})
+      const info = ({search, token})
+      const list = await Spotify.search(info)
+      setResults({...list})
+      const stuff = ({...results.data})
+      const fuck = ({...stuff.tracks})
+      console.log(fuck.items)
     }
     getData()
   }, [search]);
@@ -40,7 +39,7 @@ const PlaylistContainer = ({playlist, token}) => {
 
   const searchSong = async (e) => {
     e.preventDefault()
-  
+    
   }
 
   
@@ -58,13 +57,13 @@ const PlaylistContainer = ({playlist, token}) => {
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
-
             <button>Submit</button>
           </form>
           <button className='toggleBtn' onClick={toggle}>{isHidden ? <LeftCircleTwoTone /> : <RightCircleTwoTone />}</button>
         </header>
 
         <section>
+         
           <SongList playlist={playlist} />
         </section>
       </Content>
