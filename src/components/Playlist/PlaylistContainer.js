@@ -114,24 +114,38 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
               {/* <img src={playlist.playlist.coverart} /> */}
             <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
           
-          <div className='inputDiv'>
-          <InputForm 
-              dropdownRef={dropdownRef} 
-              searchValue={searchValue} 
-              results={results}
-              dropdownRef={dropdownRef}
-              visible={visible}
-              setVisible={setVisible}
-              selectSong={selectSong}
-              handleChange={handleChange} 
-            />
-          </div>
-          
-            <button className='toggleBtn' 
-              onClick={toggle}>{isHidden ? 
-                  <LeftCircleTwoTone /> : 
-                  <RightCircleTwoTone />}
-            </button>
+            {username ?
+              <div className='inputDiv'>
+              <InputForm 
+                  dropdownRef={dropdownRef} 
+                  searchValue={searchValue} 
+                  results={results}
+                  dropdownRef={dropdownRef}
+                  visible={visible}
+                  setVisible={setVisible}
+                  selectSong={selectSong}
+                  handleChange={handleChange} 
+                />
+              </div>
+            :
+              <div className='inputDiv hide'>
+                <InputForm 
+                  dropdownRef={dropdownRef} 
+                  searchValue={searchValue} 
+                  results={results}
+                  dropdownRef={dropdownRef}
+                  visible={visible}
+                  setVisible={setVisible}
+                  selectSong={selectSong}
+                  handleChange={handleChange} 
+                />
+              </div>
+            }
+          <button className='toggleBtn' 
+            onClick={toggle}>{isHidden ? 
+                <LeftCircleTwoTone /> : 
+                <RightCircleTwoTone />}
+          </button>
         </header>
       </div>
       <section>
