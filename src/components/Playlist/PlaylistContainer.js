@@ -9,6 +9,7 @@ import InputForm from './inputForm'
 import AnimatedAlbum from './AnimatedAlbum'
 
 //import styles
+import { Row, Col } from 'antd';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import { LeftCircleTwoTone, RightCircleTwoTone } from '@ant-design/icons';
@@ -104,18 +105,19 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
   return (
     <Layout>
       <Content>
-      <div>
-        <header className='playlistHeader'>
+      <Row xs={2} sm={2} md={2} lg={2} xl={2}className='playlistHeader'>
+        <Col >
             {playlist && playlist.playlist.coverart ?
               <AnimatedAlbum 
                 playlist={playlist.playlist}
               />
               : 'loading...'}
-              {/* <img src={playlist.playlist.coverart} /> */}
-            <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
-          
-          <div className='inputDiv'>
-          <InputForm 
+        </Col>
+        <Col className='headerTitle'>
+          <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
+        </Col>  
+          <Col className='inputDiv'>
+            <InputForm 
               dropdownRef={dropdownRef} 
               searchValue={searchValue} 
               results={results}
@@ -124,22 +126,23 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
               setVisible={setVisible}
               selectSong={selectSong}
               handleChange={handleChange} 
-            />
-          </div>
-          
+              />
+          </Col>
+          <Col>
             <button className='toggleBtn' 
               onClick={toggle}>{isHidden ? 
                   <LeftCircleTwoTone /> : 
                   <RightCircleTwoTone />}
             </button>
-        </header>
-      </div>
-      <section>
+          </Col>
+      </Row>
+
+      <Row>
         <SongList
           playlist={playlist}
           updatePlayer={updatePlayer}
         />
-      </section>
+      </Row>
       </Content>
       <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />

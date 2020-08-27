@@ -51,18 +51,21 @@
 }
 
 /* Playlist header */
+
+
 .playlistHeader {
   display: flex;
   width: 100%;
-  /* justify-content: space-between; */
+  // justify-content: space-between;
   align-items: center;
   // padding: 5vw 0 0 5vw;
 }
 
-.playlistHeader h1 {
-  margin-left: 20px;
-  margin-right: 200px;
-}
+// .playlistTitle h1 {
+//   // margin-left: 20px;
+//   // margin-right: 200px;
+
+// }
 
 .input {
   color: rgb(61, 144, 247);
@@ -72,15 +75,13 @@ img {
   height: 100px;
 }
 
-header h1{
+.headerTitle h1{
   font-size: 50px;
   margin: 0;
   color: rgb(61, 144, 247);
 }
 
-header p {
-  color: rgb(61, 144, 247);
-}
+
 /* ///////////////////////////// */
 
 
@@ -158,7 +159,7 @@ header p {
 input {
   width: 100%;
   padding-bottom: 12px;
-  min-width: 0;
+  min-width: 330px;
   max-width: 330px;
   border: none;
   outline: none;
