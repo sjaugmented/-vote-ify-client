@@ -51,12 +51,6 @@ const PlaylistContainer = ({playlist, token, username, match}) => {
     
   }, [searchValue]);
 
-
-  const addSong = async (e) => {
-    e.preventDefault()
-    // create route using selectedSong state
-  }
-
   const selectSong = song => {
     setSearchValue('')
     setVisible(false)
@@ -99,9 +93,6 @@ const PlaylistContainer = ({playlist, token, username, match}) => {
             setVisible={setVisible}
             selectSong={selectSong}
             handleChange={handleChange} 
-            addSong={addSong}
-          
-          
           />
          
           <button className='toggleBtn' onClick={toggle}>{isHidden ? <LeftCircleTwoTone /> : <RightCircleTwoTone />}</button>
