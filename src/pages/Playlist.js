@@ -26,7 +26,7 @@ const Playlist = (props) => {
 
   return (
 
-    <PlaylistContainer updatePlayer={props.updatePlayer} match={props.match} username={props.username} accessToken={props.accessToken} playlist={playlist} setPlaylist={setPlaylist}/>
+    <PlaylistContainer updatePlayer={props.updatePlayer} match={props.match} username={props.username} accessToken={props.accessToken} playlist={playlist} getPlaylist={getPlaylist}/>
   );   
 
 }
