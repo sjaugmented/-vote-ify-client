@@ -51,7 +51,8 @@ function App(props) {
           name: data.name,
           accessToken: data.access,
           refreshToken: data.refresh,
-          admin: data.admin
+          admin: data.admin,
+          posts: data.posts
         })
       }
     } catch (error) {
