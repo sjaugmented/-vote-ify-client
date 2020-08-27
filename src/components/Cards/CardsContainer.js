@@ -27,7 +27,6 @@ const CardsContainer = (props) => {
   }
   return (
     <div>
-      
       <Row className='cardsRow'>
           {list[0]}
           {list[1]}

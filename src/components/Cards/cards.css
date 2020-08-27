@@ -2,7 +2,11 @@
   width: 50vw;
   height: 20vw;
   display: inline;
+  opacity: 1;
+  /* transition: .2s ease-in-out; */
 }
+
+
 
 .overlay {
   position: absolute;
@@ -18,6 +22,10 @@
 
 .cardDiv:hover .overlay {
   opacity: 1;
+}
+
+.cardDiv:hover .cardImg {
+  opacity: .2;
 }
 
 .playlistTitle {
@@ -42,6 +50,7 @@
   text-align: center;
   margin-right: 10px;
   cursor: pointer;
+  transition: .2s ease-in-out;
 }
  
 .playlistLink {
@@ -61,4 +70,13 @@
 .front,
 .back {
   background-size: cover;
+}
+
+.front:hover {
+  opactiy: 1;
+  transition: .2s ease-in-out;
+}
+
+.cardImg:hover {
+  opacity: 0.5;
 }
