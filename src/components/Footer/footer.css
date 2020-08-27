@@ -1,5 +1,5 @@
 .ant-layout-footer {
-    border: red 1px solid;
+    /* border: red 1px solid; */
     padding: 0;
 }
 
@@ -8,7 +8,7 @@
     position: fixed;
     bottom: 0;
     /* padding-bottom: 25px; */
-    background: rgb(15, 15, 15);
+    background: rgb(0, 0, 0);
     color: white;
     width: 100%;
 }
