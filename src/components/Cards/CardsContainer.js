@@ -1,5 +1,5 @@
 import React from 'react';
-
+import DelayLink from 'react-delay-link'
 
 import { Row, Col } from 'antd';
 import 'antd/dist/antd.css';
@@ -14,10 +14,12 @@ const CardsContainer = (props) => {
   if(playlists){
     list = playlists.map((playlist, index)=>{
       return  (
-        <Card 
-          key={index}
-          { ...playlist }
-          />
+        <DelayLink delay={500} className='playlistLink' to={`/playlist/${playlist._id}`} >
+          <Card 
+            key={index}
+            { ...playlist }
+            />
+        </DelayLink>
       )
     })
   }

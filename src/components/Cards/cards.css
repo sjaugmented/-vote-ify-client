@@ -3,7 +3,7 @@
   height: 400px;
   display: inline;
   padding: 5px;
-  background: hsl(0, 0%, 20%);
+  /* background: hsl(0, 0%, 20%); */
 }
 
 .overlay {
@@ -43,8 +43,24 @@
   position: relative;
   text-align: center;
   margin: 30px 0 30px 0;
+  cursor: pointer;
 }
  
 .playlistLink {
   height: 400px;
+}
+
+.c {
+  position: absolute;
+  max-width: 500px;
+  max-height: 500px;
+  width: 50ch;
+  height: 50ch;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.front,
+.back {
+  background-size: cover;
 }
