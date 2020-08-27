@@ -44,12 +44,14 @@ function App(props) {
         credentials: 'include'
       })
       const data = await result.json()
+      console.log(data)
       if (data.spotifyId && data.name && data.access) {
         setCurrentUser({
           spotifyId: data.spotifyId,
           name: data.name,
           accessToken: data.access,
-          refreshToken: data.refresh
+          refreshToken: data.refresh,
+          admin: data.admin
         })
       }
     } catch (error) {
@@ -93,6 +95,7 @@ function App(props) {
             updatePlayer={updatePlayer}
             playlists={playlists}
             username={currentUser.name}
+            admin={currentUser.admin}
           />
         </Content>
         <Footer>
