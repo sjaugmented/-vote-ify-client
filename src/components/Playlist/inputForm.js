@@ -38,11 +38,8 @@ const InputForm = (props) => {
                       <button onClick={() => {
                         props.selectSong(item)
                       }}>
-                        {item.name}
+                        {item.artists[0].name} - {item.name}
                       </button>
-                    </div>
-                    <div className='item_text2'>{
-                      item.artists[0].name}
                     </div>
                   </li>
                 ))

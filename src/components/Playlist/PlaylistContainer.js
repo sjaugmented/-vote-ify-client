@@ -50,6 +50,7 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
       return;
     }
     setVisible(false);
+    
   };
 
   useEffect(() => {
@@ -61,6 +62,8 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     }
     if(searchValue){
       getData()
+    } else {
+      setResults(null)
     }
     
   }, [searchValue]);
