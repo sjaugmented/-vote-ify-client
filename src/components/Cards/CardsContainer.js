@@ -14,12 +14,14 @@ const CardsContainer = (props) => {
   if(playlists){
     list = playlists.map((playlist, index)=>{
       return  (
-        <DelayLink delay={500} className='playlistLink' to={`/playlist/${playlist._id}`} >
-          <Card 
-            key={index}
-            { ...playlist }
-            />
-        </DelayLink>
+        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+          <DelayLink delay={500} className='playlistLink' to={`/playlist/${playlist._id}`} >
+            <Card 
+              key={index}
+              { ...playlist }
+              />
+          </DelayLink>
+        </Col>
       )
     })
   }
@@ -27,30 +29,28 @@ const CardsContainer = (props) => {
     <div>
       
       <Row className='cardsRow'>
-        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-
           {list[0]}
-
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           {list[1]}
-        </Col>
       </Row>
       <Row className='cardsRow'>
-        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           {list[2]}
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           {list[3]}
-        </Col>
       </Row>
       <Row className='cardsRow'>
-        <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
           {list[4]}
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={12} xl={12}> 
           {list[5]}
-        </Col>
+      </Row>
+      <Row className='cardsRow'>
+          {list[6]}
+          {list[7]}
+      </Row>
+      <Row className='cardsRow'>
+          {list[8]}
+          {list[9]}
+      </Row>
+      <Row className='cardsRow'>
+          {list[10]}
+          {list[11]}
       </Row>
     </div>
   );
