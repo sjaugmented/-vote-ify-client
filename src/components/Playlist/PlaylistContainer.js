@@ -18,7 +18,7 @@ const { Sider, Content } = Layout;
 
 
 
-const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer}) => {
+const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer, setPlaylist}) => {
 
   //Hook - Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(true)
@@ -70,6 +70,7 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     setSelectedSong(postData)
     // console.log(selectedSong)
     postSong(postData)
+    setPlaylist()
   }
 
   const postSong = async (song) => {
