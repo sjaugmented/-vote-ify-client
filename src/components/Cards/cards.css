@@ -1,9 +1,7 @@
 .cardImg {
-  width: 400px;
-  height: 400px;
+  width: 50vw;
+  height: 20vw;
   display: inline;
-  padding: 5px;
-  /* background: hsl(0, 0%, 20%); */
 }
 
 .overlay {
@@ -42,7 +40,7 @@
 .cardDiv {
   position: relative;
   text-align: center;
-  margin: 30px 0 30px 0;
+  margin-right: 10px;
   cursor: pointer;
 }
  
@@ -52,10 +50,10 @@
 
 .c {
   position: absolute;
-  max-width: 500px;
+  /* max-width: 500px;
   max-height: 500px;
   width: 50ch;
-  height: 50ch;
+  height: 50ch; */
   cursor: pointer;
   will-change: transform, opacity;
 }

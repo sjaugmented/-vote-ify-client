@@ -24,7 +24,7 @@ const Card = (props) => {
         <animated.div className="c back cardImg" style={{
           opacity,
           transform: transform.interpolate(t => `${t} rotateX(180deg)`),
-          backgroundImage: 'url(https://i.imgur.com/FY2Cfwe.png)'
+          backgroundImage: 'url(https://i.imgur.com/nY8PRGl.jpg)'
         }} />
         <img className='cardImg' src='https://i.imgur.com/fyANjbL.jpg' alt=' ' />
         <div className='overlay'>
