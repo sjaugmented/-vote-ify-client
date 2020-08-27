@@ -21,9 +21,6 @@ class Spotify {
       }
     }
   
-  
-     
-
     static playlist = async (token) => {
       console.log(token)
         console.log('SPOTIFY.JS - running playlist');
