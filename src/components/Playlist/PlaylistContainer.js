@@ -6,6 +6,7 @@ import PostModel from '../../models/post'
 import Sidebar from './Sidebar'
 import SongList from './SongList';
 import InputForm from './inputForm'
+import AnimatedAlbum from './AnimatedAlbum'
 
 //import styles
 import { Layout } from 'antd';
@@ -16,10 +17,11 @@ import { LeftCircleTwoTone, RightCircleTwoTone } from '@ant-design/icons';
 const { Sider, Content } = Layout;
 
 
-const PlaylistContainer = ({playlist, token, username, match}) => {
-  
+
+const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => {
+
   //Hook - Toggle sidebar functionality
-  const [isHidden, setIsHidden] = useState(false)
+  const [isHidden, setIsHidden] = useState(true)
   const toggle =() => {
     setIsHidden(!isHidden)
   }
@@ -82,7 +84,12 @@ const PlaylistContainer = ({playlist, token, username, match}) => {
     <Layout>
       <Content>
         <header className='playlistHeader'>
-          {playlist && playlist.playlist.coverart ? <img src={playlist.playlist.coverart} /> : 'loading...'}
+          {playlist && playlist.playlist.coverart ?
+            <AnimatedAlbum 
+              playlist={playlist.playlist}
+            />
+            : 'loading...'}
+            {/* <img src={playlist.playlist.coverart} /> */}
           <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
           <InputForm 
             dropdownRef={dropdownRef} 
@@ -100,7 +107,10 @@ const PlaylistContainer = ({playlist, token, username, match}) => {
 
         <section>
           
-          <SongList playlist={playlist} />
+          <SongList
+            playlist={playlist}
+            updatePlayer={updatePlayer}
+          />
         </section>
       </Content>
       <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
