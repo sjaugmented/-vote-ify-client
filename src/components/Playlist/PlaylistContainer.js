@@ -41,6 +41,18 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
   }
 
   useEffect(() => {
+    document.addEventListener('mousedown', handleClick, false);
+    return () => document.removeEventListener('mousedown', handleClick, false);
+  }, []);
+
+  const handleClick = e => {
+    if (dropdownRef.current.contains(e.target)) {
+      return;
+    }
+    setVisible(false);
+  };
+
+  useEffect(() => {
     async function getData(){
       const info = ({searchValue, accessToken})
       const list = await Spotify.search(info)
@@ -89,35 +101,42 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
   return (
     <Layout>
       <Content>
+      <div>
         <header className='playlistHeader'>
-          {playlist && playlist.playlist.coverart ?
-            <AnimatedAlbum 
-              playlist={playlist.playlist}
-            />
-            : 'loading...'}
-            {/* <img src={playlist.playlist.coverart} /> */}
-          <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
-          <InputForm 
-            dropdownRef={dropdownRef} 
-            searchValue={searchValue} 
-            results={results}
-            dropdownRef={dropdownRef}
-            visible={visible}
-            setVisible={setVisible}
-            selectSong={selectSong}
-            handleChange={handleChange} 
-          />
-         
-          <button className='toggleBtn' onClick={toggle}>{isHidden ? <LeftCircleTwoTone /> : <RightCircleTwoTone />}</button>
-        </header>
-
-        <section>
+            {playlist && playlist.playlist.coverart ?
+              <AnimatedAlbum 
+                playlist={playlist.playlist}
+              />
+              : 'loading...'}
+              {/* <img src={playlist.playlist.coverart} /> */}
+            <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
           
-          <SongList
-            playlist={playlist}
-            updatePlayer={updatePlayer}
-          />
-        </section>
+          <div className='inputDiv'>
+          <InputForm 
+              dropdownRef={dropdownRef} 
+              searchValue={searchValue} 
+              results={results}
+              dropdownRef={dropdownRef}
+              visible={visible}
+              setVisible={setVisible}
+              selectSong={selectSong}
+              handleChange={handleChange} 
+            />
+          </div>
+          
+            <button className='toggleBtn' 
+              onClick={toggle}>{isHidden ? 
+                  <LeftCircleTwoTone /> : 
+                  <RightCircleTwoTone />}
+            </button>
+        </header>
+      </div>
+      <section>
+        <SongList
+          playlist={playlist}
+          updatePlayer={updatePlayer}
+        />
+      </section>
       </Content>
       <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />
