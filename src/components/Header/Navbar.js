@@ -6,6 +6,9 @@ import Auth from './Auth'
 import PlaylistDropdown from './PlaylistDropdown'
 
 const Navbar = (props) => {
+
+  console.log("Profile Props:", props)
+
   return (
     <div>
       <Row>

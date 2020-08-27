@@ -6,6 +6,9 @@ import Playlist from '../pages/Playlist';
 import Profile from '../pages/Profile';
 
 const Routes = (props) => {
+
+  console.log("route props", props)
+
   return (
   <Switch>
 
@@ -19,7 +22,7 @@ const Routes = (props) => {
             username={props.username} 
             accessToken={props.accessToken} />} />
     <Route exact path='/profile' render={(propsRouter) => 
-          <Profile {...propsRouter} playlists={props.playlists}/>} /> 
+          <Profile {...propsRouter} username={props.username}/>} /> 
 
   </Switch>
   )
