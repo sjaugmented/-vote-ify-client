@@ -43,7 +43,6 @@
 
 .cardImg:hover .playlistTitle {
   visibility: visible;
-  opacity: 1;
 }
 
 .cardDiv {
@@ -73,11 +72,11 @@
   background-size: cover;
 }
 
-.front:hover {
+/* .front:hover {
   opactiy: 1;
   transition: .2s ease-in-out;
 }
 
 .cardImg:hover {
   opacity: 0.5;
-}
+} */
