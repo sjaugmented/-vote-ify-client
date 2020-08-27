@@ -3,8 +3,6 @@ const url = 'http://localhost:3001/api/v1'
 
 export default class PostModel {
     static create = async (data) => {
-        console.log('data.uid>>>>', data.urlId)
-        console.log('data.song>>>>', data.song)
         try {
             const newPost = await axios.post(`${url}/posts/${data.urlId}`, {
                 method: 'POST',
@@ -13,12 +11,7 @@ export default class PostModel {
                 },
                 body: JSON.stringify(data.song)
             })
-            console.log('newPost>>>>', newPost)
-            return newPost
-            //     .then(res => {    // TODO: possibly refactor?
-            //   console.log(res)
-            //   res.json()
-            //})
+          return newPost
         } 
         catch (error) {
             console.log(error)

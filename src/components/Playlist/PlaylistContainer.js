@@ -41,6 +41,19 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
   }
 
   useEffect(() => {
+    document.addEventListener('mousedown', handleClick, false);
+    return () => document.removeEventListener('mousedown', handleClick, false);
+  }, []);
+
+  const handleClick = e => {
+    if (dropdownRef.current.contains(e.target)) {
+      return;
+    }
+    setVisible(false);
+    
+  };
+
+  useEffect(() => {
     async function getData(){
       const info = ({searchValue, accessToken})
       const list = await Spotify.search(info)
@@ -49,6 +62,8 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     }
     if(searchValue){
       getData()
+    } else {
+      setResults(null)
     }
     
   }, [searchValue]);
@@ -57,7 +72,6 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     setTimeout(() => getPlaylist(), 1000)
     
   }
-
 
   const selectSong = song => {
     setSearchValue('')
@@ -82,7 +96,7 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     const urlId = match.params.id
     const data = {urlId, song}
     const result = await PostModel.create(data)
-    console.log(result)
+    // console.log(result)
     setSelectedSong(null)
   }
 
@@ -90,36 +104,42 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
   return (
     <Layout>
       <Content>
+      <div>
         <header className='playlistHeader'>
-          {playlist && playlist.playlist.coverart ?
-            <AnimatedAlbum 
-              playlist={playlist.playlist}
-            />
-            : 'loading...'}
-            {/* <img src={playlist.playlist.coverart} /> */}
-          <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
+            {playlist && playlist.playlist.coverart ?
+              <AnimatedAlbum 
+                playlist={playlist.playlist}
+              />
+              : 'loading...'}
+              {/* <img src={playlist.playlist.coverart} /> */}
+            <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
+          
+          <div className='inputDiv'>
           <InputForm 
-            dropdownRef={dropdownRef} 
-            searchValue={searchValue} 
-            results={results}
-            dropdownRef={dropdownRef}
-            visible={visible}
-            setVisible={setVisible}
-            selectSong={selectSong}
-            handleChange={handleChange} 
+              dropdownRef={dropdownRef} 
+              searchValue={searchValue} 
+              results={results}
+              dropdownRef={dropdownRef}
+              visible={visible}
+              setVisible={setVisible}
+              selectSong={selectSong}
+              handleChange={handleChange} 
+            />
+          </div>
           
-          />
-         
-          <button className='toggleBtn' onClick={toggle}>{isHidden ? <LeftCircleTwoTone /> : <RightCircleTwoTone />}</button>
+            <button className='toggleBtn' 
+              onClick={toggle}>{isHidden ? 
+                  <LeftCircleTwoTone /> : 
+                  <RightCircleTwoTone />}
+            </button>
         </header>
-
-        <section>
-          
-          <SongList
-            playlist={playlist}
-            updatePlayer={updatePlayer}
-          />
-        </section>
+      </div>
+      <section>
+        <SongList
+          playlist={playlist}
+          updatePlayer={updatePlayer}
+        />
+      </section>
       </Content>
       <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />
