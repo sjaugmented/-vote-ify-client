@@ -17,7 +17,7 @@ const Routes = (props) => {
             playlists={props.playlists} 
             updatePlayer={props.updatePlayer}
             username={props.username} 
-            token={props.token} />} />
+            accessToken={props.accessToken} />} />
     <Route exact path='/profile' render={(propsRouter) => 
           <Profile {...propsRouter} playlists={props.playlists}/>} /> 
 
