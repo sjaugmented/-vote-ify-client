@@ -97,12 +97,16 @@ function App(props) {
         </Content>
         <Footer>
           <div className="player">
-          <SpotifyPlayer 
-            uri={playerUri}
-            size={size}
-            view={view}
-            theme={theme}
-            />
+            {currentUser.name ?
+              <SpotifyPlayer 
+                uri={playerUri}
+                size={size}
+                view={view}
+                theme={theme}
+                />
+              :
+              <></>
+            }
           </div>  
         </Footer>
       </Layout>
