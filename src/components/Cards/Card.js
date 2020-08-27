@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom'
 import DelayLink from 'react-delay-link'
 import { useSpring, animated } from 'react-spring'
 

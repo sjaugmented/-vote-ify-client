@@ -11,7 +11,7 @@ class Spotify {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + info.token
+                'Authorization': 'Bearer ' + info.accessToken
             }
         })
         return newSearch
@@ -24,8 +24,8 @@ class Spotify {
   
      
 
-    static playlist = async (token) => {
-      console.log(token)
+    static playlist = async (accessToken) => {
+      console.log(accessToken)
         console.log('SPOTIFY.JS - running playlist');
         try {
             console.log('SPOTIFY.JS - inside TRY block');
@@ -35,7 +35,7 @@ class Spotify {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
+                    'Authorization': 'Bearer ' + accessToken
                 }
             })
 

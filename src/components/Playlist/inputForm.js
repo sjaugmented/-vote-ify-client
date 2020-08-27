@@ -5,7 +5,6 @@ const InputForm = (props) => {
 
   return (
     <div>
-      <form onSubmit={props.addSong}>
         <input
           className='input'
           placeholder='Seach'
@@ -16,8 +15,6 @@ const InputForm = (props) => {
             props.setVisible(true)
           }}
         />
-        <button>Submit</button>
-      </form>
       <div ref={props.dropdownRef} className={`dropdown ${props.visible ? 'v' : ''}`}>
         {props.visible && (
           <ul>

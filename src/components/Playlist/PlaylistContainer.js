@@ -18,7 +18,7 @@ const { Sider, Content } = Layout;
 
 
 
-const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => {
+const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer}) => {
 
   //Hook - Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(true)
@@ -42,7 +42,7 @@ const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => 
 
   useEffect(() => {
     async function getData(){
-      const info = ({searchValue, token})
+      const info = ({searchValue, accessToken})
       const list = await Spotify.search(info)
       const {items} = list.data.tracks
       setResults(items)
@@ -53,11 +53,6 @@ const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => 
     
   }, [searchValue]);
 
-
-  const addSong = async (e) => {
-    e.preventDefault()
-    // create route using selectedSong state
-  }
 
   const selectSong = song => {
     setSearchValue('')
@@ -106,8 +101,6 @@ const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => 
             setVisible={setVisible}
             selectSong={selectSong}
             handleChange={handleChange} 
-            addSong={addSong}
-          
           
           />
          
