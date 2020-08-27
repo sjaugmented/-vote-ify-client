@@ -3,7 +3,6 @@ const url = 'http://localhost:3001/api/v1'
 
 export default class PostModel {
     static create = async (data) => {
-      console.log(data.urlId)
         try {
             const newPost = await axios.post(`${url}/posts/${data.urlId}`, {
                 method: 'POST',
@@ -11,10 +10,8 @@ export default class PostModel {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.song)
-            }).then(res => {
-              console.log(res)
-              res.json()
             })
+          return newPost
         } 
         catch (error) {
             console.log(error)

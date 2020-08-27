@@ -89,7 +89,7 @@ function App(props) {
         </Header>
         <Content>
           <Routes
-            token={currentUser.token}
+            accessToken={currentUser.accessToken}
             updatePlayer={updatePlayer}
             playlists={playlists}
             username={currentUser.name}

@@ -23,9 +23,12 @@ const CardsContainer = (props) => {
   }
   return (
     <div>
+      
       <Row className='cardsRow'>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+
           {list[0]}
+
         </Col>
         <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           {list[1]}

@@ -11,7 +11,7 @@ class Spotify {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + info.token
+                'Authorization': 'Bearer ' + info.accessToken
             }
         })
         return newSearch

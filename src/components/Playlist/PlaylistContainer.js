@@ -18,7 +18,7 @@ const { Sider, Content } = Layout;
 
 
 
-const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => {
+const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer}) => {
 
   //Hook - Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(true)
@@ -42,7 +42,7 @@ const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => 
 
   useEffect(() => {
     async function getData(){
-      const info = ({searchValue, token})
+      const info = ({searchValue, accessToken})
       const list = await Spotify.search(info)
       const {items} = list.data.tracks
       setResults(items)
@@ -75,7 +75,7 @@ const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => 
     const urlId = match.params.id
     const data = {urlId, song}
     const result = await PostModel.create(data)
-    console.log(result)
+    // console.log(result)
     setSelectedSong(null)
   }
 
