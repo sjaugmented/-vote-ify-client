@@ -23,8 +23,11 @@ const theme = 'black'
 
 function App(props) {
   const [currentSong, setCurrentSong] = useState({
-    currentSong: ''
+    currentSong: '2SAqBLGA283SUiwJ3xOUVI'
   })
+
+  const spotifyUri = 'spotify:track:'
+  const playerUri = spotifyUri + currentSong.currentSong
 
   const updatePlayer = (songId) => {
     setCurrentSong({
@@ -86,6 +89,7 @@ function App(props) {
         <Content>
           <Routes
             token={currentUser.token}
+            updatePlayer={updatePlayer}
             playlists={playlists}
             username={currentUser.name}
           />
@@ -93,7 +97,7 @@ function App(props) {
         <Footer>
           <div className="player">
           <SpotifyPlayer 
-            uri="spotify:track:2SAqBLGA283SUiwJ3xOUVI"
+            uri={playerUri}
             size={size}
             view={view}
             theme={theme}

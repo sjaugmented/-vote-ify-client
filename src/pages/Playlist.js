@@ -25,8 +25,10 @@ const Playlist = (props) => {
   }, []);
 
   return (
-    <PlaylistContainer match={props.match} username={props.username} token={props.token} playlist={playlist}/>
+
+    <PlaylistContainer updatePlayer={props.updatePlayer} match={props.match} username={props.username} token={props.token} playlist={playlist}/>
   );   
+
 }
 
 export default Playlist;

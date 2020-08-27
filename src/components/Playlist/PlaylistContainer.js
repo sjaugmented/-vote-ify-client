@@ -16,8 +16,9 @@ import { LeftCircleTwoTone, RightCircleTwoTone } from '@ant-design/icons';
 const { Sider, Content } = Layout;
 
 
-const PlaylistContainer = ({playlist, token, username, match}) => {
-  
+
+const PlaylistContainer = ({playlist, token, username, match, updatePlayer}) => {
+
   //Hook - Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(false)
   const toggle =() => {
@@ -109,7 +110,10 @@ const PlaylistContainer = ({playlist, token, username, match}) => {
 
         <section>
           
-          <SongList playlist={playlist} />
+          <SongList
+            playlist={playlist}
+            updatePlayer={updatePlayer}
+          />
         </section>
       </Content>
       <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
