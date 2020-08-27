@@ -5,27 +5,27 @@ const playlistURL = 'https://api.spotify.com/v1/playlists/37i9dQZF1DX0XUsuxWHRQd
 
 class Spotify {
     static search = async (info) => {
-      try {
-        const newSearch = await axios.get(`${searchURL}?query=${info.search}&type=track,artist&limit=10&popularity=100&include_external=audio/`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + info.token
-            }
-        })
-        return newSearch
-    } 
-      catch (error) {
-        console.log(error)
-      }
+        try {
+            const newSearch = await axios.get(`${searchURL}?query=${info.searchValue}&type=track,artist&limit=10&popularity=100&include_external=audio/`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + info.accessToken
+                }
+            })
+            return newSearch
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
-  
-  
-     
 
-    static playlist = async (token) => {
-        console.log(token)
+
+
+
+    static playlist = async (accessToken) => {
+        console.log(accessToken)
         console.log('SPOTIFY.JS - running playlist');
         try {
             const playlist = await axios.get(playlistURL, {
@@ -33,7 +33,7 @@ class Spotify {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
+                    'Authorization': 'Bearer ' + accessToken
                 }
             })
 

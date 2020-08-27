@@ -1,54 +1,89 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Spotify from '../../models/spotify'
-
+//import db
+import PostModel from '../../models/post'
 //import components
 import Sidebar from './Sidebar'
 import SongList from './SongList';
 import InputForm from './inputForm'
+import AnimatedAlbum from './AnimatedAlbum'
 
 //import styles
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import { LeftCircleTwoTone, RightCircleTwoTone } from '@ant-design/icons';
+
+
 const { Sider, Content } = Layout;
 
 
-const PlaylistContainer = ({playlist, token, updatePlayer}) => {
+
+const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer, getPlaylist}) => {
+
   //Hook - Toggle sidebar functionality
-  const [isHidden, setIsHidden] = useState(false)
+  const [isHidden, setIsHidden] = useState(true)
   const toggle =() => {
     setIsHidden(!isHidden)
   }
 
   //Hook - Form/input functionality
-  const [search, setSearch] = useState('')
+  const [visible, setVisible] = useState(false);
+  const [searchValue, setSearchValue] = useState('')
   const [results, setResults] = useState('')
-  const [chosen, setChosen] = useState([])
+  const [selectedSong, setSelectedSong] = useState(null);
+  const dropdownRef = useRef(null);
 
   const handleChange = (e) => {
-    setSearch(e.target.value)
+    setSearchValue(e.target.value)
+    if(!visible){
+      setVisible(true)
+    }
   }
 
   useEffect(() => {
     async function getData(){
-      const info = ({search, token})
+      const info = ({searchValue, accessToken})
       const list = await Spotify.search(info)
-      // console.log(list)
-      const stuff = ({...list})
-      
-      const fuck = ({...stuff.data})
-      const shit = ({...fuck.tracks})
-      const itemArr = ({...shit.items})
-      // console.log(itemArr)
-      setResults([{itemArr}])
+      const {items} = list.data.tracks
+      setResults(items)
     }
-    getData()
-  }, [search]);
+    if(searchValue){
+      getData()
+    }
+    
+  }, [searchValue]);
+
+  const refreshPlaylist = () => {
+    setTimeout(() => getPlaylist(), 1000)
+    
+  }
 
 
-  const searchSong = async (e) => {
-    e.preventDefault()
-    setChosen([results])
+  const selectSong = song => {
+    setSearchValue('')
+    setVisible(false)
+    let postData = {
+      songId: song.id,
+      songName: song.name,
+      albumName: song.album.name,
+      artist: song.artists[0].name,
+      votes: 0,
+      pending: true,
+      user: username,
+      albumArt: song.album.images[0].url
+    }
+    setSelectedSong(postData)
+    // console.log(selectedSong)
+    postSong(postData)
+    refreshPlaylist()
+  }
+
+  const postSong = async (song) => {
+    const urlId = match.params.id
+    const data = {urlId, song}
+    const result = await PostModel.create(data)
+    console.log(result)
+    setSelectedSong(null)
   }
 
 
@@ -56,9 +91,24 @@ const PlaylistContainer = ({playlist, token, updatePlayer}) => {
     <Layout>
       <Content>
         <header className='playlistHeader'>
-          {playlist && playlist.playlist.coverart ? <img src={playlist.playlist.coverart} /> : 'loading...'}
+          {playlist && playlist.playlist.coverart ?
+            <AnimatedAlbum 
+              playlist={playlist.playlist}
+            />
+            : 'loading...'}
+            {/* <img src={playlist.playlist.coverart} /> */}
           <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
-          <InputForm searchSong={searchSong} search={search} handleChange={handleChange} chosen={chosen} results={results}/>
+          <InputForm 
+            dropdownRef={dropdownRef} 
+            searchValue={searchValue} 
+            results={results}
+            dropdownRef={dropdownRef}
+            visible={visible}
+            setVisible={setVisible}
+            selectSong={selectSong}
+            handleChange={handleChange} 
+          
+          />
          
           <button className='toggleBtn' onClick={toggle}>{isHidden ? <LeftCircleTwoTone /> : <RightCircleTwoTone />}</button>
         </header>
