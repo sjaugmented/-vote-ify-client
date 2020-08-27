@@ -6,7 +6,7 @@ const playlistURL = 'https://api.spotify.com/v1/playlists/37i9dQZF1DX0XUsuxWHRQd
 class Spotify {
     static search = async (info) => {
       try {
-        const newSearch = await axios.get(`${searchURL}?query=${info.search}&type=track,artist&limit=10&popularity=100&include_external=audio/`, {
+        const newSearch = await axios.get(`${searchURL}?query=${info.searchValue}&type=track,artist&limit=10&popularity=100&include_external=audio/`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

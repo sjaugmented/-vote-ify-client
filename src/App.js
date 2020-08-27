@@ -36,13 +36,11 @@ function App(props) {
   const [currentUser, setCurrentUser] = useState({})
 
   const fetchLogin = async () => {
-    console.log('fetching user...');
     try {
       const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
         credentials: 'include'
       })
       const data = await result.json()
-      console.log('user:', data)
       if (data.spotifyId && data.name && data.access) {
         setCurrentUser({
           spotifyId: data.spotifyId,
@@ -57,9 +55,6 @@ function App(props) {
 
   useEffect(() => {
     fetchLogin()
-    // return () => {
-    //   fetchLogin()
-    // }
   }, []);
 
   const logout = (event) => {
@@ -76,6 +71,7 @@ function App(props) {
 
   // Getting all playlists from db with custom hook
   const playlists = useFetch([])
+ 
 
   return (
     <div className="App">
@@ -91,6 +87,7 @@ function App(props) {
           <Routes
             token={currentUser.token}
             playlists={playlists}
+            username={currentUser.name}
           />
         </Content>
         <Footer>

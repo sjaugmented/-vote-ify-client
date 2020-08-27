@@ -1,28 +1,46 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import Select from "react-dropdown-select";
-
 
 
 const InputForm = (props) => {
-  console.log(props.results)
- 
+
   return (
     <div>
-      <form onSubmit={props.searchSong}>
+      <form onSubmit={props.addSong}>
         <input
           className='input'
           placeholder='Seach'
           type='text'
-          value={props.search}
+          value={props.searchValue}
           onChange={props.handleChange}
+          onFocus={()=> {
+            props.setVisible(true)
+          }}
         />
         <button>Submit</button>
       </form>
-      
-      {props.chosen.map((item, index)=>(
-        console.log(item[0])
-      ))}
+      <div ref={props.dropdownRef} className={`dropdown ${props.visible ? 'v' : ''}`}>
+        {props.visible && (
+          <ul>
+            {!props.result && (
+              <li key="zxc" className="dropdown_item">
+                no result
+              </li>
+            )}
+            {props.results &&
+              props.results.map((item, index)=> (
+                <li
+                  key={index}
+                >
+                  <button onClick={() => {
+                    props.selectSong(item)
+                  }}>{item.artists[0].name} - {item.name}</button>
+                  
+                </li>
+              ))
+            }
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
