@@ -17,9 +17,11 @@ const Routes = (props) => {
             playlists={props.playlists} 
             updatePlayer={props.updatePlayer}
             username={props.username} 
-            accessToken={props.accessToken} />} />
-    <Route exact path='/profile' render={(propsRouter) => 
-          <Profile {...propsRouter} playlists={props.playlists}/>} /> 
+            accessToken={props.accessToken} />}
+            admin={props.admin}
+      />
+    <Route exact path='/users/:id' render={(propsRouter) => 
+          <Profile {...propsRouter} playlists={props.playlists}/>} admin={props.admin} username={props.username} /> 
 
   </Switch>
   )
