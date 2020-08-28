@@ -49,8 +49,11 @@ function App(props) {
           spotifyId: data.spotifyId,
           name: data.name,
           accessToken: data.access,
-          refreshToken: data.refresh
+          refreshToken: data.refresh,
+          admin: data.admin,
+          posts: data.posts
         })
+        console.log('CurrentUserData', data)
       }
     } catch (error) {
       console.log(error)
@@ -93,16 +96,22 @@ function App(props) {
             updatePlayer={updatePlayer}
             playlists={playlists}
             username={currentUser.name}
+            admin={currentUser.admin}
+            posts={currentUser.posts}
           />
         </Content>
         <Footer>
           <div className="player">
-          <SpotifyPlayer 
-            uri={playerUri}
-            size={size}
-            view={view}
-            theme={theme}
-            />
+            {currentUser.name ?
+              <SpotifyPlayer 
+                uri={playerUri}
+                size={size}
+                view={view}
+                theme={theme}
+                />
+              :
+              <></>
+            }
           </div>  
         </Footer>
       </Layout>
