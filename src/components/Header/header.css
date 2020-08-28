@@ -50,9 +50,12 @@
   justify-content: center;
   height: 100%;
 }
+
+
 .brandDiv .brandLink, .brandDiv h1{
   color: rgb(61, 144, 247);
   align-self: center;
+  font-size: 45px;
 }
 
 /* /////////////////////////////////////// */
