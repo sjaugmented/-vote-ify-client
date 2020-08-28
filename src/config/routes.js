@@ -16,6 +16,7 @@ const Routes = (props) => {
           playlists={props.playlists} 
           updatePlayer={props.updatePlayer}
           username={props.username} 
+          spotifyId={props.spotifyId}
           accessToken={props.accessToken} 
           admin={props.admin}
           posts={props.posts}

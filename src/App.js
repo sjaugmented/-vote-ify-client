@@ -95,6 +95,7 @@ function App(props) {
             updatePlayer={updatePlayer}
             playlists={playlists}
             username={currentUser.name}
+            spotifyId={currentUser.spotifyId}
             admin={currentUser.admin}
             userPosts={currentUser.posts}
           />
