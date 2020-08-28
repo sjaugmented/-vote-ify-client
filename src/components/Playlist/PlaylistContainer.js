@@ -83,8 +83,10 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       artist: song.artists[0].name,
       votes: 0,
       pending: true,
+      user: username,
       userSpotId: spotifyId,
-      albumArt: song.album.images[0].url
+      albumArt: song.album.images[0].url,
+      timestamp: Date.now()
     }
     setSelectedSong(postData)
     // console.log(selectedSong)
