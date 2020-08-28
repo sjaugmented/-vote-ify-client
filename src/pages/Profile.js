@@ -2,8 +2,43 @@ import React, { useState, useEffect } from 'react';
 import UserModel from '../models/user'
 
 const Profile = (props) => {
+  const [user, setUser] = useState()
   
   
+  const fetchUser = async () => {
+    const result = await UserModel.show(props.match.params.id)
+    console.log(result.user)
+    setUser({user: result.user})
+  }
+  
+  useEffect(() => {
+    fetchUser()
+    
+  }, [])
+
+  let posts
+  let songs = []
+
+  if (user) {
+    posts = user.posts
+    console.log('user>>>', user.posts)
+  }
+
+  if (posts) {
+    songs = posts.map((post, index) => {
+      return (
+          <div onClick={() => props.updatePlayer(post.songId)} className='track'>
+            <img src={post.albumArt} alt='album art'/>
+            <p>{post.songName}</p>
+            <p>{post.albumName}</p>
+            <p>{post.artist}</p>
+            <p>Contributed by {post.user}</p>
+            <p>{post.votes}</p>
+            <button onClick={() => props.deletePost(post.songId)} className='delete' >X</button>
+          </div>
+      )
+    })
+  }
 
     return (
       <div className='profile'>
@@ -13,7 +48,7 @@ const Profile = (props) => {
         <div className='profile-posts-list'>
           <h3>Contributed Songs:</h3>
           <ul>
-          
+            {songs}
           </ul>
         </div>
       </div>
