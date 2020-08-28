@@ -96,6 +96,7 @@ function App(props) {
             playlists={playlists}
             username={currentUser.name}
             admin={currentUser.admin}
+            userPosts={currentUser.posts}
           />
         </Content>
         <Footer>
