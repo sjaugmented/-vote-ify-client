@@ -68,8 +68,8 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
     
   }, [searchValue]);
 
-  const refreshPlaylist = () => {
-    setTimeout(() => getPlaylist(), 1000)
+  const refreshPlaylist = (delay) => {
+    setTimeout(() => getPlaylist(), delay)
     
   }
 
@@ -89,7 +89,7 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
     setSelectedSong(postData)
     // console.log(selectedSong)
     postSong(postData)
-    refreshPlaylist()
+    refreshPlaylist(200)
   }
 
   const postSong = async (song) => {
@@ -101,10 +101,9 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
   }
 
   const deletePost = async (songId) => {
-    console.log('deleting', songId)
     const deletedPost = await PostModel.delete(songId)
     console.log('deletedPost:', deletedPost);
-    refreshPlaylist()
+    refreshPlaylist(100)
   }
 
   return (
