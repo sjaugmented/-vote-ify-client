@@ -1,17 +1,27 @@
 import React from 'react';
 
-const Sidebar = () => {
+const Sidebar = ({playlist}) => {
+  let posts
+  let pendingSongs = []
+  const songList = []
+  if (playlist) {
+    posts = playlist.playlist.posts
+  }
+
+  if(posts){
+    pendingSongs = posts.map((post, index)=>{
+      if(post.pending === true){
+        return (
+          {...post}
+          
+        )
+      }
+    })
+  }
+  console.log(pendingSongs)
   return (
     <div className='sidebarDiv'>
-      <h1>Pending Songs</h1>
-      <p>Pending Song</p>
-      <p>Pending Song</p>
-      <p>Pending Song</p>
-      <p>Pending Song</p>
-      <p>Pending Song</p>
-      <p>Pending Song</p>
-      <p>Pending Song</p>
-      <p>Pending Song</p>
+    
     
     </div>
   );

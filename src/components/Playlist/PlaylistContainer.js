@@ -110,17 +110,17 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
     <Layout>
       <Content>
       <Row className='playlistHeader'>
-        <Col xs={8} sm={8} md={4} lg={5} xl={5}>
+        <Col xs={12} sm={12} md={8} lg={8} xl={5}>
             {playlist && playlist.playlist.coverart ?
               <div className="card">
                 <img src={playlist.playlist.coverart} alt='album art' />
               </div>
               : 'loading...'}
         </Col>
-        <Col xs={0} sm={0} md={8} lg={8} xl={8}className='headerPlaylistTitle'>
+        <Col xs={0} sm={0} md={0} lg={8} xl={8}className='headerPlaylistTitle'>
           <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
         </Col>  
-          <Col xs={3} sm={3} md={8} lg={6} xl={6}className='inputDiv'>
+          <Col xs={10} sm={10} md={8} lg={6} xl={6}className='inputDiv'>
             <InputForm 
               dropdownRef={dropdownRef} 
               searchValue={searchValue} 
@@ -151,7 +151,7 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
       </Row>
       </Content>
       <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
-        <Sidebar />
+        <Sidebar playlist={playlist}/>
       </Sider>
     </Layout>
   )
