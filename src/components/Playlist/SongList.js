@@ -53,6 +53,7 @@ const SongList = ({ playlist, updatePlayer }) => {
   return (
     <div className='songList'>
       <Table 
+        className='songTable'
         onRow={(record)=> ({
           
             onClick: ()=> {updatePlayer(record.songId)}

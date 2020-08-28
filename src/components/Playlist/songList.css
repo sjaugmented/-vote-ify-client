@@ -1,0 +1,25 @@
+.songList {
+  padding: 0;
+ 
+}
+
+/* .ant-table {
+  background-color: black;
+}
+
+.songTable {
+  margin: 40px 120px;
+  background-color: white;
+    & .table: {
+    borderCollapse: 'collapse';
+  },
+  & thead > tr > th': {
+    backgroundColor: 'darkblue',
+    color: 'white',
+  },
+  '& thead > tr': {
+    borderWidth: '2px',
+    borderColor: 'yellow',
+    borderStyle: 'solid'
+  }
+} */
