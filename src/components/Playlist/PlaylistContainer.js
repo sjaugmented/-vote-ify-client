@@ -108,6 +108,14 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     refreshPlaylist(100)
   }
 
+  //Pending song functionality
+  const pending = []
+  const approved = []
+
+  const sortPosts = () => {
+
+  }
+
   return (
     <Layout>
       <Content>

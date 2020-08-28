@@ -36,8 +36,8 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
     },
     {
       title: 'Date Added',
-      dataIndex: 'timeStamp',
-      key: 'timeStamp'
+      dataIndex: 'timestamp',
+      key: 'timestamp'
     }
   ]
 
@@ -46,7 +46,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
       songList.push(post)
     })
   }
- 
+
   return (
     <div className='songList'>
       <Table 
