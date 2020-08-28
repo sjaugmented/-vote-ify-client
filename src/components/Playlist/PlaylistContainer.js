@@ -110,7 +110,7 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
     <Layout>
       <Content>
       <Row className='playlistHeader'>
-        <Col xs={8} sm={8} md={4} lg={3} xl={3}>
+        <Col xs={8} sm={8} md={4} lg={5} xl={5}>
             {playlist && playlist.playlist.coverart ?
               <div className="card">
                 <img src={playlist.playlist.coverart} alt='album art' />

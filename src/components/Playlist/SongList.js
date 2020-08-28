@@ -11,7 +11,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
 
   const columns = [
     {
-      title: 'Cover Art',
+      title: '',
       dataIndex: 'albumArt',
       key: 'albumArt',
       render: dataIndex => <img alt='' src={dataIndex}/>
