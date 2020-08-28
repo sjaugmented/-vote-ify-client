@@ -18,10 +18,10 @@ const Sidebar = ({playlist}) => {
       }
     })
   }
-  console.log(pendingSongs)
+
   return (
     <div className='sidebarDiv'>
-    
+      
     
     </div>
   );
