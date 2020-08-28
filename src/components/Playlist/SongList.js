@@ -57,6 +57,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
         columns={columns} 
         dataSource={songList}
         pagination={{hideOnSinglePage:true}} 
+        scroll={{scrollY:240}}
         />
         
     </div>
