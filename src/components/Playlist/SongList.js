@@ -1,14 +1,12 @@
 import React from 'react';
-import { Table, Tag, Space } from 'antd';
+import { Table, Tag, Space, Pagination } from 'antd';
 
 const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
-  
   let posts
   const songList = []
   if (playlist) {
     posts = playlist.playlist.posts
   }
-
   const columns = [
     {
       title: '',
@@ -38,8 +36,8 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
     },
     {
       title: 'Date Added',
-      dataIndex: 'timeStamp',
-      key: 'timeStamp'
+      dataIndex: 'timestamp',
+      key: 'timestamp'
     }
   ]
 
@@ -48,18 +46,20 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
       songList.push(post)
     })
   }
- 
+
   return (
     <div className='songList'>
       <Table 
         className='songTable'
         onRow={(record)=> ({
-          
-            onClick: ()=> {updatePlayer(record.songId)}
+          onClick: ()=> {updatePlayer(record.songId)}
         })}
         columns={columns} 
-        dataSource={songList}/>
-    
+        dataSource={songList}
+        pagination={{hideOnSinglePage:true}} 
+        scroll={{scrollY:240}}
+        />
+        
     </div>
   );
 }
