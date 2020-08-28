@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
-import { DislikeOutlined } from '@ant-design/icons';
+import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
 
 
 
@@ -27,7 +27,7 @@ const Sidebar = ({playlist, isPending}) => {
           return (
             <>
             <li>{post.artist} - {post.songName}</li>
-            <li><button onClick={()=> setVote(post.votes++)}><DislikeOutlined /></button></li>
+            <li><button onClick={()=> setVote(post.votes++)}><DislikeOutlined /><LikeTwoTone /></button></li>
             <li><p>{post.votes}</p></li>
             </>
           )
