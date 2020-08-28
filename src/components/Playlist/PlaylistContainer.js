@@ -114,9 +114,11 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
 
   const pending = []
   const approved = []
+  const [isPending, setPending] = useState([])
+  const [isApproved, setApproved] = useState([])
 
   const sortPosts = () => {
-    try {
+
       //await playlist
       if (playlist) {
         if (playlist.playlist) {
@@ -126,13 +128,15 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
           console.log(post.pending)
           // if post.pending => pending.push(post)
           if (post.pending) pending.push(post)
+          
           // if !post.pending => approved.push(post)
           else approved.push(post)
+          setApproved(approved)
+          setPending(pending)
         })
       }}
-    } catch (error) {
-      console.log(error)
-    }
+      console.log(pending)
+      console.log(approved)
   }
 
 
@@ -177,12 +181,12 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
             updatePlayer={updatePlayer}
             admin={admin}
             deletePost={deletePost}
-            approvedPosts={approved}
+            isApproved={isApproved}
         />
       </Row>
       </Content>
       <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
-        <Sidebar playlist={playlist} pendingPosts={pending}/>
+        <Sidebar playlist={playlist} isPending={isPending}/>
       </Sider>
     </Layout>
   )
