@@ -42,8 +42,9 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClick, false);
+    sortPosts()
     return () => document.removeEventListener('mousedown', handleClick, false);
-  }, []);
+  }, [playlist]);
 
   const handleClick = e => {
     if (dropdownRef.current.contains(e.target)) {
@@ -69,7 +70,10 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
   }, [searchValue]);
 
   const refreshPlaylist = (delay) => {
-    setTimeout(() => getPlaylist(), delay)
+    setTimeout(() => {
+      getPlaylist()
+      sortPosts()
+    }, delay)
     
   }
 
@@ -107,6 +111,30 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     console.log('deletedPost:', deletedPost);
     refreshPlaylist(100)
   }
+
+  const pending = []
+  const approved = []
+
+  const sortPosts = () => {
+    try {
+      //await playlist
+      if (playlist) {
+        if (playlist.playlist) {
+        console.log('playlist>>', playlist.playlist)
+        // loop through playlist.playlist.posts
+          playlist.playlist.posts.map(post => {
+          console.log(post.pending)
+          // if post.pending => pending.push(post)
+          if (post.pending) pending.push(post)
+          // if !post.pending => approved.push(post)
+          else approved.push(post)
+        })
+      }}
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <Layout>
@@ -149,11 +177,12 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
             updatePlayer={updatePlayer}
             admin={admin}
             deletePost={deletePost}
+            approvedPosts={approved}
         />
       </Row>
       </Content>
       <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
-        <Sidebar playlist={playlist}/>
+        <Sidebar playlist={playlist} pendingPosts={pending}/>
       </Sider>
     </Layout>
   )

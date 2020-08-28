@@ -4,28 +4,29 @@ import UserModel from '../models/user'
 const Profile = (props) => {
   const [user, setUser] = useState()
   
-  
   const fetchUser = async () => {
     const result = await UserModel.show(props.match.params.id)
-    console.log(result.user)
-    setUser({user: result.user})
+    setUser(result.user)
   }
   
   useEffect(() => {
     fetchUser()
-    
+
   }, [])
 
-  let posts
+  // let posts
   let songs = []
 
-  if (user) {
-    posts = user.posts
-    console.log('user>>>', user.posts)
-  }
+  // if (user) {
+  //   console.log('user', user)
+  //   posts = user.posts
+  //   console.log(user.posts)
+  // }
 
-  if (posts) {
-    songs = posts.map((post, index) => {
+  if (user) {
+    console.log(user.user)
+    songs = user.posts.map((post, index) => {
+      console.log(post);
       return (
           <div onClick={() => props.updatePlayer(post.songId)} className='track'>
             <img src={post.albumArt} alt='album art'/>
