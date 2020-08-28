@@ -13,7 +13,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
     songs = posts.map((post, index) => {
       return (
         <>
-          <div onClick={() => updatePlayer(post.songId)} className='track'>
+          <div key={index} onClick={() => updatePlayer(post.songId)} className='track'>
             <img src={post.albumArt} alt='album art'/>
             <p>{post.songName}</p>
             <p>{post.albumName}</p>
