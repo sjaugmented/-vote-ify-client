@@ -28,10 +28,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
         </>
       )
     })
-  } else {
-    
   }
-  
   
   return (
     <div className='songList'>
