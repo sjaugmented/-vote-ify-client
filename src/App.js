@@ -62,17 +62,17 @@ function App(props) {
     fetchLogin()
   }, []);
 
-  const logout = (event) => {
-    event.preventDefault()
+  // const logout = (event) => {
+  //   event.preventDefault()
 
-    localStorage.removeItem('uid')
-    UserModel.logout()
-      .then(res => {
-        console.log(res)
-        setCurrentUser(null)
-        props.history.push('/login')
-      })
-  }
+  //   localStorage.removeItem('uid')
+  //   UserModel.logout()
+  //     .then(res => {
+  //       console.log(res)
+  //       setCurrentUser(null)
+  //       props.history.push('/login')
+  //     })
+  // }
 
   // Getting all playlists from db with custom hook
   const playlists = useFetch([])
@@ -84,7 +84,8 @@ function App(props) {
         <Header>
           <HeadContainer 
             username={currentUser.name}
-            logout={logout}
+            spotifyId={currentUser.spotifyId}
+            // logout={logout}
             playlists={playlists}
           />
         </Header>

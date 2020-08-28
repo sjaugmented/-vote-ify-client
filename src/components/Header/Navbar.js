@@ -15,6 +15,7 @@ const Navbar = (props) => {
         <Col className='authCol'>
           <Auth 
             username={props.username}
+            spotifyId={props.spotifyId}
           />
         </Col>
       </Row>

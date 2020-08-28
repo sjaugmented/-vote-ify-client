@@ -21,7 +21,7 @@ const Routes = (props) => {
           posts={props.posts}
         />}
       />
-      <Route exact path='/users/:id' render={(propsRouter) =>
+      <Route exact path='/users/:spotId' render={(propsRouter) =>
         <Profile {...propsRouter} playlists={props.playlists} admin={props.admin} username={props.username} />} 
         />
   </Switch>
