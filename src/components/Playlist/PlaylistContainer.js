@@ -105,18 +105,18 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
   return (
     <Layout>
       <Content>
-      <Row xs={2} sm={2} md={2} lg={2} xl={2}className='playlistHeader'>
-        <Col >
+      <Row className='playlistHeader'>
+        <Col xs={8} sm={8} md={4} lg={3} xl={3}>
             {playlist && playlist.playlist.coverart ?
               <AnimatedAlbum 
                 playlist={playlist.playlist}
               />
               : 'loading...'}
         </Col>
-        <Col className='headerTitle'>
+        <Col xs={0} sm={0} md={8} lg={8} xl={8}className='headerPlaylistTitle'>
           <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
         </Col>  
-          <Col className='inputDiv'>
+          <Col xs={3} sm={3} md={8} lg={6} xl={6}className='inputDiv'>
             <InputForm 
               dropdownRef={dropdownRef} 
               searchValue={searchValue} 
@@ -128,7 +128,7 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
               handleChange={handleChange} 
               />
           </Col>
-          <Col>
+          <Col xs={1} sm={1} md={1} lg={1} xl={1}>
             <button className='toggleBtn' 
               onClick={toggle}>{isHidden ? 
                   <LeftCircleTwoTone /> : 
@@ -144,7 +144,7 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
         />
       </Row>
       </Content>
-      <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
+      <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />
       </Sider>
     </Layout>

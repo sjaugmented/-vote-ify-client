@@ -1,5 +1,5 @@
 .ant-layout-header {
-  height: 165px;
+  height: 130px;
   width: 100vw;
   padding: 0;
   position: fixed;
@@ -45,10 +45,10 @@
 .brandCol{
   background-color: rgb(15, 15, 15);
 }
-.brandDiv{
+ header .brandDiv{
   display: flex;
   justify-content: center;
-  height: 165px;
+  height: 100%;
 }
 .brandDiv .brandLink, .brandDiv h1{
   color: rgb(61, 144, 247);
@@ -62,13 +62,17 @@
 
 /* HEADER ART */
 
-.headerArtRow {
-  height: 130px;
+header .headerArtRow {
+  height: 95px;
 }
 
-.headerArt {
-  height: 130px;
+header .headerArt {
+  height: 95px;
   width: 75vw;
+}
+
+header .artDiv {
+  height: 95px;
 }
 /* /////////////////////////////////////// */
 
