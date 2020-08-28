@@ -1,7 +1,7 @@
 import React from 'react';
+import PostModel from '../../models/post'
 
-const SongList = ({ playlist, updatePlayer }) => {
-  
+const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
   
   let posts
   let songs = []
@@ -13,13 +13,20 @@ const SongList = ({ playlist, updatePlayer }) => {
   if (posts) {
     songs = posts.map((post, index) => {
       return (
-        <div onClick={() => updatePlayer(post.songId)} className='track'>
-          <img src={post.albumArt} />
-          <p>{post.songName}</p>
-          <p>{post.albumName}</p>
-          <p>{post.artist}</p>
-          <p>Contributed by {post.user}</p>
-        </div>
+        <>
+          <div onClick={() => updatePlayer(post.songId)} className='track'>
+            <img src={post.albumArt} />
+            <p>{post.songName}</p>
+            <p>{post.albumName}</p>
+            <p>{post.artist}</p>
+            <p>Contributed by {post.user}</p>
+          </div>
+          {admin ?
+            <button onClick={() => deletePost(post.songId)} className='delete' >X</button>
+          :
+            <></>
+          }
+        </>
       )
     })
   } else {

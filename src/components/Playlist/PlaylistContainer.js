@@ -18,7 +18,7 @@ const { Sider, Content } = Layout;
 
 
 
-const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer, getPlaylist}) => {
+const PlaylistContainer = ({playlist, accessToken, username, admin, match, updatePlayer, getPlaylist}) => {
 
   //Hook - Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(true)
@@ -100,6 +100,12 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     setSelectedSong(null)
   }
 
+  const deletePost = async (songId) => {
+    console.log('deleting', songId)
+    const deletedPost = await PostModel.delete(songId)
+    console.log('deletedPost:', deletedPost);
+    refreshPlaylist()
+  }
 
   return (
     <Layout>
@@ -113,7 +119,6 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
               : 'loading...'}
               {/* <img src={playlist.playlist.coverart} /> */}
             <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
-          
             {username ?
               <div className='inputDiv'>
               <InputForm 
@@ -151,7 +156,9 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
       <section>
         <SongList
           playlist={playlist}
-          updatePlayer={updatePlayer}
+            updatePlayer={updatePlayer}
+            admin={admin}
+            deletePost={deletePost}
         />
       </section>
       </Content>
