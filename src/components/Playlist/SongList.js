@@ -1,35 +1,65 @@
 import React from 'react';
+import { Table, Tag, Space } from 'antd';
 
 const SongList = ({ playlist, updatePlayer }) => {
-  
-  
   let posts
-  let songs = []
-  
+  const songList = []
   if (playlist) {
     posts = playlist.playlist.posts
   }
-  
+
+  const columns = [
+    {
+      title: 'Cover Art',
+      dataIndex: 'albumArt',
+      key: 'albumArt',
+      render: dataIndex => <img alt='' src={dataIndex}/>
+    },
+    {
+      title: 'Artist',
+      dataIndex: 'artist',
+      key: 'artist'
+    },
+    {
+      title: 'Song',
+      dataIndex: 'songName',
+      key: 'songName'
+    },
+    {
+      title: 'Album',
+      dataIndex: 'albumName',
+      key: 'album'
+    },
+    {
+      title: 'Contributor',
+      dataIndex: 'user',
+      key: 'user'
+    },
+    {
+      title: 'Date Added',
+      dataIndex: 'timeStamp',
+      key: 'timeStamp'
+    }
+  ]
+
   if (posts) {
-    songs = posts.map((post, index) => {
-      return (
-        <div onClick={() => updatePlayer(post.songId)} className='track'>
-          <img src={post.albumArt} />
-          <p>{post.songName}</p>
-          <p>{post.albumName}</p>
-          <p>{post.artist}</p>
-          <p>Contributed by {post.user}</p>
-        </div>
-      )
+    posts.forEach((post) => {
+      songList.push(post)
     })
   } else {
     
   }
-  
-  
+ 
   return (
     <div className='songList'>
-      {songs}
+      <Table 
+        onRow={(record)=> ({
+          
+            onClick: ()=> {updatePlayer(record.songId)}
+        })}
+        columns={columns} 
+        dataSource={songList}/>
+    
     </div>
   );
 }
