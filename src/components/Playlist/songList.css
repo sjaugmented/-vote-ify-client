@@ -1,19 +1,19 @@
 .songList {
+  position: relative;
   padding: 0;
- 
+  margin-top: 20px;
+  width: 76vw;
 }
 
-/* .ant-table {
-  background-color: black;
-}
+/* import { css } from 'react-emotion';
 
-.songTable {
-  margin: 40px 120px;
-  background-color: white;
-    & .table: {
-    borderCollapse: 'collapse';
+const tableCSS = css({
+  margin: '40px 120px',
+  backgroundColor: 'white',
+  '& table': {
+    borderCollapse: 'collapse'
   },
-  & thead > tr > th': {
+  '& thead > tr > th': {
     backgroundColor: 'darkblue',
     color: 'white',
   },
@@ -22,4 +22,27 @@
     borderColor: 'yellow',
     borderStyle: 'solid'
   }
-} */
+}); */
+
+.ant-table {
+  background-color: rgb(15, 15, 15);
+  color: rgb(61, 144, 247);
+}
+
+.ant-table-content table .thead.ant-table-thead {
+  background-color: black;
+}
+
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
+  padding: 0 0 0 20px;
+}
+.ant-table-row {
+  height: 50px;
+}
+.ant-table-cell {
+  padding: 0;
+}
+.ant-table-cell img {
+  height: 40px;
+  width: 40px;
+}
