@@ -23,7 +23,7 @@ const Routes = (props) => {
         />}
       />
       <Route exact path='/users/:spotId' render={(propsRouter) =>
-        <Profile {...propsRouter} playlists={props.playlists} admin={props.admin} username={props.username} posts={props.userPosts} />} 
+        <Profile {...propsRouter} admin={props.admin} username={props.username} />} 
         />
   </Switch>
   )

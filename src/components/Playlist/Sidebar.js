@@ -1,12 +1,26 @@
 import React, {useState, useEffect} from 'react';
 
-const Sidebar = ({playlist}) => {
+const Sidebar = ({playlist, pendingPosts}) => {
   let posts
   // let pendingSongs = []
   // const songList = []
   if (playlist) {
     posts = playlist.playlist.posts
   }
+<<<<<<< HEAD
+  if(posts){
+    pendingSongs = posts.map((post, index)=>{
+      if(post.pending === true){
+        return (
+          {...post}
+          
+          )
+        }
+      })
+    }
+    console.log(pendingSongs)
+    console.log(pendingPosts)
+=======
   let songVotes
   const [isPending, setPending] = useState(true)
   const [votes, setVote] = useState(songVotes)
@@ -16,6 +30,7 @@ const Sidebar = ({playlist}) => {
 
 
   
+>>>>>>> submaster
   return (
     <div className='sidebarDiv'>
       <h1>Pending Songs</h1>
