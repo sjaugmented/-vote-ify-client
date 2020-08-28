@@ -3,7 +3,6 @@ import Routes from './config/routes'
 import useFetch from './hooks/useFetch'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
-import Player from './components/Footer/Player'
 import SpotifyPlayer from 'react-spotify-player'
 
 import { Layout } from 'antd';
@@ -44,14 +43,14 @@ function App(props) {
         credentials: 'include'
       })
       const data = await result.json()
-      console.log(data)
       if (data.spotifyId && data.name && data.access) {
         setCurrentUser({
           spotifyId: data.spotifyId,
           name: data.name,
           accessToken: data.access,
           refreshToken: data.refresh,
-          admin: data.admin
+          admin: data.admin,
+          posts: data.posts
         })
       }
     } catch (error) {

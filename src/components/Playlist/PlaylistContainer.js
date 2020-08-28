@@ -6,7 +6,6 @@ import PostModel from '../../models/post'
 import Sidebar from './Sidebar'
 import SongList from './SongList';
 import InputForm from './inputForm'
-import AnimatedAlbum from './AnimatedAlbum'
 
 //import styles
 import { Layout } from 'antd';
@@ -18,7 +17,7 @@ const { Sider, Content } = Layout;
 
 
 
-const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer, getPlaylist}) => {
+const PlaylistContainer = ({playlist, accessToken, username, admin, match, updatePlayer, getPlaylist}) => {
 
   //Hook - Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(true)
@@ -68,8 +67,8 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     
   }, [searchValue]);
 
-  const refreshPlaylist = () => {
-    setTimeout(() => getPlaylist(), 1000)
+  const refreshPlaylist = (delay) => {
+    setTimeout(() => getPlaylist(), delay)
     
   }
 
@@ -89,7 +88,7 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     setSelectedSong(postData)
     // console.log(selectedSong)
     postSong(postData)
-    refreshPlaylist()
+    refreshPlaylist(200)
   }
 
   const postSong = async (song) => {
@@ -100,6 +99,11 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     setSelectedSong(null)
   }
 
+  const deletePost = async (songId) => {
+    const deletedPost = await PostModel.delete(songId)
+    console.log('deletedPost:', deletedPost);
+    refreshPlaylist(100)
+  }
 
   return (
     <Layout>
@@ -107,20 +111,18 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
       <div>
         <header className='playlistHeader'>
             {playlist && playlist.playlist.coverart ?
-              <AnimatedAlbum 
-                playlist={playlist.playlist}
-              />
+              <div className="card">
+                <img src={playlist.playlist.coverart} alt='album art' />
+              </div>
               : 'loading...'}
               {/* <img src={playlist.playlist.coverart} /> */}
             <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
-          
             {username ?
               <div className='inputDiv'>
               <InputForm 
                   dropdownRef={dropdownRef} 
                   searchValue={searchValue} 
                   results={results}
-                  dropdownRef={dropdownRef}
                   visible={visible}
                   setVisible={setVisible}
                   selectSong={selectSong}
@@ -151,7 +153,9 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
       <section>
         <SongList
           playlist={playlist}
-          updatePlayer={updatePlayer}
+            updatePlayer={updatePlayer}
+            admin={admin}
+            deletePost={deletePost}
         />
       </section>
       </Content>

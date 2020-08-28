@@ -2,7 +2,8 @@
   width: 50vw;
   height: 20vw;
   display: inline;
-  opacity: 1;
+  opacity: 0.25;
+  cursor: pointer;
   /* transition: .2s ease-in-out; */
 }
 
@@ -24,9 +25,9 @@
   opacity: 1;
 }
 
-.cardDiv:hover .cardImg {
-  opacity: .2;
-}
+/* .cardDiv:hover .cardImg {
+  opacity: .3;
+} */
 
 .playlistTitle {
   color: white;
@@ -42,7 +43,6 @@
 
 .cardImg:hover .playlistTitle {
   visibility: visible;
-  opacity: 1;
 }
 
 .cardDiv {
@@ -72,11 +72,11 @@
   background-size: cover;
 }
 
-.front:hover {
+/* .front:hover {
   opactiy: 1;
   transition: .2s ease-in-out;
 }
 
 .cardImg:hover {
   opacity: 0.5;
-}
+} */
