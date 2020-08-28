@@ -1,5 +1,4 @@
 import React from 'react';
-import PostModel from '../../models/post'
 
 const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
   
@@ -15,7 +14,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
       return (
         <>
           <div onClick={() => updatePlayer(post.songId)} className='track'>
-            <img src={post.albumArt} />
+            <img src={post.albumArt} alt='album art'/>
             <p>{post.songName}</p>
             <p>{post.albumName}</p>
             <p>{post.artist}</p>

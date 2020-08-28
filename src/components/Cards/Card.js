@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import DelayLink from 'react-delay-link'
 import { useSpring, animated } from 'react-spring'
 import './cards.css'
 

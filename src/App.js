@@ -3,7 +3,6 @@ import Routes from './config/routes'
 import useFetch from './hooks/useFetch'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
-import Player from './components/Footer/Player'
 import SpotifyPlayer from 'react-spotify-player'
 
 import { Layout } from 'antd';

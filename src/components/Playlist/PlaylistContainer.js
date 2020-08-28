@@ -112,7 +112,7 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
         <header className='playlistHeader'>
             {playlist && playlist.playlist.coverart ?
               <div className="card">
-                <img src={playlist.playlist.coverart} />
+                <img src={playlist.playlist.coverart} alt='album art' />
               </div>
               : 'loading...'}
               {/* <img src={playlist.playlist.coverart} /> */}
@@ -123,7 +123,6 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
                   dropdownRef={dropdownRef} 
                   searchValue={searchValue} 
                   results={results}
-                  dropdownRef={dropdownRef}
                   visible={visible}
                   setVisible={setVisible}
                   selectSong={selectSong}
