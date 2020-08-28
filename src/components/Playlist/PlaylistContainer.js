@@ -89,7 +89,7 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
     setSelectedSong(postData)
     // console.log(selectedSong)
     postSong(postData)
-    refreshPlaylist(200)
+    refreshPlaylist(500)
   }
 
   const postSong = async (song) => {
