@@ -18,7 +18,7 @@ const { Sider, Content } = Layout;
 
 
 
-const PlaylistContainer = ({playlist, accessToken, username, admin, match, updatePlayer, getPlaylist}) => {
+const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, match, updatePlayer, getPlaylist}) => {
 
   //Hook - Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(true)
@@ -84,12 +84,14 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
       votes: 0,
       pending: true,
       user: username,
-      albumArt: song.album.images[0].url
+      userSpotId: spotifyId,
+      albumArt: song.album.images[0].url,
+      timestamp: Date.now()
     }
     setSelectedSong(postData)
     // console.log(selectedSong)
     postSong(postData)
-    refreshPlaylist(200)
+    refreshPlaylist(500)
   }
 
   const postSong = async (song) => {

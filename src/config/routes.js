@@ -16,13 +16,14 @@ const Routes = (props) => {
           playlists={props.playlists} 
           updatePlayer={props.updatePlayer}
           username={props.username} 
+          spotifyId={props.spotifyId}
           accessToken={props.accessToken} 
           admin={props.admin}
           posts={props.posts}
         />}
       />
-      <Route exact path='/users/:id' render={(propsRouter) =>
-        <Profile {...propsRouter} playlists={props.playlists} admin={props.admin} username={props.username} />} 
+      <Route exact path='/users/:spotId' render={(propsRouter) =>
+        <Profile {...propsRouter} playlists={props.playlists} admin={props.admin} username={props.username} posts={props.userPosts} />} 
         />
   </Switch>
   )

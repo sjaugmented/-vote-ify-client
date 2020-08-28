@@ -9,7 +9,7 @@ const Auth = (props) => {
     <div className='authDiv'>
       {props.username ? 
         <>
-          <Link to={'/profile'}>Hey {props.username}!</Link>
+          <Link to={`/users/${props.spotifyId}`}>Hey {props.username}!</Link>
           <a href={'http://localhost:3001/api/v1/auth/login'}>Refresh Spotify</a>
         </>
         :
