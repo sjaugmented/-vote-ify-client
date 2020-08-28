@@ -10,7 +10,7 @@ const InputForm = (props) => {
      
           <input
             className='input'
-            placeholder='Seach'
+            placeholder='Suggest a song'
             type='text'
             value={props.searchValue}
             onChange={props.handleChange}
@@ -34,11 +34,12 @@ const InputForm = (props) => {
                     key={index}
                     className='dropdown_item'
                   >
-                    <div className='item_text2'>
-                      <button onClick={() => {
+                    <div className='results'>
+                      <button className='suggestBtn' onClick={() => {
                         props.selectSong(item)
                       }}>
-                        {item.artists[0].name} - {item.name}
+                        <p className='song_text'>{item.name}</p> 
+                        <p className='artist_text'>- {item.artists[0].name}</p> 
                       </button>
                     </div>
                   </li>
