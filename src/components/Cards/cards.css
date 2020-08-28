@@ -23,6 +23,7 @@
 
 .cardDiv:hover .overlay {
   opacity: 1;
+  z-index: 5;
 }
 
 /* .cardDiv:hover .cardImg {
