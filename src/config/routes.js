@@ -5,12 +5,28 @@ import Home from '../pages/Home';
 import Playlist from '../pages/Playlist';
 import Profile from '../pages/Profile';
 
-export default (
+const Routes = (props) => {
+  return (
   <Switch>
-    <Route exact path='/' component={ Home } /> 
-    <Route exact path='/playlist' component={ Playlist } />
-      {/* will be /playlist/:id */}
-    <Route exact path='/profile' component={ Profile } />
-      {/* will be /profile/:id */}
+    <Route exact path='/' render={(propsRouter) => 
+          <Home {...propsRouter} 
+            playlists={props.playlists}/>} /> 
+    <Route exact path='/playlist/:id' render={(propsRouter) => 
+        <Playlist {...propsRouter} 
+          playlists={props.playlists} 
+          updatePlayer={props.updatePlayer}
+          username={props.username} 
+          spotifyId={props.spotifyId}
+          accessToken={props.accessToken} 
+          admin={props.admin}
+          posts={props.posts}
+        />}
+      />
+      <Route exact path='/users/:spotId' render={(propsRouter) =>
+        <Profile {...propsRouter} admin={props.admin} username={props.username} />} 
+        />
   </Switch>
-)
+  )
+}
+
+export default Routes

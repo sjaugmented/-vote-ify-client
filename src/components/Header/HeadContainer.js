@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Row, Col } from 'antd';
 import 'antd/dist/antd.css';
@@ -7,17 +7,19 @@ import Brand from './Brand'
 import Navbar from './Navbar'
 import HeaderArt from './HeaderArt'
 
-class HeadContainer extends Component {
-  render() {
-    return (
+const HeadContainer = (props) => {
+  return (
       <div className="headContainer">
         <Row>
-          <Col xs={0} sm={0} md={0} lg={6} xl={6} className='titleCol'>
+          <Col xs={0} sm={0} md={0} lg={6} xl={6} className='brandCol'>
             <Brand />
           </Col>
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Row justify="end" className='navbarRow'>
-              <Navbar/>
+              <Navbar
+              username={props.username}
+              spotifyId={props.spotifyId}
+              />
             </Row>
             <Row className='headerArtRow'>
               <HeaderArt />
@@ -26,7 +28,6 @@ class HeadContainer extends Component {
         </Row>
       </div>
     );
-  }
 }
 
 export default HeadContainer;

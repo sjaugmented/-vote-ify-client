@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CardContainer from '../components/Cards/CardsContainer'
 import '../components/Cards/cards.css'
 
 
-class Home extends Component {
-  render() {
+
+const Home = (props) => {
     return (
       <div>
-        <CardContainer />
+        <CardContainer playlists={props.playlists}/>
       </div>
     );
-  }
 }
 
 export default Home;

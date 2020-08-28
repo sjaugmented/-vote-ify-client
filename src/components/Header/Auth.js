@@ -1,11 +1,20 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
-const Auth = () => {
+const Auth = (props) => {
+
+  
+
   return (
     <div className='authDiv'>
-      <a>Evan</a>
-      <a>Logout</a>
-      <a>Connect with spotify</a>
+      {props.username ? 
+        <>
+          <Link to={`/users/${props.spotifyId}`}>Hey {props.username}!</Link>
+          <a href={'http://localhost:3001/api/v1/auth/login'}>Refresh Spotify</a>
+        </>
+        :
+        <a href="http://localhost:3001/api/v1/auth/login">Connect with Spotify</a>
+      }
     </div>
   );
 }
