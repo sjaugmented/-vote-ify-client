@@ -6,7 +6,6 @@ import PostModel from '../../models/post'
 import Sidebar from './Sidebar'
 import SongList from './SongList';
 import InputForm from './inputForm'
-import AnimatedAlbum from './AnimatedAlbum'
 
 //import styles
 import { Layout } from 'antd';
@@ -112,9 +111,9 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
       <div>
         <header className='playlistHeader'>
             {playlist && playlist.playlist.coverart ?
-              <AnimatedAlbum 
-                playlist={playlist.playlist}
-              />
+              <div className="card">
+                <img src={playlist.playlist.coverart} />
+              </div>
               : 'loading...'}
               {/* <img src={playlist.playlist.coverart} /> */}
             <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
