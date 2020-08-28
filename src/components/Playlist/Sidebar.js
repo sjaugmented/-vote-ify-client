@@ -7,20 +7,6 @@ const Sidebar = ({playlist, pendingPosts}) => {
   if (playlist) {
     posts = playlist.playlist.posts
   }
-<<<<<<< HEAD
-  if(posts){
-    pendingSongs = posts.map((post, index)=>{
-      if(post.pending === true){
-        return (
-          {...post}
-          
-          )
-        }
-      })
-    }
-    console.log(pendingSongs)
-    console.log(pendingPosts)
-=======
   let songVotes
   const [isPending, setPending] = useState(true)
   const [votes, setVote] = useState(songVotes)
@@ -30,7 +16,6 @@ const Sidebar = ({playlist, pendingPosts}) => {
 
 
   
->>>>>>> submaster
   return (
     <div className='sidebarDiv'>
       <h1>Pending Songs</h1>

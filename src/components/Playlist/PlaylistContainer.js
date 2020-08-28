@@ -74,7 +74,11 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       getPlaylist()
       sortPosts()
     }, delay)
-    
+  }
+
+  const updatePost = async (postId) => {
+    const updatedPost = await PostModel.update(postId)
+    console.log(updatedPost)
   }
 
   const selectSong = song => {
