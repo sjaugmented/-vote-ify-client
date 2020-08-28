@@ -1,21 +1,23 @@
 import React, {useState, useEffect} from 'react';
+import 'antd/dist/antd.css';
+import { DislikeOutlined } from '@ant-design/icons';
 
-const Sidebar = ({playlist, pendingPosts}) => {
+
+
+const Sidebar = ({playlist, isPending}) => {
+  console.log(isPending)
   let posts
-  // let pendingSongs = []
-  // const songList = []
+  
   if (playlist) {
     posts = playlist.playlist.posts
   }
   let songVotes
-  const [isPending, setPending] = useState(true)
+  // const [isPending, setPending] = useState(true)
   const [votes, setVote] = useState(songVotes)
  
-  console.log(posts)
-
-
-
   
+
+
   return (
     <div className='sidebarDiv'>
       <h1>Pending Songs</h1>
@@ -25,7 +27,7 @@ const Sidebar = ({playlist, pendingPosts}) => {
           return (
             <>
             <li>{post.artist} - {post.songName}</li>
-            <li><button onClick={()=> setVote(post.votes++)}>Vote</button></li>
+            <li><button onClick={()=> setVote(post.votes++)}><DislikeOutlined /></button></li>
             <li><p>{post.votes}</p></li>
             </>
           )
