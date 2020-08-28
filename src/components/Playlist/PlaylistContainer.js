@@ -8,6 +8,7 @@ import SongList from './SongList';
 import InputForm from './inputForm'
 
 //import styles
+import { Row, Col } from 'antd';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import { LeftCircleTwoTone, RightCircleTwoTone } from '@ant-design/icons';
@@ -108,58 +109,48 @@ const PlaylistContainer = ({playlist, accessToken, username, admin, match, updat
   return (
     <Layout>
       <Content>
-      <div>
-        <header className='playlistHeader'>
+      <Row className='playlistHeader'>
+        <Col xs={8} sm={8} md={4} lg={3} xl={3}>
             {playlist && playlist.playlist.coverart ?
               <div className="card">
                 <img src={playlist.playlist.coverart} alt='album art' />
               </div>
               : 'loading...'}
-              {/* <img src={playlist.playlist.coverart} /> */}
-            <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
-            {username ?
-              <div className='inputDiv'>
-              <InputForm 
-                  dropdownRef={dropdownRef} 
-                  searchValue={searchValue} 
-                  results={results}
-                  visible={visible}
-                  setVisible={setVisible}
-                  selectSong={selectSong}
-                  handleChange={handleChange} 
-                />
-              </div>
-            :
-              <div className='inputDiv hide'>
-                <InputForm 
-                  dropdownRef={dropdownRef} 
-                  searchValue={searchValue} 
-                  results={results}
-                  dropdownRef={dropdownRef}
-                  visible={visible}
-                  setVisible={setVisible}
-                  selectSong={selectSong}
-                  handleChange={handleChange} 
-                />
-              </div>
-            }
-          <button className='toggleBtn' 
-            onClick={toggle}>{isHidden ? 
-                <LeftCircleTwoTone /> : 
-                <RightCircleTwoTone />}
-          </button>
-        </header>
-      </div>
-      <section>
+        </Col>
+        <Col xs={0} sm={0} md={8} lg={8} xl={8}className='headerPlaylistTitle'>
+          <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
+        </Col>  
+          <Col xs={3} sm={3} md={8} lg={6} xl={6}className='inputDiv'>
+            <InputForm 
+              dropdownRef={dropdownRef} 
+              searchValue={searchValue} 
+              results={results}
+              dropdownRef={dropdownRef}
+              visible={visible}
+              setVisible={setVisible}
+              selectSong={selectSong}
+              handleChange={handleChange} 
+              />
+          </Col>
+          <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+            <button className='toggleBtn' 
+              onClick={toggle}>{isHidden ? 
+                  <LeftCircleTwoTone /> : 
+                  <RightCircleTwoTone />}
+            </button>
+          </Col>
+      </Row>
+
+      <Row>
         <SongList
           playlist={playlist}
             updatePlayer={updatePlayer}
             admin={admin}
             deletePost={deletePost}
         />
-      </section>
+      </Row>
       </Content>
-      <Sider id='sider' className={isHidden ? 'hide' : 'show'}>
+      <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
         <Sidebar />
       </Sider>
     </Layout>

@@ -8,6 +8,7 @@ import PlaylistContainer from '../components/Playlist/PlaylistContainer';
 
 //import styles
 import '../components/Playlist/playlist.scss'
+import '../components/Playlist/songList.css'
 import 'antd/dist/antd.css';
 
 const Playlist = (props) => {
