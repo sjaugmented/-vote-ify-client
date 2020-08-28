@@ -1,7 +1,8 @@
 import React from 'react';
 import { Table, Tag, Space } from 'antd';
 
-const SongList = ({ playlist, updatePlayer }) => {
+const SongList = ({ playlist, updatePlayer, deletePost, admin }) => {
+  
   let posts
   const songList = []
   if (playlist) {
@@ -46,8 +47,6 @@ const SongList = ({ playlist, updatePlayer }) => {
     posts.forEach((post) => {
       songList.push(post)
     })
-  } else {
-    
   }
  
   return (

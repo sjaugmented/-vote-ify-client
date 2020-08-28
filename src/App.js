@@ -3,7 +3,6 @@ import Routes from './config/routes'
 import useFetch from './hooks/useFetch'
 import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
-import Player from './components/Footer/Player'
 import SpotifyPlayer from 'react-spotify-player'
 
 import { Layout } from 'antd';
@@ -49,7 +48,9 @@ function App(props) {
           spotifyId: data.spotifyId,
           name: data.name,
           accessToken: data.access,
-          refreshToken: data.refresh
+          refreshToken: data.refresh,
+          admin: data.admin,
+          posts: data.posts
         })
       }
     } catch (error) {
@@ -93,6 +94,7 @@ function App(props) {
             updatePlayer={updatePlayer}
             playlists={playlists}
             username={currentUser.name}
+            admin={currentUser.admin}
           />
         </Content>
         <Footer>

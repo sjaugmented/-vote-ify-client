@@ -26,7 +26,14 @@ export default class PostModel {
     }
     static delete = async (post) => {
         try {
-            
+            const deletedPost = await axios.delete(`${url}/posts/${post}`, {
+                // method: 'DELETE',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // }
+            })
+            console.log('deleted>>>>>', deletedPost)
+            //return deletedPost
         } catch (error) {
             console.log(error)
         }

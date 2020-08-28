@@ -6,7 +6,6 @@ import PostModel from '../../models/post'
 import Sidebar from './Sidebar'
 import SongList from './SongList';
 import InputForm from './inputForm'
-import AnimatedAlbum from './AnimatedAlbum'
 
 //import styles
 import { Row, Col } from 'antd';
@@ -19,7 +18,7 @@ const { Sider, Content } = Layout;
 
 
 
-const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer, getPlaylist}) => {
+const PlaylistContainer = ({playlist, accessToken, username, admin, match, updatePlayer, getPlaylist}) => {
 
   //Hook - Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(true)
@@ -69,8 +68,8 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     
   }, [searchValue]);
 
-  const refreshPlaylist = () => {
-    setTimeout(() => getPlaylist(), 1000)
+  const refreshPlaylist = (delay) => {
+    setTimeout(() => getPlaylist(), delay)
     
   }
 
@@ -90,7 +89,7 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     setSelectedSong(postData)
     // console.log(selectedSong)
     postSong(postData)
-    refreshPlaylist()
+    refreshPlaylist(200)
   }
 
   const postSong = async (song) => {
@@ -101,6 +100,11 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
     setSelectedSong(null)
   }
 
+  const deletePost = async (songId) => {
+    const deletedPost = await PostModel.delete(songId)
+    console.log('deletedPost:', deletedPost);
+    refreshPlaylist(100)
+  }
 
   return (
     <Layout>
@@ -108,9 +112,9 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
       <Row className='playlistHeader'>
         <Col xs={8} sm={8} md={4} lg={3} xl={3}>
             {playlist && playlist.playlist.coverart ?
-              <AnimatedAlbum 
-                playlist={playlist.playlist}
-              />
+              <div className="card">
+                <img src={playlist.playlist.coverart} alt='album art' />
+              </div>
               : 'loading...'}
         </Col>
         <Col xs={0} sm={0} md={8} lg={8} xl={8}className='headerPlaylistTitle'>
@@ -140,7 +144,9 @@ const PlaylistContainer = ({playlist, accessToken, username, match, updatePlayer
       <Row>
         <SongList
           playlist={playlist}
-          updatePlayer={updatePlayer}
+            updatePlayer={updatePlayer}
+            admin={admin}
+            deletePost={deletePost}
         />
       </Row>
       </Content>
