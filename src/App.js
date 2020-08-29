@@ -20,6 +20,8 @@ const size = {
 const view = 'coverart'
 const theme = 'black'
 
+const apiUrl = process.env.REACT_APP_API_URL
+
 function App(props) {
   const [currentSong, setCurrentSong] = useState({
     currentSong: '1JY6B9ILvmRla2IKKRZvnH'
@@ -39,7 +41,7 @@ function App(props) {
 
   const fetchLogin = async () => {
     try {
-      const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
+      const result = await fetch(apiUrl, {
         credentials: 'include'
       })
       const data = await result.json()
