@@ -7,9 +7,13 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
  
   console.log(approvedPosts)
   const songList = []
+  // if (isApproved) {
+  //   approvedPosts = isApproved
+
   if (isApproved) {
-    approvedPosts = isApproved
+    posts = isApproved
   }
+
   const columns = [
     {
       title: '',

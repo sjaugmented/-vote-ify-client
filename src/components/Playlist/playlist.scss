@@ -23,6 +23,16 @@
   color: rgb(61, 144, 247);
 }
 
+
+
+.sidebarList {
+  overflow: scroll;
+}
+
+.sidebarList li,button {
+  cursor: pointer;
+}
+
 .hide {
   display: none;
 }
@@ -49,7 +59,7 @@
 
 .sidebarDiv h1 {
   font-size: 31px;
-  margin: 26px 0 26px 0;
+  // margin: 26px 0 26px 0;
 
 }
 
