@@ -1,9 +1,9 @@
-const url = process.env.REACT_APP_API_URL
+const apiUrl = 'https://spotify-us-api.herokuapp.com/api/v1'
 
 export default class PlaylistModel {
     static all = async () => {
         try {
-            const response = await fetch(`${url}`)
+            const response = await fetch(`${apiUrl}`)
             const playlists = await response.json()
             return playlists
         } catch (error) {
@@ -12,7 +12,7 @@ export default class PlaylistModel {
     }
     static show = async (playlistId) => {
         try {
-            const response = await fetch(`${url}/playlist/${playlistId}`)
+            const response = await fetch(`${apiUrl}/playlist/${playlistId}`)
             const playlist = await response.json()
             return playlist
         } catch (error) {

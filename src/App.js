@@ -41,7 +41,7 @@ function App(props) {
 
   const fetchLogin = async () => {
     try {
-      const result = await fetch(apiUrl, {
+      const result = await fetch('https://spotify-us-api.herokuapp.com/api/v1/auth/verify', {
         credentials: 'include'
       })
       const data = await result.json()

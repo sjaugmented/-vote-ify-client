@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-const apiUrl = process.env.REACT_APP_API_URL
-
 const Auth = (props) => {
 
   
@@ -15,7 +13,7 @@ const Auth = (props) => {
           <a href={'https://spotify-us-api.herokuapp.com/api/v1/auth/login'}>Refresh Spotify</a>
         </>
         :
-        < a href = "https://spotify-us-api.herokuapp.com/api/v1/auth/login" > Connect with Spotify < /a>
+        <a href="https://spotify-us-api.herokuapp.com/api/v1/auth/login">Connect with Spotify</a>
       }
     </div>
   );
