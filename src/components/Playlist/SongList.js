@@ -4,8 +4,8 @@ import { Table, Tag, Space, Pagination } from 'antd';
 const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => {
   let posts
   const songList = []
-  if (playlist) {
-    posts = playlist.playlist.posts
+  if (isApproved) {
+    posts = isApproved
   }
   const columns = [
     {

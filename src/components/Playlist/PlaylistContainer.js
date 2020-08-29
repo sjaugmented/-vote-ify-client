@@ -21,7 +21,7 @@ const { Sider, Content } = Layout;
 const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, match, updatePlayer, getPlaylist}) => {
 
   //Hook - Toggle sidebar functionality
-  const [isHidden, setIsHidden] = useState(true)
+  const [isHidden, setIsHidden] = useState(false)
   const toggle =() => {
     setIsHidden(!isHidden)
   }
@@ -189,7 +189,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
 
       <Row>
         <SongList
-          playlist={playlist}
+            playlist={playlist}
             updatePlayer={updatePlayer}
             admin={admin}
             deletePost={deletePost}
@@ -198,7 +198,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       </Row>
       </Content>
       <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
-        <Sidebar playlist={playlist} isPending={isPending} updateVotes={updateVotes}/>
+        <Sidebar playlist={playlist} isPending={isPending} updatePlayer={updatePlayer} updateVotes={updateVotes}/>
       </Sider>
     </Layout>
   )

@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
 import PostModel from '../../models/post'
 
-const PendingPost = ({ post, key, updateVotes }) => {
+const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
   const [upVote, setUpVote] = useState(true)
   const [votes, setVotes] = useState(post.votes)
 
@@ -29,7 +29,7 @@ const PendingPost = ({ post, key, updateVotes }) => {
   }
   
   return (
-      <div>
+      <div className='pending-post' onClick={() => {updatePlayer(post.songId)}}>
           <li>{post.artist} - {post.songName}</li>
             <li><button onClick={() => {handleVote(post)}}>
               {upVote ? <LikeTwoTone /> : <DislikeOutlined />}

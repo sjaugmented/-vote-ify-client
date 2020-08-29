@@ -4,17 +4,18 @@ import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
 import PendingPost from './PendingPost'
 
 
-const Sidebar = ({playlist, isPending, updateVotes}) => {
+const Sidebar = ({updatePlayer, isPending, updateVotes}) => {
   
   let posts
   
-  if (playlist) {
-    posts = playlist.playlist.posts.map((post, index) => {
+  if (isPending) {
+    posts = isPending.map((post, index) => {
           return (
             <PendingPost 
               key={index}
               post={post}
               updateVotes={updateVotes}
+              updatePlayer={updatePlayer}
             />
           )
         })
