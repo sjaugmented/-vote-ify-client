@@ -22,7 +22,7 @@ const theme = 'black'
 
 function App(props) {
   const [currentSong, setCurrentSong] = useState({
-    currentSong: '2SAqBLGA283SUiwJ3xOUVI'
+    currentSong: '1JY6B9ILvmRla2IKKRZvnH'
   })
 
   const spotifyUri = 'spotify:track:'
