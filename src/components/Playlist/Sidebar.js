@@ -19,8 +19,6 @@ const Sidebar = ({playlist, isPending}) => {
         })
   }
 
-
-
   return (
     <div className='sidebarDiv'>
       <h1>Pending Songs</h1>
