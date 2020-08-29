@@ -23,8 +23,8 @@ const Sidebar = ({updatePlayer, isPending, updateVotes}) => {
 
   return (
     <div className='sidebarDiv'>
-      <h1>Pending Songs</h1>
-      <ul>
+      <h1 className='sidebarHeader'>Pending Songs</h1>
+      <ul className='sidebarList'>
         {posts ? posts : 'loading...'}
       </ul>
       
