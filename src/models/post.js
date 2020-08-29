@@ -18,10 +18,9 @@ export default class PostModel {
         }
     }
     static update = async (post) => {
+        console.log('POST>>>', post)
         try {
-            const updatedPost = await axios.put(`${url}/posts/${post._id}`, {
-                body: JSON.stringify(post)
-            })
+            const updatedPost = await axios.put(`${url}/posts/${post._id}`, post)
             return updatedPost
         } catch (error) {
             console.log(error)

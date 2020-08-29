@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
-import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
 import PendingPost from './PendingPost'
-
 
 const Sidebar = ({updatePlayer, isPending, updateVotes}) => {
   
@@ -23,12 +21,10 @@ const Sidebar = ({updatePlayer, isPending, updateVotes}) => {
 
   return (
     <div className='sidebarDiv'>
-      <h1>Pending Songs</h1>
-      <ul>
+      <h1 className='sidebarHeader'>Pending Songs</h1>
+      <ul className='sidebarList'>
         {posts ? posts : 'loading...'}
       </ul>
-      
-    
     </div>
   );
 }

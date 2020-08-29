@@ -1,20 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import 'antd/dist/antd.css';
 import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
-import PostModel from '../../models/post'
 
 const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
   const [upVote, setUpVote] = useState(true)
   const [votes, setVotes] = useState(post.votes)
-
-  // const updateVotes = async (post, updatedVotes) => {
-  //   let updatedPost = {
-  //     _id: post._id,
-  //     votes: updatedVotes,
-  //   }
-  //   const result = await PostModel.update(updatedPost)
-  //   console.log(result)
-  // }
 
   const handleVote = (post) => {
     let newVotes
@@ -23,19 +13,23 @@ const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
     } else {
       newVotes = votes - 1
     }
-    setVotes(newVotes)
+    // setVotes(newVotes)
     setUpVote(!upVote)
     updateVotes(post, newVotes)
   }
   
   return (
-      <div className='pending-post' onClick={() => {updatePlayer(post.songId)}}>
-          <li>{post.artist} - {post.songName}</li>
-            <li><button onClick={() => {handleVote(post)}}>
+    <div className='pending-post'>
+      <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
+      <li>
+        <button onClick={() => { handleVote(post) }}>
               {upVote ? <LikeTwoTone /> : <DislikeOutlined />}
-            </button></li>
-          <li><p>{votes}</p></li>
-      </div>
+        </button>
+      </li>
+      <li>
+        <p>{votes}</p>
+      </li>
+    </div>
   )
 }
 

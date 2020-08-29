@@ -6,68 +6,56 @@ import PostModel from '../../models/post'
 import Sidebar from './Sidebar'
 import SongList from './SongList';
 import InputForm from './inputForm'
-
 //import styles
 import { Row, Col } from 'antd';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import { LeftCircleTwoTone, RightCircleTwoTone } from '@ant-design/icons';
 
-
 const { Sider, Content } = Layout;
-
-
 
 const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, match, updatePlayer, getPlaylist}) => {
 
-  //Hook - Toggle sidebar functionality
+  //#region STATE & GLOBALS
+  //Toggle sidebar functionality
   const [isHidden, setIsHidden] = useState(false)
   const toggle =() => {
     setIsHidden(!isHidden)
   }
 
-  //Hook - Form/input functionality
+  //Form/input functionality
   const [visible, setVisible] = useState(false);
   const [searchValue, setSearchValue] = useState('')
   const [results, setResults] = useState('')
   const [selectedSong, setSelectedSong] = useState(null);
   const dropdownRef = useRef(null);
 
-  const handleChange = (e) => {
-    setSearchValue(e.target.value)
-    if(!visible){
-      setVisible(true)
+  //pending/approved posts
+  const [isPending, setPending] = useState([])
+  const [isApproved, setApproved] = useState([])
+  const pending = []
+  const approved = []
+  //#endregion
+
+
+  //#region SORTING, DELETING, UPDATING
+  const sortPosts = () => {
+    //await playlist
+    if (playlist) {
+      if (playlist.playlist) {
+        // loop through playlist.playlist.posts
+        playlist.playlist.posts.map(post => {
+          // if post.pending => pending.push(post)
+          if (post.votes < 1) pending.push(post)
+          else if (post.timestamp >= post.timestamp * 1000 * 60 * 60 * 24 * 7) deletePost(post._id)
+          // if !post.pending => approved.push(post)
+          else approved.push(post)
+          setApproved(approved)
+          setPending(pending)
+        })
+      }
     }
   }
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClick, false);
-    sortPosts()
-    return () => document.removeEventListener('mousedown', handleClick, false);
-  }, [playlist]);
-
-  const handleClick = e => {
-    if (dropdownRef.current.contains(e.target)) {
-      return;
-    }
-    setVisible(false);
-    
-  };
-
-  useEffect(() => {
-    async function getData(){
-      const info = ({searchValue, accessToken})
-      const list = await Spotify.search(info)
-      const {items} = list.data.tracks
-      setResults(items)
-    }
-    if(searchValue){
-      getData()
-    } else {
-      setResults(null)
-    }
-    
-  }, [searchValue]);
 
   const refreshPlaylist = (delay) => {
     setTimeout(() => {
@@ -78,9 +66,29 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     }, delay)
   }
 
-  const updatePost = async (postId) => {
-    const updatedPost = await PostModel.update(postId)
-    console.log(updatedPost)
+  const deletePost = async (songId) => {
+    const deletedPost = await PostModel.delete(songId)
+    console.log('deletedPost:', deletedPost);
+    refreshPlaylist(100)
+  }
+
+  const updateVotes = async (post, updatedVotes) => {
+    let updatedPost = {
+      _id: post._id,
+      votes: updatedVotes,
+    }
+    const result = await PostModel.update(updatedPost)
+    console.log(result)
+    refreshPlaylist(100)
+  }
+  //#endregion
+
+  //#region SEARCHING
+  const handleChange = (e) => {
+    setSearchValue(e.target.value)
+    if(!visible){
+      setVisible(true)
+    }
   }
 
   const selectSong = song => {
@@ -106,50 +114,45 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
 
   const postSong = async (song) => {
     const urlId = match.params.id
-    const data = {urlId, song}
+    const data = {
+      urlId,
+      song
+    }
     const result = await PostModel.create(data)
     // console.log(result)
     setSelectedSong(null)
+  
   }
-
-  const deletePost = async (songId) => {
-    const deletedPost = await PostModel.delete(songId)
-    console.log('deletedPost:', deletedPost);
-    refreshPlaylist(100)
-  }
-
-  const pending = []
-  const approved = []
-  const [isPending, setPending] = useState([])
-  const [isApproved, setApproved] = useState([])
-
-  const sortPosts = () => {
-
-      //await playlist
-      if (playlist) {
-        if (playlist.playlist) {
-        // loop through playlist.playlist.posts
-          playlist.playlist.posts.map(post => {
-          // if post.pending => pending.push(post)
-          if (post.votes < 1) pending.push(post)
-          else if (post.timestamp >= post.timestamp * 1000 * 60 * 60 * 24 * 7) deletePost(post._id)
-          // if !post.pending => approved.push(post)
-          else approved.push(post)
-          setApproved(approved)
-          setPending(pending)
-        })
-      }}
-  }
-
-  const updateVotes = async (post, updatedVotes) => {
-    let updatedPost = {
-      _id: post._id,
-      votes: updatedVotes,
+  const handleClick = e => {
+    if (dropdownRef.current.contains(e.target)) {
+      return;
     }
-    const result = await PostModel.update(updatedPost)
-    console.log(result)
-    refreshPlaylist(100)
-  }
+    setVisible(false);
+    
+  };
+  //#endregion
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClick, false);
+    sortPosts()
+    return () => document.removeEventListener('mousedown', handleClick, false);
+  }, [playlist]);
+
+
+  useEffect(() => {
+    async function getData(){
+      const info = ({searchValue, accessToken})
+      const list = await Spotify.search(info)
+      const {items} = list.data.tracks
+      setResults(items)
+    }
+    if(searchValue){
+      getData()
+    } else {
+      setResults(null)
+    }
+    
+  }, [searchValue]);
 
 
   return (
@@ -171,7 +174,6 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
               dropdownRef={dropdownRef} 
               searchValue={searchValue} 
               results={results}
-              dropdownRef={dropdownRef}
               visible={visible}
               setVisible={setVisible}
               selectSong={selectSong}
