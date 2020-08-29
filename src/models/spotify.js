@@ -26,10 +26,7 @@ class Spotify {
 
     static playlist = async (accessToken) => {
       console.log(accessToken)
-        console.log('SPOTIFY.JS - running playlist');
         try {
-            console.log('SPOTIFY.JS - inside TRY block');
-
             const playlist = await axios.get(playlistURL, {
                 method: 'GET',
                 headers: {

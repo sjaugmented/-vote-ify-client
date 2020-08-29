@@ -1,4 +1,4 @@
-const url = `http://localhost:3001/api/v1`
+const url = 'https://spotify-us-api.herokuapp.com/api/v1'
 
 export default class PlaylistModel {
     static all = async () => {
