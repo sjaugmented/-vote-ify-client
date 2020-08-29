@@ -1,19 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
 import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
+import PostModel from '../../models/post'
 
-const PendingPost = ({ post, key }) => {
+const PendingPost = ({ post, key, updateVotes }) => {
   const [upVote, setUpVote] = useState(true)
   const [votes, setVotes] = useState(post.votes)
 
-  const updatePost = (post, votes) => {
-    
-  }
+  // const updateVotes = async (post, updatedVotes) => {
+  //   let updatedPost = {
+  //     _id: post._id,
+  //     votes: updatedVotes,
+  //   }
+  //   const result = await PostModel.update(updatedPost)
+  //   console.log(result)
+  // }
 
   const handleVote = (post) => {
-    upVote ? setVotes(votes + 1) : setVotes(votes - 1)
+    let newVotes
+    if (upVote) {
+      newVotes = votes + 1
+    } else {
+      newVotes = votes - 1
+    }
+    setVotes(newVotes)
     setUpVote(!upVote)
-    console.log(votes)
+    updateVotes(post, newVotes)
   }
   
   return (

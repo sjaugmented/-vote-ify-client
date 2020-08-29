@@ -72,7 +72,9 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
   const refreshPlaylist = (delay) => {
     setTimeout(() => {
       getPlaylist()
+      console.log('playlist refreshed');
       sortPosts()
+      console.log('posts sorted');
     }, delay)
   }
 
@@ -126,21 +128,27 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       //await playlist
       if (playlist) {
         if (playlist.playlist) {
-        console.log('playlist>>', playlist.playlist)
         // loop through playlist.playlist.posts
           playlist.playlist.posts.map(post => {
-          console.log(post.pending)
           // if post.pending => pending.push(post)
-          if (post.pending) pending.push(post)
-          
+          if (post.votes < 1) pending.push(post)
+          else if (post.timestamp >= post.timestamp * 1000 * 60 * 60 * 24 * 7) deletePost(post._id)
           // if !post.pending => approved.push(post)
           else approved.push(post)
           setApproved(approved)
           setPending(pending)
         })
       }}
-      console.log(pending)
-      console.log(approved)
+  }
+
+  const updateVotes = async (post, updatedVotes) => {
+    let updatedPost = {
+      _id: post._id,
+      votes: updatedVotes,
+    }
+    const result = await PostModel.update(updatedPost)
+    console.log(result)
+    refreshPlaylist(100)
   }
 
 
@@ -190,7 +198,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       </Row>
       </Content>
       <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
-        <Sidebar playlist={playlist} isPending={isPending}/>
+        <Sidebar playlist={playlist} isPending={isPending} updateVotes={updateVotes}/>
       </Sider>
     </Layout>
   )
