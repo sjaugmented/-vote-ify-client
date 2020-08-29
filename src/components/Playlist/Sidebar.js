@@ -6,10 +6,10 @@ import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
 
 const Sidebar = ({playlist, isPending}) => {
   console.log(isPending)
-  let posts
+  let pendingPosts
   
-  if (playlist) {
-    posts = playlist.playlist.posts
+  if (isPending) {
+    pendingPosts = isPending
   }
   let songVotes
   // const [isPending, setPending] = useState(true)
@@ -22,7 +22,7 @@ const Sidebar = ({playlist, isPending}) => {
     <div className='sidebarDiv'>
       <h1>Pending Songs</h1>
       <ul>
-        {posts ? posts.map((post, index)=>{
+        {pendingPosts ? pendingPosts.map((post, index)=>{
           songVotes = post.votes
           return (
             <>

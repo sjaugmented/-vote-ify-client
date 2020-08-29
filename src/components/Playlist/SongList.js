@@ -2,10 +2,13 @@ import React from 'react';
 import { Table, Tag, Space, Pagination } from 'antd';
 
 const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => {
-  let posts
+  console.log(isApproved)
+  let approvedPosts = isApproved
+ 
+  console.log(approvedPosts)
   const songList = []
-  if (playlist) {
-    posts = playlist.playlist.posts
+  if (isApproved) {
+    approvedPosts = isApproved
   }
   const columns = [
     {
@@ -41,8 +44,8 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
     }
   ]
 
-  if (posts) {
-    posts.forEach((post) => {
+  if (approvedPosts) {
+    approvedPosts.forEach((post) => {
       songList.push(post)
     })
   }
