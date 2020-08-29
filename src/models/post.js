@@ -1,5 +1,5 @@
 const axios = require('axios')
-const url = 'https://spotify-us-api.herokuapp.com/api/v1'
+const url = process.env.REACT_APP_API_URL
 
 export default class PostModel {
     static create = async (data) => {
