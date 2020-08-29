@@ -5,6 +5,8 @@ import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
 
 
 const Sidebar = ({playlist, isPending}) => {
+  const [increment, setIncrement] = useState(true)
+  
   console.log(isPending)
   let pendingPosts
   
@@ -14,8 +16,12 @@ const Sidebar = ({playlist, isPending}) => {
   let songVotes
   // const [isPending, setPending] = useState(true)
   const [votes, setVote] = useState(songVotes)
+  const [voteCount, setVoteCount] = useState(0)
+  const [didVote, setDidVote] = useState(false)
  
-  
+  const handleVote = (post) => {
+   setDidVote(!didVote)
+  }
 
 
   return (
@@ -27,7 +33,10 @@ const Sidebar = ({playlist, isPending}) => {
           return (
             <>
             <li>{post.artist} - {post.songName}</li>
-            <li><button onClick={()=> setVote(post.votes++)}><DislikeOutlined /><LikeTwoTone /></button></li>
+              <li><button onClick={() => {setDidVote(!didVote)}}>
+              {/* <li><button onClick={setDidVote(!didVote)}> */}
+                {didVote ? <LikeTwoTone /> : <DislikeOutlined />}
+              </button></li>
             <li><p>{post.votes}</p></li>
             </>
           )
