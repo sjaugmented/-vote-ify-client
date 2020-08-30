@@ -24,15 +24,6 @@
 }
 
 
-
-.sidebarList {
-  overflow: scroll;
-}
-
-.sidebarList li,button {
-  cursor: pointer;
-}
-
 .hide {
   display: none;
 }
@@ -60,9 +51,29 @@
 .sidebarDiv h1 {
   font-size: 31px;
   // margin: 26px 0 26px 0;
-
 }
 
+.voteBtn {
+  background-color: rgb(15, 15, 15);
+  border: none;
+}
+
+.voteCount, .contributor {
+  display: inline;
+}
+
+.sidebarList {
+  overflow: scroll;
+  overflow: hidden;
+}
+
+.voteBtn, .pendingSong {
+  cursor: pointer;
+}
+
+.pendingSong {
+  font-weight: bold;
+}
 /* ///////////////////////////// */
 
 .playContainerDiv {
