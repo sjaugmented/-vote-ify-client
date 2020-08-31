@@ -20,7 +20,7 @@ const Sidebar = ({updatePlayer, isPending, updateVotes}) => {
   }
 
   return (
-    <div className='sidebarDiv'>
+    <div className='sidebarDiv w3-container w3-center w3-animate-right'>
       <h1 className='sidebarHeader'>Vote Songs In!</h1>
       <ul className='sidebarList'>
         {posts ? posts : 'loading...'}

@@ -46,7 +46,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
         // loop through playlist.playlist.posts
         playlist.playlist.posts.map(post => {
           // if post.pending => pending.push(post)
-          if (post.votes < 1) pending.push(post)
+          if (post.votes < 5) pending.push(post)
           else if (post.timestamp >= post.timestamp * 1000 * 60 * 60 * 24 * 7) deletePost(post._id)
           // if !post.pending => approved.push(post)
           else approved.push(post)
