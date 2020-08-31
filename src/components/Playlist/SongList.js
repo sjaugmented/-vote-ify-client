@@ -45,9 +45,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
       key: 'timestamp',
       render: date => (
         <>
-        
         {date ? date.substr(0, 10) : ''}
-        
         </>
       )
     }
