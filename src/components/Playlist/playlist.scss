@@ -24,15 +24,6 @@
 }
 
 
-
-.sidebarList {
-  overflow: scroll;
-}
-
-.sidebarList li,button {
-  cursor: pointer;
-}
-
 .hide {
   display: none;
 }
@@ -52,6 +43,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  z-index: 1;
+  margin-top: 284px;
 }
 .sidebarDiv h1, .sidebarDiv p {
   color: rgb(61, 144, 247);
@@ -60,9 +53,33 @@
 .sidebarDiv h1 {
   font-size: 31px;
   // margin: 26px 0 26px 0;
-
 }
 
+.voteBtn {
+  background-color: rgb(15, 15, 15);
+  border: none;
+}
+
+.voteCount, .contributor {
+  display: inline;
+}
+
+.sidebarList {
+  overflow: scroll;
+  overflow: hidden;
+}
+
+.voteBtn, .pendingSong {
+  cursor: pointer;
+}
+
+.pending-post{
+  margin-bottom: 10px;
+}
+
+.pendingSong {
+  font-weight: bold;
+}
 /* ///////////////////////////// */
 
 .playContainerDiv {

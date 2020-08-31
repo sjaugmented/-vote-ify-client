@@ -113,6 +113,9 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
   }
 
   const postSong = async (song) => {
+    if(isHidden === true){
+      setIsHidden(false)
+    }
     const urlId = match.params.id
     const data = {
       urlId,
