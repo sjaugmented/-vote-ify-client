@@ -15,7 +15,7 @@ const Brand = () => {
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{ transform: props.xys.interpolate(trans) }}
     >
-      <Link className='brandLink' to='/'><h1>Spotify.Us</h1></Link>
+      <Link className='brandLink' to='/'><h1>Vote-ify</h1></Link>
     </animated.div>
   );
 }
