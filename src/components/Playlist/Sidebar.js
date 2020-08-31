@@ -1,9 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import 'antd/dist/antd.css';
+import PendingPost from './PendingPost'
 
-const Sidebar = () => {
+const Sidebar = ({updatePlayer, isPending, updateVotes}) => {
+  
+  let posts
+  
+  if (isPending) {
+    posts = isPending.map((post, index) => {
+          return (
+            <PendingPost 
+              key={index}
+              post={post}
+              updateVotes={updateVotes}
+              updatePlayer={updatePlayer}
+            />
+          )
+        })
+  }
+
   return (
-    <div>
-      <h1>Hello</h1>
+    <div className='sidebarDiv'>
+      <h1 className='sidebarHeader'>Vote Songs In!</h1>
+      <ul className='sidebarList'>
+        {posts ? posts : 'loading...'}
+      </ul>
     </div>
   );
 }

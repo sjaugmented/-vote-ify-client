@@ -2,30 +2,40 @@ const axios = require('axios')
 const url = 'http://localhost:3001/api/v1'
 
 export default class PostModel {
-    static create = async (post) => {
+    static create = async (data) => {
         try {
-            const newPost = await axios.get(`${url}/posts`, {
+            const newPost = await axios.post(`${url}/posts/${data.urlId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(post)
+                body: JSON.stringify(data.song)
             })
-            console.log(newPost) // TODO: remove
-        } catch (error) {
+          return newPost
+        } 
+        catch (error) {
             console.log(error)
         }
     }
     static update = async (post) => {
+        console.log('POST>>>', post)
         try {
-            
+            const updatedPost = await axios.put(`${url}/posts/${post._id}`, post)
+            return updatedPost
         } catch (error) {
             console.log(error)
         }
     }
     static delete = async (post) => {
         try {
-            
+            const deletedPost = await axios.delete(`${url}/posts/${post}`, {
+                // method: 'DELETE',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // }
+            })
+            console.log('deleted>>>>>', deletedPost)
+            //return deletedPost
         } catch (error) {
             console.log(error)
         }

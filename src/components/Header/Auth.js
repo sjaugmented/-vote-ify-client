@@ -3,12 +3,14 @@ import {Link} from 'react-router-dom'
 
 const Auth = (props) => {
 
+  
+
   return (
     <div className='authDiv'>
-      {props.currentUser ? 
+      {props.username ? 
         <>
-          <Link to={'/profile'}>{props.currentUser}</Link>
-          <Link to={'/logout'}>Logout</Link>
+          <Link to={`/users/${props.spotifyId}`}>Hey {props.username}!</Link>
+          <a href={'http://localhost:3001/api/v1/auth/login'}>Refresh Spotify</a>
         </>
         :
         <a href="http://localhost:3001/api/v1/auth/login">Connect with Spotify</a>

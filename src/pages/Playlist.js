@@ -1,52 +1,35 @@
-import React, { Component } from 'react';
-import Sidebar from '../components/Playlist/Sidebar'
-import PlaylistContainer from '../components/Playlist/PlaylistContainer';
+import React, { useState, useEffect } from 'react';
+//import model
 import PlaylistModel from '../models/playlist'
 
+//import components
+import PlaylistContainer from '../components/Playlist/PlaylistContainer';
 
-import '../components/Header/header.css'
 
-import { Layout } from 'antd';
+//import styles
+import '../components/Playlist/playlist.scss'
+import '../components/Playlist/songList.css'
 import 'antd/dist/antd.css';
 
+const Playlist = (props) => {
 
-const { Header, Footer, Sider, Content } = Layout;
-
-class Playlist extends Component {
-//   const [isHidden, setIsHidden] = useState(true)
-
-//   const toggle =() => {
-//     setIsHidden(!isHidden)
-//   }
-
-    // return (
-    //   <Layout>
-    //     <Content> <SongList /><button onClick={toggle}>toggle</button> </Content>
-    //     <Sider className={isHidden ? 'hide' : 'show'}><Sidebar /></Sider>
-    //   </Layout>
-    // );
-
-    state = {
-      playlist: ''
-    }
+  //call fetch request to show the single playlist
+  const [playlist, setPlaylist] = useState()
   
-    componentDidMount(){
-      PlaylistModel.show(this.props.match.params.id)
-        .then(data => {
-          this.setState({playlist: data.playlist})
-          // console.log(this.state.playlist)
-        })
-    }
+  const getPlaylist = async () => {
+    const result = await PlaylistModel.show(props.match.params.id)
+    setPlaylist({playlist: result.playlist})
+  }
 
-    render(){
-      return (
-      <Layout>
-        <Content><PlaylistContainer playlist={this.state.playlist}/></Content>
-        <Sider><Sidebar /></Sider>
-      </Layout>
-    );
-      
-    }
+  useEffect(() => {
+    getPlaylist()
+  }, []);
+
+  return (
+
+    <PlaylistContainer updatePlayer={props.updatePlayer} match={props.match} username={props.username} spotifyId={props.spotifyId} admin={props.admin} accessToken={props.accessToken} playlist={playlist} getPlaylist={getPlaylist}/>
+  );   
+
 }
 
 export default Playlist;

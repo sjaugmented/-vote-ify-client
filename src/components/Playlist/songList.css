@@ -1,0 +1,50 @@
+.songList {
+  position: relative;
+  padding: 0;
+  margin-top: 20px;
+  width: 74vw;
+}
+
+/* import { css } from 'react-emotion';
+
+const tableCSS = css({
+  margin: '40px 120px',
+  backgroundColor: 'white',
+  '& table': {
+    borderCollapse: 'collapse'
+  },
+  '& thead > tr > th': {
+    backgroundColor: 'darkblue',
+    color: 'white',
+  },
+  '& thead > tr': {
+    borderWidth: '2px',
+    borderColor: 'yellow',
+    borderStyle: 'solid'
+  }
+}); */
+
+.ant-table {
+  background-color: rgb(15, 15, 15);
+  color: rgb(61, 144, 247);
+}
+
+.ant-table-content table .thead.ant-table-thead {
+  background-color: black;
+}
+
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
+  padding: 0 0 0 10px;
+}
+.ant-table-row {
+  height: 40px;
+}
+.ant-table-cell {
+  padding: 0;
+}
+.ant-table-cell img {
+  height: 40px;
+  width: 40px;
+}
+
+
