@@ -2,30 +2,27 @@ import React from 'react';
 import { Table, Tag, Space, Pagination } from 'antd';
 
 const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => {
-  console.log(isApproved)
-  let approvedPosts = isApproved
+  let approvedPosts
  
-  console.log(approvedPosts)
   const songList = []
   if (isApproved) {
     approvedPosts = isApproved
-
   }
-  // if (isApproved) {
-  //   posts = isApproved
-  // }
+
 
   const columns = [
     {
       title: '',
       dataIndex: 'albumArt',
       key: 'albumArt',
+      width: 55,
       render: dataIndex => <img alt='' src={dataIndex}/>
     },
     {
       title: 'Artist',
       dataIndex: 'artist',
-      key: 'artist'
+      key: 'artist',
+      width: 150
     },
     {
       title: 'Song',
@@ -45,7 +42,14 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
     {
       title: 'Date Added',
       dataIndex: 'timestamp',
-      key: 'timestamp'
+      key: 'timestamp',
+      render: date => (
+        <>
+        
+        {date ? date.substr(0, 10) : ''}
+        
+        </>
+      )
     }
   ]
 
@@ -54,7 +58,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
       songList.push(post)
     })
   }
-
+  
   return (
     <div className='songList'>
       <Table 
