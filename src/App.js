@@ -20,7 +20,7 @@ const size = {
 const view = 'coverart'
 const theme = 'black'
 
-const apiUrl = process.env.REACT_APP_API_URL
+const apiUrl = process.env.REACT_APP_API_URL2
 
 function App(props) {
   const [currentSong, setCurrentSong] = useState({
