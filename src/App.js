@@ -21,6 +21,7 @@ const view = 'coverart'
 const theme = 'black'
 
 function App(props) {
+  console.log(props)
   const [currentSong, setCurrentSong] = useState({
     currentSong: '2SAqBLGA283SUiwJ3xOUVI'
   })
@@ -84,6 +85,7 @@ function App(props) {
         <Header>
           <HeadContainer 
             username={currentUser.name}
+            accessToken={currentUser.accessToken}
             spotifyId={currentUser.spotifyId}
             // logout={logout}
             playlists={playlists}
