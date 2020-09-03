@@ -13,7 +13,7 @@ const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
     } else {
       newVotes = votes - 1
     }
-    setVotes(newVotes)
+    //setVotes(newVotes)
     setUpVote(!upVote)
     updateVotes(post, newVotes)
   }

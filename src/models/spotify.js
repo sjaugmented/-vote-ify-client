@@ -20,9 +20,6 @@ class Spotify {
         console.log(error)
       }
     }
-  
-  
-     
 
     static playlist = async (accessToken) => {
       console.log(accessToken)
@@ -44,6 +41,4 @@ class Spotify {
     }
 }
 
-
 export default Spotify;
-
