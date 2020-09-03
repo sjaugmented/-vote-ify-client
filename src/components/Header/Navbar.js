@@ -10,7 +10,7 @@ const Navbar = (props) => {
     <div>
       <Row>
         <Col className='dropdownCol'>
-          <PlaylistDropdown username={props.username}/>
+          {/* <PlaylistDropdown username={props.username}/> */}
         </Col>
         <Col className='authCol'>
           <Auth 

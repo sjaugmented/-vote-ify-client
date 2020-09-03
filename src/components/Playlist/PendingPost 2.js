@@ -13,7 +13,7 @@ const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
     } else {
       newVotes = votes - 1
     }
-    //setVotes(newVotes)
+    // setVotes(newVotes)
     setUpVote(!upVote)
     updateVotes(post, newVotes)
   }
@@ -21,12 +21,13 @@ const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
   return (
     <div className='pending-post'>
       <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
-      <li >
-        <button className='voteBtn' onClick={() => { handleVote(post) }}>
+      <li>
+        <button onClick={() => { handleVote(post) }}>
               {upVote ? <LikeTwoTone /> : <DislikeOutlined />}
         </button>
-        <p className='voteCount'>{votes}</p>
-        <p className='contributor'> - Suggested by: {post.user}</p>
+      </li>
+      <li>
+        <p>{votes}</p>
       </li>
     </div>
   )

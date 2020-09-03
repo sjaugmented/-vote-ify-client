@@ -1,4 +1,4 @@
-const url = process.env.REACT_APP_API_URL
+const url = 'http://localhost:3001/api/v1'
 
 export default class PlaylistModel {
     static all = async () => {

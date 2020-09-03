@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Routes from './config/routes'
 import useFetch from './hooks/useFetch'
-import UserModel from './models/user'
 import HeadContainer from './components/Header/HeadContainer'
 import SpotifyPlayer from 'react-spotify-player'
 
@@ -19,8 +18,6 @@ const size = {
 }
 const view = 'coverart'
 const theme = 'black'
-
-const apiUrl = process.env.REACT_APP_API_URL
 
 function App(props) {
   console.log(props)
@@ -42,7 +39,7 @@ function App(props) {
 
   const fetchLogin = async () => {
     try {
-      const result = await fetch(apiUrl, {
+      const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
         credentials: 'include'
       })
       const data = await result.json()
@@ -64,18 +61,6 @@ function App(props) {
   useEffect(() => {
     fetchLogin()
   }, []);
-
-  // const logout = (event) => {
-  //   event.preventDefault()
-
-  //   localStorage.removeItem('uid')
-  //   UserModel.logout()
-  //     .then(res => {
-  //       console.log(res)
-  //       setCurrentUser(null)
-  //       props.history.push('/login')
-  //     })
-  // }
 
   // Getting all playlists from db with custom hook
   const playlists = useFetch([])
