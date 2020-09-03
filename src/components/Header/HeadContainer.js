@@ -17,6 +17,7 @@ const HeadContainer = (props) => {
           <Col xs={24} sm={24} md={24} lg={18} xl={18}>
             <Row justify="end" className='navbarRow'>
               <Navbar
+              accessToken={props.accessToken}
               username={props.username}
               spotifyId={props.spotifyId}
               />
