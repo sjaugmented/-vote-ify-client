@@ -7,7 +7,6 @@
   background-color: rgb(15, 15, 15);
 }
 
-
 .sidebarDiv {
   background-color: rgb(15, 15, 15);
   width: 300px;
@@ -23,7 +22,6 @@
   color: rgb(61, 144, 247);
 }
 
-
 .hide {
   display: none;
 }
@@ -36,8 +34,20 @@
   background: none;
   border: none;
   right: 50vw;
+  margin-top: 10px;
 }
 
+.voteCol {
+  display: flex;
+}
+
+.voteCol p {
+  color: rgb(61, 144, 247);
+  text-align: center;
+  margin-bottom: 0;
+  margin-right: 4px;
+  margin-top: 10px;
+}
 
 .sidebarDiv {
   display: flex;
@@ -45,13 +55,16 @@
   padding: 10px;
   z-index: 1;
   margin-top: 284px;
+  transition: width 2s;
 }
+
 .sidebarDiv h1, .sidebarDiv p {
   color: rgb(61, 144, 247);
 }
 
 .sidebarDiv h1 {
   font-size: 31px;
+  text-align: center;
   // margin: 26px 0 26px 0;
 }
 
@@ -69,12 +82,13 @@
   overflow: hidden;
 }
 
-.voteBtn, .pendingSong {
+.voteBtn, .pendingSong, .toggleBtn {
   cursor: pointer;
 }
 
 .pending-post{
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .pendingSong {
@@ -98,7 +112,6 @@
   align-items: center;
   // padding: 5vw 0 0 5vw;
 }
-
 
 .card img {
   width: 200px;
@@ -200,7 +213,7 @@ img {
 input {
   width: 100%;
   // padding-bottom: 12px;
-  min-width: 17vw;
+  min-width: 130px;
   max-width: 17vw;
   border: none;
   outline: none;

@@ -46,7 +46,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
         // loop through playlist.playlist.posts
         playlist.playlist.posts.map(post => {
           // if post.pending => pending.push(post)
-          if (post.votes < 5) pending.push(post)
+          if (post.votes < 1) pending.push(post)
           else if (post.timestamp >= post.timestamp * 1000 * 60 * 60 * 24 * 7) deletePost(post._id)
           // if !post.pending => approved.push(post)
           else approved.push(post)
@@ -162,7 +162,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     <Layout>
       <Content>
       <Row className='playlistHeader'>
-        <Col xs={12} sm={12} md={8} lg={8} xl={5}>
+        <Col xs={0} sm={0} md={8} lg={8} xl={5}>
             {playlist && playlist.playlist.coverart ?
               <div className="card">
                 <img src={playlist.playlist.coverart} alt='album art' />
@@ -183,7 +183,8 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
               handleChange={handleChange} 
               />
           </Col>
-          <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+          <Col className='voteCol' xs={1} sm={1} md={1} lg={1} xl={1}>
+            <p>Vote</p>
             <button className='toggleBtn' 
               onClick={toggle}>{isHidden ? 
                   <LeftCircleTwoTone /> : 
