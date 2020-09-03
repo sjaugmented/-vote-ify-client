@@ -20,7 +20,7 @@ const size = {
 const view = 'coverart'
 const theme = 'black'
 
-const apiUrl = process.env.REACT_APP_API_URL
+const apiUrl = 'http://localhost:3001/api/v1'
 
 function App(props) {
   console.log(props)
