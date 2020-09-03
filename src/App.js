@@ -23,6 +23,7 @@ const theme = 'black'
 const apiUrl = process.env.REACT_APP_API_URL
 
 function App(props) {
+  console.log(props)
   const [currentSong, setCurrentSong] = useState({
     currentSong: '1JY6B9ILvmRla2IKKRZvnH'
   })
@@ -86,6 +87,7 @@ function App(props) {
         <Header>
           <HeadContainer 
             username={currentUser.name}
+            accessToken={currentUser.accessToken}
             spotifyId={currentUser.spotifyId}
             // logout={logout}
             playlists={playlists}

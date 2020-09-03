@@ -113,6 +113,9 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
   }
 
   const postSong = async (song) => {
+    if(isHidden === true){
+      setIsHidden(false)
+    }
     const urlId = match.params.id
     const data = {
       urlId,
@@ -159,7 +162,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     <Layout>
       <Content>
       <Row className='playlistHeader'>
-        <Col xs={12} sm={12} md={8} lg={8} xl={5}>
+        <Col xs={0} sm={0} md={8} lg={8} xl={5}>
             {playlist && playlist.playlist.coverart ?
               <div className="card">
                 <img src={playlist.playlist.coverart} alt='album art' />
@@ -180,7 +183,8 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
               handleChange={handleChange} 
               />
           </Col>
-          <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+          <Col className='voteCol' xs={1} sm={1} md={1} lg={1} xl={1}>
+            <p>Vote</p>
             <button className='toggleBtn' 
               onClick={toggle}>{isHidden ? 
                   <LeftCircleTwoTone /> : 
