@@ -42,7 +42,7 @@ function App(props) {
 
   const fetchLogin = async () => {
     try {
-      const result = await fetch(apiUrl, {
+      const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
         credentials: 'include'
       })
       const data = await result.json()
