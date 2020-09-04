@@ -11,3 +11,5 @@ function usePersistedState(key, defaultValue) {
     
     return [state,setState]
 }
+
+export default usePersistedState

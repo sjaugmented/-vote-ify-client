@@ -4,7 +4,7 @@ import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
 import usePersistedState from '../../hooks/usePersistedState'
 
 const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
-  const [upVote, setUpVote] = usePersistedState('upvote', 'true')
+  const [upVote, setUpVote] = usePersistedState(post.id + 'upvote', 'false')
   const [votes, setVotes] = useState(post.votes)
 
   const handleVote = (post) => {
@@ -14,7 +14,7 @@ const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
     } else {
       newVotes = votes - 1
     }
-    //setVotes(newVotes)
+    setVotes(newVotes)
     setUpVote(!upVote)
     updateVotes(post, newVotes)
   }
