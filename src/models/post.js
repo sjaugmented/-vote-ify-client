@@ -18,7 +18,6 @@ export default class PostModel {
         }
     }
     static update = async (post) => {
-        console.log('POST>>>', post)
         try {
             const updatedPost = await axios.put(`${apiUrl}/posts/${post._id}`, post)
             return updatedPost

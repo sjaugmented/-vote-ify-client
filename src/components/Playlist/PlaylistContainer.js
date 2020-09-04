@@ -78,7 +78,6 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       votes: updatedVotes,
     }
     const result = await PostModel.update(updatedPost)
-    console.log(result)
     refreshPlaylist(100)
   }
   //#endregion
@@ -107,7 +106,6 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       timestamp: Date.now()
     }
     setSelectedSong(postData)
-    // console.log(selectedSong)
     postSong(postData)
     refreshPlaylist(500)
   }

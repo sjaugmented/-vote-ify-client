@@ -22,7 +22,6 @@ class Spotify {
     }
 
     static playlist = async (accessToken) => {
-      console.log(accessToken)
         try {
             const playlist = await axios.get(playlistURL, {
                 method: 'GET',
