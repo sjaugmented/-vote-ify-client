@@ -10,10 +10,10 @@ const Auth = (props) => {
       {props.username ? 
         <>
           <Link to=''>Hey {props.username}!</Link>
-          <a href={'https://spotify-us-api.herokuapp.com/api/v1/auth/login'}>Refresh Spotify</a>
+          <a href={'http://localhost:3001/api/v1/auth/login'}>Refresh Spotify</a>
         </>
         :
-        <a href="https://spotify-us-api.herokuapp.com/api/v1/auth/login"> Connect with Spotify </a>
+        <a href="http://localhost:3001/api/v1/auth/login"> Connect with Spotify </a>
       }
     </div>
   );
