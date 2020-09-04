@@ -78,8 +78,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       votes: updatedVotes,
     }
     const result = await PostModel.update(updatedPost)
-    console.log('upVoted post:', result);
-    if (result.data.post.votes >= 5) refreshPlaylist(100)
+    // if (result.data.post.votes >= 5) refreshPlaylist(100)
   }
   //#endregion
 
