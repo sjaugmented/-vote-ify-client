@@ -202,7 +202,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       </Row>
       </Content>
       <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
-        <Sidebar playlist={playlist} isPending={isPending} updatePlayer={updatePlayer} updateVotes={updateVotes}/>
+        <Sidebar username={username} playlist={playlist} isPending={isPending} updatePlayer={updatePlayer} updateVotes={updateVotes}/>
       </Sider>
     </Layout>
   )
