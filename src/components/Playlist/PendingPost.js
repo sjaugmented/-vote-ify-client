@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
 import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
+import usePersistedState from '../../hooks/usePersistedState'
 
 const PendingPost = ({ post, key, updateVotes, updatePlayer }) => {
-  const [upVote, setUpVote] = useState(true)
+  const [upVote, setUpVote] = usePersistedState('upvote', 'true')
   const [votes, setVotes] = useState(post.votes)
 
   const handleVote = (post) => {
