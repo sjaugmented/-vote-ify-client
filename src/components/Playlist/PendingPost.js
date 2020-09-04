@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
-import { DislikeOutlined, LikeTwoTone } from '@ant-design/icons';
+import { HeartTwoTone, HeartFilled } from '@ant-design/icons';
 import usePersistedState from '../../hooks/usePersistedState'
 
 const PendingPost = ({ username, post, key, updateVotes, updatePlayer }) => {
@@ -25,7 +25,7 @@ const PendingPost = ({ username, post, key, updateVotes, updatePlayer }) => {
       {username ?
         <li >
           <button className='voteBtn' onClick={() => { handleVote(post) }}>
-                {downVote ? <DislikeOutlined /> : <LikeTwoTone /> }
+                {downVote ? <HeartFilled /> : <HeartTwoTone /> }
           </button>
           <p className='voteCount'>{votes}</p>
           <p className='contributor'> - Suggested by: {post.user}</p>
