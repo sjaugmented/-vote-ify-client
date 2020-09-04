@@ -20,7 +20,6 @@ const view = 'coverart'
 const theme = 'black'
 
 function App(props) {
-  console.log(props)
   const [currentSong, setCurrentSong] = useState({
     currentSong: '1JY6B9ILvmRla2IKKRZvnH'
   })
@@ -39,7 +38,7 @@ function App(props) {
 
   const fetchLogin = async () => {
     try {
-      const result = await fetch('http://localhost:3001/api/v1/auth/verify', {
+      const result = await fetch('https://spotify-us-api.herokuapp.com/api/v1/auth/verify', {
         credentials: 'include'
       })
       const data = await result.json()
@@ -74,7 +73,6 @@ function App(props) {
             username={currentUser.name}
             accessToken={currentUser.accessToken}
             spotifyId={currentUser.spotifyId}
-            // logout={logout}
             playlists={playlists}
           />
         </Header>

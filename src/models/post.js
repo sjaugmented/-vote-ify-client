@@ -1,5 +1,5 @@
 const axios = require('axios')
-const apiUrl = 'http://localhost:3001/api/v1'
+const apiUrl = 'https://spotify-us-api.herokuapp.com/api/v1'
 
 export default class PostModel {
     static create = async (data) => {
@@ -18,7 +18,6 @@ export default class PostModel {
         }
     }
     static update = async (post) => {
-        console.log('POST>>>', post)
         try {
             const updatedPost = await axios.put(`${apiUrl}/posts/${post._id}`, post)
             return updatedPost
