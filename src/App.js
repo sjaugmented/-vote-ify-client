@@ -12,6 +12,10 @@ import './app.css'
 
 const { Header, Footer, Sider, Content } = Layout;
 
+// API's
+const local = 'http://localhost:3001/api/v1'
+const heroku = 'https://spotify-us-api.herokuapp.com/api/v1'
+
 const size = {
   width: '100%',
   height: 100
@@ -38,7 +42,7 @@ function App(props) {
 
   const fetchLogin = async () => {
     try {
-      const result = await fetch('https://spotify-us-api.herokuapp.com/api/v1/auth/verify', {
+      const result = await fetch(`${local}/auth/verify`, {
         credentials: 'include'
       })
       const data = await result.json()

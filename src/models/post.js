@@ -1,10 +1,12 @@
 const axios = require('axios')
-const apiUrl = 'https://spotify-us-api.herokuapp.com/api/v1'
+// API's
+const local = 'http://localhost:3001/api/v1'
+const heroku = 'https://spotify-us-api.herokuapp.com/api/v1'
 
 export default class PostModel {
     static create = async (data) => {
         try {
-            const newPost = await axios.post(`${apiUrl}/posts/${data.urlId}`, {
+            const newPost = await axios.post(`${local}/posts/${data.urlId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,7 +21,7 @@ export default class PostModel {
     }
     static update = async (post) => {
         try {
-            const updatedPost = await axios.put(`${apiUrl}/posts/${post._id}`, post)
+            const updatedPost = await axios.put(`${local}/posts/${post._id}`, post)
             return updatedPost
         } catch (error) {
             console.log(error)
@@ -27,7 +29,7 @@ export default class PostModel {
     }
     static delete = async (post) => {
         try {
-            const deletedPost = await axios.delete(`${apiUrl}/posts/${post}`, {
+            const deletedPost = await axios.delete(`${local}/posts/${post}`, {
                 // method: 'DELETE',
                 // headers: {
                 //     'Content-Type': 'application/json'
