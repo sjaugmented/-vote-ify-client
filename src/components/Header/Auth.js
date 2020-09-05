@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 // API's
-const local = 'https://localhost:3000/api/v1'
+const local = 'http://localhost:3001/api/v1'
 const heroku = 'https://spotify-us-api.herokuapp.com/api/v1'
 
 const Auth = (props) => {
