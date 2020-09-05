@@ -12,7 +12,7 @@ const Auth = (props) => {
       {props.username ? 
         <>
           <Link to=''>Hey {props.username}!</Link>
-          <a href={`${local}/auth/login`}>Refresh Spotify</a>
+          <a href={`${local}/auth/logout`}>Logout</a>
         </>
         :
         <a href={`${local}/auth/login`}> Connect with Spotify </a>
