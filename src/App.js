@@ -11,7 +11,7 @@ import './components/Header/header.css'
 import './components/Footer/footer.css'
 import './app.css'
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 // API's
 const local = 'http://localhost:3001/api/v1'

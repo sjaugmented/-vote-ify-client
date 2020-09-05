@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
-import { HeartTwoTone, HeartFilled } from '@ant-design/icons';
+import { HeartTwoTone } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 import usePersistedState from '../../hooks/usePersistedState'
 
@@ -37,7 +37,7 @@ const PendingPost = ({ username, post, key, updateVotes, updatePlayer }) => {
                 {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 0)' }} /> : <HeartTwoTone twoToneColor="rgb(50,50,50)" /> }
           </button>
           {/* <p className='voteCount'>{votes}</p> */}
-          <p className='contributor'> - Suggested by: {post.user}</p>
+          <p className='contributor'>Suggested by: {post.user}</p>
         </li>
         :
         <></>
