@@ -23,6 +23,8 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     setIsHidden(!isHidden)
   }
 
+
+  //**********************PRESENT************************* */
   //Form/input functionality
   const [visible, setVisible] = useState(false);
   const [searchValue, setSearchValue] = useState('')
@@ -91,6 +93,8 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     }
   }
 
+  //***************PRESENT****************** */
+
   const selectSong = song => {
     setSearchValue('')
     setVisible(false)
@@ -142,11 +146,13 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
   }, [playlist]);
 
 
+  //*********************PRESENT******************* */
   useEffect(() => {
     async function getData(){
       const info = ({searchValue, accessToken})
       const list = await Spotify.search(info)
       const {items} = list.data.tracks
+      console.log(items)
       setResults(items)
     }
     if(searchValue){
