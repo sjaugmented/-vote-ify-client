@@ -1,10 +1,12 @@
 const axios = require('axios')
-const url = 'http://localhost:3001/api/v1'
+// API's
+const local = 'http://localhost:3001/api/v1'
+const heroku = 'https://spotify-us-api.herokuapp.com/api/v1'
 
 export default class UserModel {
     
     static show = async (spotifyId) => {
-        const user = await axios.get(`${url}/users/${spotifyId}`)
+        const user = await axios.get(`${local}/users/${spotifyId}`)
         return user.data
     }
 }

@@ -48,7 +48,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
         // loop through playlist.playlist.posts
         playlist.playlist.posts.map(post => {
           // if post.pending => pending.push(post)
-          if (post.votes < 1) pending.push(post)
+          if (post.votes < 5) pending.push(post)
           else if (post.timestamp >= post.timestamp * 1000 * 60 * 60 * 24 * 7) deletePost(post._id)
           // if !post.pending => approved.push(post)
           else approved.push(post)
@@ -80,8 +80,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       votes: updatedVotes,
     }
     const result = await PostModel.update(updatedPost)
-    console.log(result)
-    refreshPlaylist(100)
+    if (result.data.post.votes >= 5) refreshPlaylist(100)
   }
   //#endregion
 
@@ -111,7 +110,6 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       timestamp: Date.now()
     }
     setSelectedSong(postData)
-    // console.log(selectedSong)
     postSong(postData)
     refreshPlaylist(500)
   }
@@ -210,7 +208,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       </Row>
       </Content>
       <Sider className='sidebarDiv' className={isHidden ? 'hide' : 'show'}>
-        <Sidebar playlist={playlist} isPending={isPending} updatePlayer={updatePlayer} updateVotes={updateVotes}/>
+        <Sidebar username={username} playlist={playlist} isPending={isPending} updatePlayer={updatePlayer} updateVotes={updateVotes}/>
       </Sider>
     </Layout>
   )

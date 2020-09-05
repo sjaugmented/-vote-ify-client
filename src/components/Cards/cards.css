@@ -2,9 +2,7 @@
   width: 50vw;
   height: 20vw;
   display: inline;
-  opacity: 0.25;
   cursor: pointer;
-  /* transition: .2s ease-in-out; */
 }
 
 
@@ -19,6 +17,7 @@
   width: 100%;
   opacity: 0;
   transition: .5s ease;
+  text-shadow: 0 0 5px black, 0 0 75px rgb(61, 144, 247);
 }
 
 .cardDiv:hover .overlay {

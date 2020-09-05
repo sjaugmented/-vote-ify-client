@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
 import PendingPost from './PendingPost'
 
-const Sidebar = ({updatePlayer, isPending, updateVotes}) => {
+const Sidebar = ({username, updatePlayer, isPending, updateVotes}) => {
   
   let posts
   
@@ -10,6 +10,7 @@ const Sidebar = ({updatePlayer, isPending, updateVotes}) => {
     posts = isPending.map((post, index) => {
       return (
         <PendingPost 
+          username={username}
           key={index}
           post={post}
           updateVotes={updateVotes}
