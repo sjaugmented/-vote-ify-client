@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Routes from './config/routes'
+import {withRouter} from 'react-router-dom'
 import useFetch from './hooks/useFetch'
 import HeadContainer from './components/Header/HeadContainer'
 import SpotifyPlayer from 'react-spotify-player'
@@ -68,10 +69,6 @@ function App(props) {
   // Getting all playlists from db with custom hook
   const playlists = useFetch([])
  
-  const logout = () => {
-    console.log('logging out')
-  }
-
   return (
     <div className="App">
       <Layout>
@@ -81,6 +78,7 @@ function App(props) {
             accessToken={currentUser.accessToken}
             spotifyId={currentUser.spotifyId}
             playlists={playlists}
+            location={props.location}
           />
         </Header>
         <Content>
@@ -113,4 +111,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default withRouter(App);
