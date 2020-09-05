@@ -68,6 +68,9 @@ function App(props) {
   // Getting all playlists from db with custom hook
   const playlists = useFetch([])
  
+  const logout = () => {
+    console.log('logging out')
+  }
 
   return (
     <div className="App">
