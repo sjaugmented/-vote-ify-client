@@ -35,4 +35,9 @@
   width: 40px;
 }
 
+.ant-table-thead th.ant-table-column-sort, td.ant-table-column-sort {
+  background-color: rgb(15, 15, 15);
+}
+
+
 
