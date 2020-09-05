@@ -25,7 +25,7 @@ const PendingPost = ({ username, post, key, updateVotes, updatePlayer }) => {
       {username ?
         <li >
           <button className='voteBtn' onClick={() => { handleVote(post) }}>
-                {downVote ? <HeartFilled /> : <HeartTwoTone /> }
+                {downVote ? <HeartFilled className='filledHeart'/> : <HeartTwoTone twoToneColor='#eb2f96'/> }
           </button>
           <p className='voteCount'>{votes}</p>
           <p className='contributor'> - Suggested by: {post.user}</p>

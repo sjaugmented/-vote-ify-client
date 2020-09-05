@@ -166,7 +166,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     <Layout>
       <Content>
       <Row className='playlistHeader'>
-        <Col xs={0} sm={0} md={8} lg={8} xl={5}>
+        <Col xs={0} sm={0} md={8} lg={7} xl={6}>
             {playlist && playlist.playlist.coverart ?
               <div className="card">
                 <img src={playlist.playlist.coverart} alt='album art' />
