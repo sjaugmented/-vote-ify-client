@@ -20,6 +20,7 @@ const HeadContainer = (props) => {
               accessToken={props.accessToken}
               username={props.username}
               spotifyId={props.spotifyId}
+              location={props.location}
               />
             </Row>
             <Row className='headerArtRow'>

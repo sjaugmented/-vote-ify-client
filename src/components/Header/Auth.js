@@ -12,10 +12,10 @@ const Auth = (props) => {
       {props.username ? 
         <>
           <Link to=''>Hey {props.username}!</Link>
-          <a href={`${local}/auth/logout`}>Logout</a>
+          <a onClick={() => localStorage.setItem('prevPath', props.location.pathname)} href={`${local}/auth/logout`}>Logout</a>
         </>
         :
-        <a href={`${local}/auth/login`}> Connect with Spotify </a>
+          <a onClick={() => localStorage.setItem('prevPath', props.location.pathname)} href={`${local}/auth/login`}> Connect with Spotify </a>
       }
     </div>
   );
