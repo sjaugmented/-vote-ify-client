@@ -20,6 +20,7 @@
   bottom: 0;
   right: 0;
   color: rgb(61, 144, 247);
+  height: 50vh;
 }
 
 .hide {
@@ -78,8 +79,7 @@
 }
 
 .sidebarList {
-  overflow: scroll;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .voteBtn, .pendingSong, .toggleBtn {
