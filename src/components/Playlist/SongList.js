@@ -51,6 +51,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
       title: 'Date Added',
       dataIndex: 'timestamp',
       key: 'timestamp',
+      sorter: (a, b) => new Date(a.timestamp) - new Date(b.timestamp),
       render: date => (
         <>
         {date ? date.substr(0, 10) : ''}
