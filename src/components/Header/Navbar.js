@@ -6,11 +6,16 @@ import Auth from './Auth'
 import PlaylistDropdown from './PlaylistDropdown'
 
 const Navbar = (props) => {
+  console.log(props.location)
   return (
     <div>
       <Row>
         <Col className='dropdownCol'>
-          {/* <PlaylistDropdown username={props.username}/> */}
+          {props.location.pathname !== '/' ? 
+            <PlaylistDropdown username={props.username} />
+            :
+            <></>
+          }
         </Col>
         <Col className='authCol'>
           <Auth 
