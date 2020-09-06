@@ -24,27 +24,18 @@ const Profile = (props) => {
     fetchUser()
   }
 
-
-  // if (user) {
-  //   console.log('user', user)
-  //   posts = user.posts
-  //   console.log(user.posts)
-  // }
-
   if (user) {
-    // console.log(user.user)
     songs = user.posts.map((post, index) => {
-      // console.log(post);
       return (
-          <div onClick={() => props.updatePlayer(post.songId)} className='track'>
-            <img src={post.albumArt} alt='album art'/>
-            <p>{post.songName}</p>
-            <p>{post.albumName}</p>
-            <p>{post.artist}</p>
-            <p>Contributed by {post.user}</p>
-            <p>{post.votes}</p>
-            <button onClick={() => deletePost(post.songId)} className='delete' >X</button>
-          </div>
+          <li onClick = {() => props.updatePlayer(post.songId)} className = 'track' >
+              <img src={post.albumArt} alt='album art'/>
+              <p>{post.songName}</p>
+              <p>{post.albumName}</p>
+              <p>{post.artist}</p>
+              <p>Contributed by {post.user}</p>
+              <p>{post.votes}</p>
+              <button onClick={() => deletePost(post.songId)} className='delete' >X</button>
+          </li>
       )
     })
   }
