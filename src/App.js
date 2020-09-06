@@ -96,7 +96,7 @@ function App(props) {
           { open ?
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
               <div className="modal">
-                Connect with Spotify first.
+                <span><a className='connect-link' href={`${local}/auth/login`}>Connect</a></span> with Spotify first.
               </div>
             </Popup>
             :
