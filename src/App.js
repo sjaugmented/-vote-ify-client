@@ -96,7 +96,7 @@ function App(props) {
           { open ?
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
               <div className="modal">
-                <span><a className='connect-link' href={`${local}/auth/login`}>Connect</a></span> with Spotify first.
+                <span><a onClick={() => localStorage.setItem('prevPath', props.location.pathname)} className='connect-link' href={`${local}/auth/login`}>Connect</a></span> with Spotify first.
               </div>
             </Popup>
             :
