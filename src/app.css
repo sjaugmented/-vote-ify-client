@@ -12,8 +12,14 @@ body {
 
 
 .profile {
-    color: white;
+    color: rgb(61, 144, 247);
 }
+
+.profile h1, h3 {
+  color: rgb(61, 144, 247);
+}
+
+
 
 .modal {
   color: white;

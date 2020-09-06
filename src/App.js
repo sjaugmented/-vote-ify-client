@@ -39,7 +39,7 @@ function App(props) {
   const playerUri = 'spotify:track:' + currentSong.currentSong
 
   const updatePlayer = (songId) => {
-    if (currentUser.username) {
+    if (currentUser.name) {
       setCurrentSong({
         currentSong: songId
       })
