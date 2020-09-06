@@ -27,15 +27,12 @@ const Profile = (props) => {
   if (user) {
     songs = user.posts.map((post, index) => {
       return (
-          <li onClick = {() => props.updatePlayer(post.songId)} className = 'track' >
+          <div onClick={() => props.updatePlayer(post.songId)} className='track' >
               <img src={post.albumArt} alt='album art'/>
-              <p>{post.songName}</p>
-              <p>{post.albumName}</p>
-              <p>{post.artist}</p>
-              <p>Contributed by {post.user}</p>
-              <p>{post.votes}</p>
-              <button onClick={() => deletePost(post.songId)} className='delete' >X</button>
-          </li>
+              <p><span className='track-name'>{post.songName}</span> | {post.albumName} | {post.artist}</p> 
+              <p>Contributed by {post.user} | {post.votes}</p>
+              <button onClick={() => deletePost(post.songId)} className='delete' >Remove</button>
+          </div>
       )
     })
   }

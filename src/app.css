@@ -10,7 +10,7 @@ body {
     padding-bottom: 100px;
 }
 
-
+/* /////////PROFILE//////////// */
 .profile {
     color: rgb(61, 144, 247);
 }
@@ -19,8 +19,16 @@ body {
   color: rgb(61, 144, 247);
 }
 
+.delete {
+  border: 2px solid red;
+  border-radius: 5%;
+  background-color: rgb(100, 0 ,0);
+  cursor: pointer;
+}
 
 
+
+/* ////////POPUP////////// */
 .modal {
   color: white;
   background-color: rgb(15, 15, 15);
