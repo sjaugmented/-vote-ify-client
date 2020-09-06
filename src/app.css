@@ -26,6 +26,15 @@ body {
   cursor: pointer;
 }
 
+.pardon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 20vw;
+  max-width: 500px;
+  font-size: 120%;
+}
+
 
 
 /* ////////POPUP////////// */

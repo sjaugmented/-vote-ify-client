@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import UserModel from '../models/user'
 import PostModel from '../models/post'
+import Popup from 'reactjs-popup'
 
 const Profile = (props) => {
   const [user, setUser] = useState()
+  const [open, setOpen] = useState(true)
+  const closeModal = () => setOpen(false)
   
   const fetchUser = async () => {
     const result = await UserModel.show(props.match.params.spotId)
@@ -42,6 +45,17 @@ const Profile = (props) => {
         <div className='profile-header'>
           <h1>{props.username}</h1>
         </div>
+        { open ?
+            <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+              <div className="modal tutorial">
+                <p>Pardon our dust...</p>
+                <p>We're still working on this page.</p>
+                <button onClick={closeModal}>No worries!</button>
+              </div>
+            </Popup>
+            :
+            ''
+          }
         <div className='profile-posts-list'>
           <h3>Contributed Songs:</h3>
           <ul>
