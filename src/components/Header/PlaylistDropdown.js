@@ -63,15 +63,13 @@ const PlaylistDropdown = (props) => {
   
   return (
     <div className='dropdownDiv'>
-    {props.username ? 
       <Dropdown overlay={menu}>
         <a className="ant-dropdown-link">
           Playlists <DownOutlined />
         </a>
-    </Dropdown>
-    : ''
+      </Dropdown>
     
-    }
+    
 
     
       

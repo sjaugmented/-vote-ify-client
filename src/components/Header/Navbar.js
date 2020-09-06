@@ -6,7 +6,6 @@ import Auth from './Auth'
 import PlaylistDropdown from './PlaylistDropdown'
 
 const Navbar = (props) => {
-  console.log(props.location)
   return (
     <div>
       <Row>
