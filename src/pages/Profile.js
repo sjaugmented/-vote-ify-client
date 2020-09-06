@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import UserModel from '../models/user'
+import PostModel from '../models/post'
 
 const Profile = (props) => {
   const [user, setUser] = useState()
   
   const fetchUser = async () => {
-    console.log(props.match.params.spotId);
     const result = await UserModel.show(props.match.params.spotId)
-    console.log(result);
     setUser(result.user)
   }
+  
+  // let posts
+  let songs = []
   
   useEffect(() => {
     fetchUser()
 
   }, [])
 
-  // let posts
-  let songs = []
+  const deletePost = async (songId) => {
+    const deletedPost = await PostModel.delete(songId)
+    console.log('deletedPost:', deletedPost);
+    fetchUser()
+  }
+
 
   // if (user) {
   //   console.log('user', user)
@@ -37,7 +43,7 @@ const Profile = (props) => {
             <p>{post.artist}</p>
             <p>Contributed by {post.user}</p>
             <p>{post.votes}</p>
-            <button onClick={() => props.deletePost(post.songId)} className='delete' >X</button>
+            <button onClick={() => deletePost(post.songId)} className='delete' >X</button>
           </div>
       )
     })
