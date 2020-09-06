@@ -67,7 +67,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
         columns={columns} 
         dataSource={songList}
         pagination={false} 
-        scroll={{y: '100vh'}}
+        scroll={{y: '60vh'}}
         />
         
     </div>

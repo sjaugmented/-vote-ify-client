@@ -34,7 +34,7 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
       {username ?
         <li >
           <button className='voteBtn' onClick={() => { handleVote(post) }}>
-                {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 0)' }} /> : <HeartTwoTone color="#eb2f96" twoToneColor="rgb(0,0,0)" /> }
+                {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 200)' }} /> : <HeartTwoTone color="#eb2f96" twoToneColor="rgb(0,0,0)" /> }
           </button>
           {/* <p className='voteCount'>{votes}</p> */}
           <p className='contributor'>Suggested by: {post.user}</p>
