@@ -184,7 +184,17 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
                 handleChange={handleChange} 
                 />
               :
-              <></>
+              <div className='hide'>
+                <InputForm 
+                  dropdownRef={dropdownRef} 
+                  searchValue={searchValue} 
+                  results={results}
+                  visible={visible}
+                  setVisible={setVisible}
+                  selectSong={selectSong}
+                  handleChange={handleChange} 
+                  />
+              </div>  
             }
           </Col>
           <Col className='voteCol' xs={1} sm={1} md={1} lg={1} xl={1}>

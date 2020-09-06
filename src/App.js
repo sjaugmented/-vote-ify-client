@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import useFetch from './hooks/useFetch'
 import HeadContainer from './components/Header/HeadContainer'
 import SpotifyPlayer from 'react-spotify-player'
+import ConnectPopup from './components/ConnectPopup'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -17,6 +18,9 @@ const { Header, Footer, Content } = Layout;
 const local = 'http://localhost:3001/api/v1'
 const heroku = 'https://spotify-us-api.herokuapp.com/api/v1'
 
+// popup
+
+
 const size = {
   width: '100%',
   height: 100
@@ -29,13 +33,22 @@ function App(props) {
     currentSong: '1JY6B9ILvmRla2IKKRZvnH'
   })
 
-  const spotifyUri = 'spotify:track:'
-  const playerUri = spotifyUri + currentSong.currentSong
+  const playerUri = 'spotify:track:' + currentSong.currentSong
 
   const updatePlayer = (songId) => {
-    setCurrentSong({
-      currentSong: songId
-    })
+    if (currentUser) {
+      setCurrentSong({
+        currentSong: songId
+      })
+    } else {
+      signInPopUp()
+    }
+  }
+
+  const signInPopUp = () => {
+    return (
+      <ConnectPopup open={true} />
+    )
   }
 
   // user state
