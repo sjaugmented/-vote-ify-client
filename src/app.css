@@ -14,3 +14,11 @@ body {
 .profile {
     color: white;
 }
+
+.modal {
+  color: white;
+  background-color: rgb(15, 15, 15);
+  padding: 40px;
+  border: 2px solid rgb(61, 144, 247);
+  border-radius: 10px;
+}

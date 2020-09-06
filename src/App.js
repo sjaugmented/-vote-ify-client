@@ -96,9 +96,9 @@ function App(props) {
           { open ?
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
               <div className="modal">
-                <a className="close" onClick={closeModal}>
+                {/* <a className="close" onClick={closeModal}>
                   &times;
-                </a>
+                </a> */}
                 Connect with Spotify first.
               </div>
             </Popup>
