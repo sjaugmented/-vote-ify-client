@@ -72,13 +72,15 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     refreshPlaylist(100)
   }
 
+  const voteThreshold = 5
+
   const updateVotes = async (post, updatedVotes) => {
     let updatedPost = {
       _id: post._id,
       votes: updatedVotes,
     }
     const result = await PostModel.update(updatedPost)
-    if (result.data.post.votes >= 5) refreshPlaylist(100)
+    if (result.data.post.votes >= voteThreshold) refreshPlaylist(100)
   }
   //#endregion
 
@@ -170,16 +172,20 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
         <Col xs={0} sm={0} md={0} lg={8} xl={8}className='headerPlaylistTitle'>
           <h1>{playlist && playlist.playlist.title ? playlist.playlist.title : 'loading...'}</h1>
         </Col>  
-          <Col xs={10} sm={10} md={8} lg={6} xl={6}className='inputDiv'>
-            <InputForm 
-              dropdownRef={dropdownRef} 
-              searchValue={searchValue} 
-              results={results}
-              visible={visible}
-              setVisible={setVisible}
-              selectSong={selectSong}
-              handleChange={handleChange} 
-              />
+          <Col xs={10} sm={10} md={8} lg={6} xl={6} className='inputDiv'>
+            {username ? 
+              <InputForm 
+                dropdownRef={dropdownRef} 
+                searchValue={searchValue} 
+                results={results}
+                visible={visible}
+                setVisible={setVisible}
+                selectSong={selectSong}
+                handleChange={handleChange} 
+                />
+              :
+              <></>
+            }
           </Col>
           <Col className='voteCol' xs={1} sm={1} md={1} lg={1} xl={1}>
             <p>Vote</p>

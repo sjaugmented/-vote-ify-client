@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import 'antd/dist/antd.css';
-import { HeartTwoTone, HeartFilled } from '@ant-design/icons';
+import { HeartTwoTone } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 import usePersistedState from '../../hooks/usePersistedState'
 
-const PendingPost = ({ username, post, key, updateVotes, updatePlayer }) => {
+const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
   const [downVote, setUpVote] = usePersistedState(`${post._id} downvote`, 'false')
   const [votes, setVotes] = useState(post.votes)
 
@@ -29,15 +29,15 @@ const PendingPost = ({ username, post, key, updateVotes, updatePlayer }) => {
   const HeartIcon = props => <Icon component={HeartSvg} {...props} />;
   
   return (
-    <div className='pending-post'>
+    <div className='pending-post' key={index}>
       <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
       {username ?
         <li >
           <button className='voteBtn' onClick={() => { handleVote(post) }}>
-                {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 0)' }} /> : <HeartTwoTone twoToneColor="rgb(50,50,50)" /> }
+                {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 0)' }} /> : <HeartTwoTone color="#eb2f96" twoToneColor="rgb(0,0,0)" /> }
           </button>
           {/* <p className='voteCount'>{votes}</p> */}
-          <p className='contributor'> - Suggested by: {post.user}</p>
+          <p className='contributor'>Suggested by: {post.user}</p>
         </li>
         :
         <></>
