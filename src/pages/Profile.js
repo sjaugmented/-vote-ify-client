@@ -5,7 +5,9 @@ const Profile = (props) => {
   const [user, setUser] = useState()
   
   const fetchUser = async () => {
-    const result = await UserModel.show(props.match.params.id)
+    console.log(props.match.params.spotId);
+    const result = await UserModel.show(props.match.params.spotId)
+    console.log(result);
     setUser(result.user)
   }
   
@@ -24,9 +26,9 @@ const Profile = (props) => {
   // }
 
   if (user) {
-    console.log(user.user)
+    // console.log(user.user)
     songs = user.posts.map((post, index) => {
-      console.log(post);
+      // console.log(post);
       return (
           <div onClick={() => props.updatePlayer(post.songId)} className='track'>
             <img src={post.albumArt} alt='album art'/>
