@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import useFetch from './hooks/useFetch'
 import HeadContainer from './components/Header/HeadContainer'
 import SpotifyPlayer from 'react-spotify-player'
+import Popup from 'reactjs-popup'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -17,6 +18,9 @@ const { Header, Footer, Content } = Layout;
 const local = 'http://localhost:3001/api/v1'
 const heroku = 'https://spotify-us-api.herokuapp.com/api/v1'
 
+// popup
+
+
 const size = {
   width: '100%',
   height: 100
@@ -25,18 +29,25 @@ const view = 'coverart'
 const theme = 'black'
 
 function App(props) {
+  const [open, setOpen] = useState(false)
+  const closeModal = () => setOpen(false)
+
   const [currentSong, setCurrentSong] = useState({
     currentSong: '1JY6B9ILvmRla2IKKRZvnH'
   })
 
-  const spotifyUri = 'spotify:track:'
-  const playerUri = spotifyUri + currentSong.currentSong
+  const playerUri = 'spotify:track:' + currentSong.currentSong
 
   const updatePlayer = (songId) => {
-    setCurrentSong({
-      currentSong: songId
-    })
+    if (currentUser.username) {
+      setCurrentSong({
+        currentSong: songId
+      })
+    } else {
+      setOpen(!open)
+    }
   }
+
 
   // user state
   const [currentUser, setCurrentUser] = useState({})
@@ -82,6 +93,15 @@ function App(props) {
           />
         </Header>
         <Content>
+          { open ?
+            <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+              <div className="modal">
+                <span><a className='connect-link' href={`${local}/auth/login`}>Connect</a></span> with Spotify first.
+              </div>
+            </Popup>
+            :
+            ''
+          }
           <Routes
             accessToken={currentUser.accessToken}
             updatePlayer={updatePlayer}
