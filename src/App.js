@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 import useFetch from './hooks/useFetch'
 import HeadContainer from './components/Header/HeadContainer'
 import SpotifyPlayer from 'react-spotify-player'
-import ConnectPopup from './components/ConnectPopup'
+import Popup from 'reactjs-popup'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -29,6 +29,9 @@ const view = 'coverart'
 const theme = 'black'
 
 function App(props) {
+  const [open, setOpen] = useState(false)
+  const closeModal = () => setOpen(false)
+
   const [currentSong, setCurrentSong] = useState({
     currentSong: '1JY6B9ILvmRla2IKKRZvnH'
   })
@@ -36,20 +39,15 @@ function App(props) {
   const playerUri = 'spotify:track:' + currentSong.currentSong
 
   const updatePlayer = (songId) => {
-    if (currentUser) {
+    if (currentUser.username) {
       setCurrentSong({
         currentSong: songId
       })
     } else {
-      signInPopUp()
+      setOpen(!open)
     }
   }
 
-  const signInPopUp = () => {
-    return (
-      <ConnectPopup open={true} />
-    )
-  }
 
   // user state
   const [currentUser, setCurrentUser] = useState({})
@@ -95,6 +93,18 @@ function App(props) {
           />
         </Header>
         <Content>
+          { open ?
+            <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+              <div className="modal">
+                <a className="close" onClick={closeModal}>
+                  &times;
+                </a>
+                Connect with Spotify first.
+              </div>
+            </Popup>
+            :
+            ''
+          }
           <Routes
             accessToken={currentUser.accessToken}
             updatePlayer={updatePlayer}
