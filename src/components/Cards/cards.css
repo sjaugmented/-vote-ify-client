@@ -1,11 +1,13 @@
 .cardImg {
   width: 50vw;
-  height: 20vw;
+  height: 25vw;
   display: inline;
   cursor: pointer;
 }
 
-
+.card-container {
+  padding-bottom: 90px;
+}
 
 .overlay {
   position: absolute;
@@ -22,7 +24,7 @@
 
 .cardDiv:hover .overlay {
   opacity: 1;
-  z-index: 5;
+  z-index: 2;
 }
 
 /* .cardDiv:hover .cardImg {

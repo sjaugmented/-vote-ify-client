@@ -15,8 +15,6 @@ import 'antd/dist/antd.css';
 const Playlist = (props) => {
   const [visited, setVisited] = useState(localStorage.getItem('visited'))
 
-  console.log(visited)
-
   //call fetch request to show the single playlist
   const [playlist, setPlaylist] = useState()
   
