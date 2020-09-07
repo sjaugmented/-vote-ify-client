@@ -23,6 +23,8 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     setIsHidden(!isHidden)
   }
 
+
+  //**********************PRESENT************************* */
   //Form/input functionality
   const [visible, setVisible] = useState(false);
   const [searchValue, setSearchValue] = useState('')
@@ -92,6 +94,8 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     }
   }
 
+  //***************PRESENT****************** */
+
   const selectSong = song => {
     setSearchValue('')
     setVisible(false)
@@ -142,11 +146,13 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
   }, [playlist]);
 
 
+  //*********************PRESENT******************* */
   useEffect(() => {
     async function getData(){
       const info = ({searchValue, accessToken})
       const list = await Spotify.search(info)
       const {items} = list.data.tracks
+      console.log(items)
       setResults(items)
     }
     if(searchValue){
@@ -162,7 +168,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     <Layout>
       <Content>
       <Row className='playlistHeader'>
-        <Col xs={0} sm={0} md={8} lg={8} xl={5}>
+        <Col xs={0} sm={0} md={8} lg={7} xl={6}>
             {playlist && playlist.playlist.coverart ?
               <div className="card">
                 <img src={playlist.playlist.coverart} alt='album art' />

@@ -22,27 +22,36 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
       title: 'Artist',
       dataIndex: 'artist',
       key: 'artist',
-      width: 150
+      width: 150,
+      sortDirections: ['descend', 'ascend'],
+      sorter: (a, b) => a.artist.localeCompare(b.artist)
     },
     {
       title: 'Song',
       dataIndex: 'songName',
-      key: 'songName'
+      key: 'songName',
+      sortDirections: ['descend', 'ascend'],
+      sorter: (a, b) => a.songName.localeCompare(b.songName)
     },
     {
       title: 'Album',
       dataIndex: 'albumName',
-      key: 'album'
+      key: 'album',
+      sortDirections: ['descend', 'ascend'],
+      sorter: (a, b) => a.albumName.localeCompare(b.albumName)
     },
     {
       title: 'Contributor',
       dataIndex: 'user',
-      key: 'user'
+      key: 'user',
+      sortDirections: ['descend', 'ascend'],
+      sorter: (a, b) => a.user.localeCompare(b.user)
     },
     {
       title: 'Date Added',
       dataIndex: 'timestamp',
       key: 'timestamp',
+      sorter: (a, b) => new Date(a.timestamp) - new Date(b.timestamp),
       render: date => (
         <>
         {date ? date.substr(0, 10) : ''}
@@ -67,7 +76,7 @@ const SongList = ({ playlist, updatePlayer, deletePost, admin, isApproved }) => 
         columns={columns} 
         dataSource={songList}
         pagination={false} 
-        scroll={{y: '60vh'}}
+        scroll={{y: '50vh'}}
         />
         
     </div>
