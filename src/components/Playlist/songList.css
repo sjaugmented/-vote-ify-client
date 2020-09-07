@@ -8,13 +8,13 @@
 
 .ant-table-thead > tr > th {
   background: rgb(15, 15, 15); 
-  color: white;
+  color: rgb(170, 50, 170);
 }
 
 .ant-table {
   background-color: rgb(15, 15, 15);
   color: rgb(61, 144, 247);
-  border-top: 1px white solid;
+  /* border-top: 1px white solid; */
 }
 
 .ant-table-content table .thead.ant-table-thead {
