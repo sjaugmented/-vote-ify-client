@@ -35,4 +35,17 @@
   width: 40px;
 }
 
+.ant-table-thead th.ant-table-column-sort, td.ant-table-column-sort {
+  background-color: rgb(15, 15, 15);
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: red;
+}
+
+
+.ant-table-tbody > tr.ant-table-row-level-1:hover > td {
+  background: unset;
+}
+
 
