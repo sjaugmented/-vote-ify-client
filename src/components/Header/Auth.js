@@ -11,11 +11,11 @@ const Auth = (props) => {
     <div className='authDiv'>
       {props.username ? 
         <>
-          <Link to=''>Hey {props.username}!</Link>
-          <a href={`${local}/auth/login`}>Refresh Spotify</a>
+          <Link to={`/users/${props.spotifyId}`} >Hey {props.username}!</Link>
+          <a onClick={() => localStorage.setItem('prevPath', props.location.pathname)} href={`${local}/auth/logout`}>Logout</a>
         </>
         :
-        <a href={`${local}/auth/login`}> Connect with Spotify </a>
+          <a onClick={() => localStorage.setItem('prevPath', props.location.pathname)} href={`${local}/auth/login`}> Connect with Spotify </a>
       }
     </div>
   );

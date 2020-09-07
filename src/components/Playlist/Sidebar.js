@@ -11,7 +11,7 @@ const Sidebar = ({username, updatePlayer, isPending, updateVotes}) => {
       return (
         <PendingPost 
           username={username}
-          key={index}
+          index={index}
           post={post}
           updateVotes={updateVotes}
           updatePlayer={updatePlayer}

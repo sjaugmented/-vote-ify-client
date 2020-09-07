@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import Routes from './config/routes'
+import {withRouter} from 'react-router-dom'
 import useFetch from './hooks/useFetch'
 import HeadContainer from './components/Header/HeadContainer'
 import SpotifyPlayer from 'react-spotify-player'
+import Popup from 'reactjs-popup'
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
@@ -10,11 +12,14 @@ import './components/Header/header.css'
 import './components/Footer/footer.css'
 import './app.css'
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 // API's
 const local = 'http://localhost:3001/api/v1'
 const heroku = 'https://spotify-us-api.herokuapp.com/api/v1'
+
+// popup
+
 
 const size = {
   width: '100%',
@@ -24,18 +29,25 @@ const view = 'coverart'
 const theme = 'black'
 
 function App(props) {
+  const [open, setOpen] = useState(false)
+  const closeModal = () => setOpen(false)
+
   const [currentSong, setCurrentSong] = useState({
     currentSong: '1JY6B9ILvmRla2IKKRZvnH'
   })
 
-  const spotifyUri = 'spotify:track:'
-  const playerUri = spotifyUri + currentSong.currentSong
+  const playerUri = 'spotify:track:' + currentSong.currentSong
 
   const updatePlayer = (songId) => {
-    setCurrentSong({
-      currentSong: songId
-    })
+    if (currentUser.name) {
+      setCurrentSong({
+        currentSong: songId
+      })
+    } else {
+      setOpen(!open)
+    }
   }
+
 
   // user state
   const [currentUser, setCurrentUser] = useState({})
@@ -68,7 +80,6 @@ function App(props) {
   // Getting all playlists from db with custom hook
   const playlists = useFetch([])
  
-
   return (
     <div className="App">
       <Layout>
@@ -78,9 +89,19 @@ function App(props) {
             accessToken={currentUser.accessToken}
             spotifyId={currentUser.spotifyId}
             playlists={playlists}
+            location={props.location}
           />
         </Header>
         <Content>
+          { open ?
+            <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+              <div className="modal">
+                <span><a onClick={() => localStorage.setItem('prevPath', props.location.pathname)} className='connect-link' href={`${local}/auth/login`}>Connect</a></span> with Spotify first.
+              </div>
+            </Popup>
+            :
+            ''
+          }
           <Routes
             accessToken={currentUser.accessToken}
             updatePlayer={updatePlayer}
@@ -110,4 +131,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default withRouter(App);

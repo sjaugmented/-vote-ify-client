@@ -10,12 +10,17 @@ const Navbar = (props) => {
     <div>
       <Row>
         <Col className='dropdownCol'>
-          {/* <PlaylistDropdown username={props.username}/> */}
+          {props.location.pathname !== '/' ? 
+            <PlaylistDropdown username={props.username} />
+            :
+            <></>
+          }
         </Col>
         <Col className='authCol'>
           <Auth 
             username={props.username}
             spotifyId={props.spotifyId}
+            location={props.location}
           />
         </Col>
       </Row>
