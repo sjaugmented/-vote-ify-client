@@ -23,7 +23,7 @@ const heroku = 'https://spotify-us-api.herokuapp.com/api/v1'
 
 const size = {
   width: '100%',
-  height: 100
+  height: 85
 }
 const view = 'coverart'
 const theme = 'black'

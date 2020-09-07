@@ -6,7 +6,7 @@ import '../components/Cards/cards.css'
 
 const Home = (props) => {
     return (
-      <div>
+      <div className='card-container'>
         <CardContainer playlists={props.playlists}/>
       </div>
     );

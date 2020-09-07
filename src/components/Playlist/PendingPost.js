@@ -31,7 +31,9 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
   return (
     <div className='pending-post' key={index}>
       <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
-      <li className='contributor'>Suggested by: {post.user}</li>
+      <li className='contributor'>Suggested by {' '}
+      { post.user === username ? 'you' : post.user } 
+      </li>
       {username ?
         <li >
           <button className='voteBtn' onClick={() => { handleVote(post) }}>
