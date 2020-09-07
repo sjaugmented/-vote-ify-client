@@ -1,18 +1,12 @@
 .ant-layout-footer {
-    /* border: red 1px solid; */
     padding: 0;
 }
 
 .player {
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     bottom: 0;
-    /* padding-bottom: 25px; */
     background: rgb(0, 0, 0);
     color: white;
     width: 100%;
-}
-
-.player button {
-    background: rgb(61, 144, 247);
 }
