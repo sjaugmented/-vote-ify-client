@@ -16,8 +16,8 @@ const Auth = (props) => {
       {props.username ? 
         <>
           <Link to={`/users/${props.spotifyId}`} >Hey {props.username}!</Link>
-          <a onClick={storeLocation} href={`${local}/auth/login`}>|| Refresh Spotify Token ||</a>
-          <a onClick={storeLocation} href={`${local}/auth/logout`}>Logout</a>
+          <a className='refresh' onClick={storeLocation} href={`${local}/auth/login`}>Refresh Spotify</a>
+          <a className='logout' onClick={storeLocation} href={`${local}/auth/logout`}>Logout</a>
         </>
         :
           <a onClick={storeLocation} href={`${local}/auth/login`}>Connect with Spotify</a>
