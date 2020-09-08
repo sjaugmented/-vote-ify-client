@@ -149,11 +149,15 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
   //*********************PRESENT******************* */
   useEffect(() => {
     async function getData(){
-      const info = ({searchValue, accessToken})
-      const list = await Spotify.search(info)
-      const {items} = list.data.tracks
-      console.log(items)
-      setResults(items)
+      try {
+        const info = ({ searchValue, accessToken })
+        const list = await Spotify.search(info)
+        const {items} = await list.data.tracks
+        console.log(items)
+        setResults(items)
+      } catch (error) {
+        console.log(error);
+      }
     }
     if(searchValue){
       getData()
