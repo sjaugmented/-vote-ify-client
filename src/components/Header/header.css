@@ -69,10 +69,6 @@
   color: rgb(0, 255, 100);
 }
 
-.logout {
-  color: gray;
-}
-
 .logout:hover {
   color: red;
 }
