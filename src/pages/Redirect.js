@@ -3,7 +3,8 @@ import { useEffect } from 'react'
 const Redirect = (props) => {
 
     useEffect(() => {
-        props.history.push(localStorage.getItem('prevPath'))
+        if (localStorage.getItem('prevPath')) props.history.push(localStorage.getItem('prevPath'))
+        else props.history.push('/')
     })
 
     return (

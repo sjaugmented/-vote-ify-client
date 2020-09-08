@@ -62,6 +62,17 @@
   scale: 1;
 }
 
+.refresh {
+  color: rgb(0, 150, 50);
+}
+.refresh:hover {
+  color: rgb(0, 255, 100);
+}
+
+.logout:hover {
+  color: red;
+}
+
 
 /* /////////////////////////////////////// */
 

@@ -24,28 +24,28 @@
 .ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
   padding: 0 0 0 10px;
 }
-.ant-table-row {
+/* .ant-table-row {
   height: 40px;
-}
-.ant-table-cell {
+} */
+/* .ant-table-cell {
   padding: 0;
-}
+} */
 .ant-table-cell img {
   height: 40px;
   width: 40px;
 }
 
-.ant-table-thead th.ant-table-column-sort, td.ant-table-column-sort {
+/* .ant-table-thead th.ant-table-column-sort, td.ant-table-column-sort {
   background-color: rgb(15, 15, 15);
-}
+} */
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+/* .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: red;
-}
+} */
 
 
-.ant-table-tbody > tr.ant-table-row-level-1:hover > td {
+/* .ant-table-tbody > tr.ant-table-row-level-1:hover > td {
   background: unset;
-}
+} */
 
 

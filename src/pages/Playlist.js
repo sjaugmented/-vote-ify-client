@@ -42,6 +42,7 @@ const Playlist = (props) => {
             <p><span className='vote-ify'>Welcome to Vote-ify!</span></p>
             <p>Here, we're all about playlists that are curated by you, the community.</p>
             <p>To start, use the 'Suggest a song' search bar at the top of each playlist to find songs on Spotify and suggest them.</p>
+            <p>Note: we have a small bug where the Spotify token will timeout and the search bar will stop working. If that happens, click the <span className='refresh'>Refresh Spotify</span> link in nav bar.</p>
             <p>Suggested songs will show up in the 'Vote Songs In!' sidebar on the right where other members of the community can like them.</p>
             <p>Once a song reaches the required number of hearts, it will officially be added to the playlist proper.</p>
             <p> To listen to tracks, just click them and they will be loaded into the player at the bottom of the screen. <span className='highlight'> Sorry, we don 't have autoplay working just yet</span>, so you'
