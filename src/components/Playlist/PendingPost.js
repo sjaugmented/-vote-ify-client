@@ -28,11 +28,11 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
 
   const HeartIcon = props => <Icon component={HeartSvg} {...props} />;
 
-  let voteButton
+  let postDisplay
 
   if (username) {
     if (username !== post.user) {
-      voteButton =
+      postDisplay =
         <>
           <li className = 'contributor'> Suggested by {post.user} </li>
           <li>
@@ -42,7 +42,7 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
           </li>
         </>  
     } else {
-      voteButton = 
+      postDisplay = 
         <li>
           <button className='voteBtn'>
                 <HeartIcon style={{ color: 'rgb(61, 144, 247)' }} />
@@ -51,13 +51,13 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
         </li>
     }
   } else {
-    voteButton = ''
+    postDisplay = ''
   }
   
   return (
     <div className='pending-post' key={index}>
       <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
-      {voteButton}
+      {postDisplay}
     </div>
   )
 }
