@@ -27,23 +27,37 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
 );
 
   const HeartIcon = props => <Icon component={HeartSvg} {...props} />;
+
+  let postDisplay
+
+  if (username) {
+    if (username !== post.user) {
+      postDisplay =
+        <>
+          <li className = 'contributor'> Suggested by {post.user} </li>
+          <li>
+            <button className='voteBtn' onClick={() => { handleVote(post) }}>
+                  {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 200)' }} /> : <HeartTwoTone color="#eb2f96" twoToneColor="rgb(0,0,0)" /> }
+            </button>
+          </li>
+        </>  
+    } else {
+      postDisplay = 
+        <li>
+          <button className='voteBtn'>
+                <HeartIcon style={{ color: 'rgb(61, 144, 247)' }} />
+          </button>
+          { post.user === username ? <p className='voteCount'>{votes}</p> : '' } {'\n'}
+        </li>
+    }
+  } else {
+    postDisplay = ''
+  }
   
   return (
     <div className='pending-post' key={index}>
       <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
-      <li className='contributor'>Suggested by {' '}
-      { post.user === username ? 'you' : post.user } 
-      </li>
-      {username ?
-        <li >
-          <button className='voteBtn' onClick={() => { handleVote(post) }}>
-                {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 200)' }} /> : <HeartTwoTone color="#eb2f96" twoToneColor="rgb(0,0,0)" /> }
-          </button>
-          { post.user === username ? <p className='voteCount'>{votes}</p> : '' } {'\n'}
-        </li>
-        :
-        <></>
-      }
+      {postDisplay}
     </div>
   )
 }
