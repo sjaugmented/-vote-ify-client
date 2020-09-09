@@ -104,7 +104,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
       songName: song.name,
       albumName: song.album.name,
       artist: song.artists[0].name,
-      votes: 0,
+      votes: 1,
       pending: true,
       user: username,
       userSpotId: spotifyId,
