@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
 import { HeartTwoTone } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
@@ -7,6 +7,47 @@ import usePersistedState from '../../hooks/usePersistedState'
 const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
   const [downVote, setUpVote] = usePersistedState(`${post._id} downvote`, 'false')
   const [votes, setVotes] = useState(post.votes)
+  const [time, setTime] = useState()
+
+  // store ms remaining in state
+  const getRemainingMs = () => {
+    let today = Date.now()
+    let cutoff = Date.parse(post.timestamp) + (1000 * 60 * 60 * 24 * 14)
+    let remaining = cutoff - today
+    setTime(remaining)
+  }
+  // convert ms into readable time format
+  const msToTime = () => {
+    let seconds = Math.floor((time / 1000) % 60)
+    let minutes = Math.floor((time / (1000 * 60)) % 60)
+    let hours = Math.floor((time / (1000 * 60 * 60)) % 24)
+    let days = Math.floor((time / (1000 * 60 * 60 * 24)))
+
+    // days = (days < 10) ? '0' + days : days
+    hours = (hours < 10) ? '0' + hours : hours
+    minutes = (minutes < 10) ? '0' + minutes : minutes
+    seconds = (seconds < 10) ? '0' + seconds : seconds
+
+    let className
+
+    // one hour left
+    if (time <= 3600000) className = 'priority'
+    // one day left
+    else if (time <= 86400000) className = 'attention'
+    else className = 'safe'
+
+    return (
+      <span className={className}>{days}d {hours}:{minutes}:{seconds}</span>
+    )
+  }
+
+  useEffect(() => {
+    getRemainingMs()
+    const interval = setInterval(() => {
+      getRemainingMs()
+    }, 1000);
+    return () => clearInterval(interval)
+  }, [])
 
   const handleVote = (post) => {
     let newVotes
@@ -39,7 +80,8 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
           <li>
             <button className='voteBtn' onClick={() => { handleVote(post) }}>
                   {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 200)' }} /> : <HeartTwoTone color="#eb2f96" twoToneColor="rgb(0,0,0)" /> }
-            </button>
+          </button>
+          Voting ends in: {msToTime()}
           </li>
         </>  
     } else {
@@ -47,10 +89,11 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
         <>
           <li className='pendingSong self' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
           <li>
-            <button className='voteBtn'>
-                  <HeartIcon style={{ color: 'rgb(61, 144, 247)' }} />
+            <button className = 'voteBtn self' >
+                  <HeartIcon className='self' style={{ color: 'rgb(43, 87, 141)' }} />
             </button>
-            { post.user === username ? <p className='voteCount'>{votes}</p> : '' } {'\n'}
+          {post.user === username ? <p className='voteCount self'>{votes}</p> : ''} {'\n'}
+          <span className='self'>Voting ends in: {msToTime()}</span>
           </li>
         </>  
     }
@@ -58,7 +101,7 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
     postDisplay = 
       <>
         <li className='pendingSong others' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
-        <li className = 'contributor others'> Suggested by {post.user} </li>
+      <li className='contributor others'> Suggested by {post.user} </li>
       </>
   }
   
