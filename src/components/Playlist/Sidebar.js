@@ -9,7 +9,7 @@ const Sidebar = ({username, updatePlayer, isPending, updateVotes}) => {
   if (isPending) {
     posts = isPending.map((post, index) => {
       return (
-        <PendingPost 
+        <PendingPost key={index}
           username={username}
           index={index}
           post={post}

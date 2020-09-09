@@ -39,6 +39,7 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
   const approved = []
   //#endregion
 
+  const voteThreshold = 5
 
   //#region SORTING, DELETING, UPDATING
   const sortPosts = () => {
@@ -49,8 +50,10 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
         playlist.playlist.posts.map(post => {
           // if post.pending => pending.push(post)
           
-          if (post.votes < 5) pending.push(post)
-          //else if (Date.now() >= post.timestamp * 1000 * 60 * 60 * 24 * 7) deletePost(post._id)
+          if (post.votes < voteThreshold) {
+            pending.push(post)
+            if (Date.now() >= Date.parse(post.timestamp) + (1000 * 60 * 60 * 24 * 14)) deletePost(post._id)
+          }
           // if !post.pending => approved.push(post)
           else approved.push(post)
           setApproved(approved)
@@ -75,7 +78,6 @@ const PlaylistContainer = ({playlist, accessToken, username, spotifyId, admin, m
     refreshPlaylist(100)
   }
 
-  const voteThreshold = 5
 
   const updateVotes = async (post, updatedVotes) => {
     let updatedPost = {
