@@ -10,7 +10,7 @@ const InputForm = (props) => {
      
           <input
             className='input'
-            placeholder='Suggest a song'
+            placeholder='Suggest a Song'
             type='text'
             value={props.searchValue}
             onChange={props.handleChange}
