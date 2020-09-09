@@ -34,6 +34,7 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
     if (username !== post.user) {
       postDisplay =
         <>
+          <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
           <li className = 'contributor'> Suggested by {post.user} </li>
           <li>
             <button className='voteBtn' onClick={() => { handleVote(post) }}>
@@ -43,12 +44,15 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
         </>  
     } else {
       postDisplay = 
-        <li>
-          <button className='voteBtn'>
-                <HeartIcon style={{ color: 'rgb(61, 144, 247)' }} />
-          </button>
-          { post.user === username ? <p className='voteCount'>{votes}</p> : '' } {'\n'}
-        </li>
+        <>
+          <li className='pendingSong self' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
+          <li>
+            <button className='voteBtn'>
+                  <HeartIcon style={{ color: 'rgb(61, 144, 247)' }} />
+            </button>
+            { post.user === username ? <p className='voteCount'>{votes}</p> : '' } {'\n'}
+          </li>
+        </>  
     }
   } else {
     postDisplay = ''
@@ -56,7 +60,6 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
   
   return (
     <div className='pending-post' key={index}>
-      <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
       {postDisplay}
     </div>
   )
