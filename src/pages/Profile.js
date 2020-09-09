@@ -49,7 +49,7 @@ const Profile = (props) => {
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
               <div className="modal tutorial">
                 <p>Pardon our dust...</p>
-                <p>We're still working on this page.</p>
+                <p>We're still working on the profiles.</p>
                 <button onClick={closeModal}>No worries!</button>
               </div>
             </Popup>
