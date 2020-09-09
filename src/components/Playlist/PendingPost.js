@@ -34,8 +34,8 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
     if (username !== post.user) {
       postDisplay =
         <>
-          <li className='pendingSong' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
-          <li className = 'contributor'> Suggested by {post.user} </li>
+          <li className='pendingSong others' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
+          <li className = 'contributor others'> Suggested by {post.user} </li>
           <li>
             <button className='voteBtn' onClick={() => { handleVote(post) }}>
                   {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 200)' }} /> : <HeartTwoTone color="#eb2f96" twoToneColor="rgb(0,0,0)" /> }
@@ -55,7 +55,11 @@ const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
         </>  
     }
   } else {
-    postDisplay = ''
+    postDisplay = 
+      <>
+        <li className='pendingSong others' onClick={() => { updatePlayer(post.songId) }}>{post.artist} - {post.songName}</li>
+        <li className = 'contributor others'> Suggested by {post.user} </li>
+      </>
   }
   
   return (

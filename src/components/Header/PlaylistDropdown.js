@@ -13,10 +13,10 @@ const menu = () => (
     return (
       <Menu selectedKeys={[props.location.pathname, props.location.pathname.hash, props.accessToken]}>
         <Menu.Item key="/playlist/:id">
-          <Link to="/playlist/5f41ceada73d7c73c5d73178" {...props}>Electronic</Link>
+          <Link to="" {...props}>In Progress...</Link>
         </Menu.Item>
         <Menu.Item key="/playlist/5f41ceada73d7c73c5d73179">
-          <Link to="/playlist/5f41ceada73d7c73c5d73179">Alternative</Link>
+          <Link to="">In Progress...</Link>
         </Menu.Item>
       </Menu>
     );
