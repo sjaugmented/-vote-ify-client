@@ -12,7 +12,7 @@ const PendingPost = ({ isVisible, username, post, index, updateVotes, updatePlay
 
   // store ms remaining in state
   const getRemainingMs = () => {
-    console.log('getting ms')
+    // console.log('getting ms')
 
     let today = Date.now()
     let cutoff = Date.parse(post.timestamp) + (1000 * 60 * 60 * 24 * 14)

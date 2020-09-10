@@ -27,6 +27,14 @@ export default class PostModel {
             console.log(error)
         }
     }
+    static show = async (post) => {
+        try {
+            const foundPost = await axios.get(`${local}/posts/${post._id}`)
+            return foundPost
+        } catch (error) {
+            console.log(error);
+        }
+    }
     static delete = async (post) => {
         try {
             const deletedPost = await axios.delete(`${local}/posts/${post}`, {
