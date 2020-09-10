@@ -4,13 +4,16 @@ import { HeartTwoTone } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 import usePersistedState from '../../hooks/usePersistedState'
 
-const PendingPost = ({ username, post, index, updateVotes, updatePlayer }) => {
+
+const PendingPost = ({ isVisible, username, post, index, updateVotes, updatePlayer }) => {
   const [downVote, setUpVote] = usePersistedState(`${post._id} downvote`, 'false')
   const [votes, setVotes] = useState(post.votes)
   const [time, setTime] = useState()
 
   // store ms remaining in state
   const getRemainingMs = () => {
+    console.log('getting ms')
+
     let today = Date.now()
     let cutoff = Date.parse(post.timestamp) + (1000 * 60 * 60 * 24 * 14)
     let remaining = cutoff - today

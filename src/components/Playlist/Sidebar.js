@@ -1,21 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
 import PendingPost from './PendingPost'
+import TrackVis from 'react-on-screen'
 
 const Sidebar = ({username, updatePlayer, isPending, updateVotes}) => {
   
   let posts
-  
+
   if (isPending) {
     posts = isPending.map((post, index) => {
       return (
-        <PendingPost key={index}
-          username={username}
-          index={index}
-          post={post}
-          updateVotes={updateVotes}
-          updatePlayer={updatePlayer}
-        />
+        <TrackVis>
+          <PendingPost key={index}
+            username={username}
+            index={index}
+            post={post}
+            updateVotes={updateVotes}
+            updatePlayer={updatePlayer}
+          />
+        </TrackVis>
       )
     })
   }
