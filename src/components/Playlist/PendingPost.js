@@ -3,9 +3,11 @@ import 'antd/dist/antd.css';
 import { HeartTwoTone } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 import usePersistedState from '../../hooks/usePersistedState'
+import PostModel from '../../models/post'
 
 
 const PendingPost = ({ isVisible, username, post, index, updateVotes, updatePlayer }) => {
+  
   const [downVote, setUpVote] = usePersistedState(`${post._id} downvote`, 'false')
   const [votes, setVotes] = useState(post.votes)
   const [time, setTime] = useState()
@@ -20,7 +22,7 @@ const PendingPost = ({ isVisible, username, post, index, updateVotes, updatePlay
     setTime(remaining)
   }
   // convert ms into readable time format
-  const msToTime = () => {
+  const formatMs = () => {
     let seconds = Math.floor((time / 1000) % 60)
     let minutes = Math.floor((time / (1000 * 60)) % 60)
     let hours = Math.floor((time / (1000 * 60 * 60)) % 24)
@@ -44,9 +46,21 @@ const PendingPost = ({ isVisible, username, post, index, updateVotes, updatePlay
     )
   }
 
+  const fetchVotes = async () => {
+    try {
+      const foundPost = await PostModel.show(post)
+      const foundVotes = foundPost.data.votes
+      setVotes(foundVotes)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
+    fetchVotes()
     getRemainingMs()
     const interval = setInterval(() => {
+      fetchVotes()
       getRemainingMs()
     }, 1000);
     return () => clearInterval(interval)
@@ -84,7 +98,7 @@ const PendingPost = ({ isVisible, username, post, index, updateVotes, updatePlay
             <button className='voteBtn' onClick={() => { handleVote(post) }}>
                   {downVote ? <HeartIcon style={{ color: 'rgb(255, 0, 200)' }} /> : <HeartTwoTone color="#eb2f96" twoToneColor="rgb(0,0,0)" /> }
           </button>
-          Voting ends in: {msToTime()}
+          Voting ends in: {formatMs()}
           </li>
         </>  
     } else {
@@ -96,7 +110,7 @@ const PendingPost = ({ isVisible, username, post, index, updateVotes, updatePlay
                   <HeartIcon className='self' style={{ color: 'rgb(43, 87, 141)' }} />
             </button>
           {post.user === username ? <p className='voteCount self'>{votes}</p> : ''} {'\n'}
-          <span className='self'>Voting ends in: {msToTime()}</span>
+          <span className='self'>Voting ends in: {formatMs()}</span>
           </li>
         </>  
     }
